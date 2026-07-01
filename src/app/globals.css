@@ -1,0 +1,295 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #2563EB;
+  --secondary: #7C3AED;
+  --accent: #06B6D4;
+  --success: #10B981;
+  --dark: #0B1020;
+  --surface: #111827;
+  --light: #F8FAFC;
+  --ink: #0F172A;
+  --muted: #5B6478;
+}
+
+@theme {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-success: var(--success);
+  --color-dark: var(--dark);
+  --color-surface: var(--surface);
+  --color-light: var(--light);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-manrope), sans-serif;
+}
+
+/* Custom cursor */
+#cursor-dot, #cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+#cursor-dot {
+  width: 8px;
+  height: 8px;
+  background: var(--primary);
+}
+#cursor-ring {
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid rgba(37, 99, 235, .5);
+  transition: width .25s, height .25s, border-color .25s, background .25s;
+}
+#cursor-ring.hover {
+  width: 64px;
+  height: 64px;
+  background: rgba(37, 99, 235, .08);
+  border-color: var(--primary);
+}
+
+@media (max-width: 900px) {
+  #cursor-dot, #cursor-ring {
+    display: none;
+  }
+  * {
+    cursor: auto !important;
+  }
+}
+
+/* Base custom font configurations and resets */
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background: var(--light);
+  color: var(--ink);
+  overflow-x: hidden;
+  cursor: none; /* Hide default cursor on desktop */
+  font-family: var(--font-inter), sans-serif;
+}
+h1, h2, h3, h4, .display {
+  font-family: var(--font-manrope), sans-serif;
+}
+@media (max-width: 900px) {
+  body {
+    cursor: auto;
+  }
+}
+
+/* Grid backdrop */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(37,99,235,.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(37,99,235,.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Gradient text */
+.grad-text {
+  background: linear-gradient(100deg, var(--primary), var(--secondary) 55%, var(--accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Glass */
+.glass {
+  background: rgba(255, 255, 255, .65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 23, 42, .06);
+}
+.glass-dark {
+  background: rgba(11, 16, 32, .55);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, .08);
+}
+
+/* Blobs */
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: .35;
+}
+
+/* Card tilt */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform .15s ease-out;
+}
+
+/* ── Marquee ── */
+.marquee-outer {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  mask-image:         linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: nqx-marquee-left 40s linear infinite;
+}
+.marquee-track--reverse {
+  animation: nqx-marquee-right 45s linear infinite;
+}
+.marquee-track:hover,
+.marquee-track:focus-within {
+  animation-play-state: paused;
+}
+
+@keyframes nqx-marquee-left {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@keyframes nqx-marquee-right {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+
+/* Individual logo */
+.marquee-logo {
+  display: flex;
+  align-items: center;
+  height: 28px;
+  margin-right: 64px;
+  flex-shrink: 0;
+  cursor: default;
+}
+.marquee-logo img,
+.marquee-logo svg {
+  height: 100%;
+  width: auto;
+  filter: grayscale(100%);
+  opacity: 0.4;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+.marquee-logo:hover img,
+.marquee-logo:hover svg {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Tablet */
+@media (max-width: 1023px) {
+  .marquee-logo { height: 24px; margin-right: 48px; }
+  .marquee-track { animation-duration: 30s; }
+  .marquee-track--reverse { animation-duration: 34s; }
+}
+
+/* Mobile — single row, Row 2 hidden */
+@media (max-width: 767px) {
+  .marquee-logo { height: 20px; margin-right: 32px; }
+  .marquee-track { animation-duration: 25s; }
+  .marquee-row--secondary { display: none; }
+}
+
+/* Reduced-motion: freeze the tracks */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track,
+  .marquee-track--reverse {
+    animation: none !important;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+}
+
+/* Legacy support for old marquee-wrap (keep working during migration) */
+.marquee-wrap:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+
+/* Nav underline */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 1.5px;
+  background: var(--primary);
+  transition: width .25s ease;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Service card glow */
+.svc-card {
+  position: relative;
+  overflow: hidden;
+}
+.svc-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, transparent 40%, rgba(37,99,235,.5), rgba(124,58,237,.5));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .35s;
+}
+.svc-card:hover::before {
+  opacity: 1;
+}
+.svc-card .glow {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  background: radial-gradient(circle, rgba(37,99,235,.18), transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity .35s;
+  pointer-events: none;
+}
+.svc-card:hover .glow {
+  opacity: 1;
+}
+
+/* Progress bar */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+  z-index: 9998;
+  width: 0%;
+}
+
+.section-eyebrow {
+  letter-spacing: .14em;
+}
+
+/* ── Services tab strip — hide scrollbar cross-browser ── */
+.tabs-strip::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Service cards — disable hover lift on touch-only devices ── */
+/* Framer Motion's whileHover fires on pointer:hover devices only,
+   but to be safe we also suppress via CSS for any touch-fallback states */
+@media (hover: none) {
+  /* Cards won't lift on pure touch devices — rely on tap feedback only */
+  .service-card-hover-disable {
+    transform: none !important;
+  }
+}
