@@ -207,15 +207,16 @@ export default function Testimonials() {
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] as const }}
         >
           <div
-            ref={scrollRef}
-            onScroll={onScroll}
-            className="flex gap-6 overflow-x-auto pb-4"
-            style={{
-              scrollSnapType: "x mandatory",
-              scrollbarWidth: "none",
-              WebkitOverflowScrolling: "touch",
-            }}
-          >
+             ref={scrollRef}
+             onScroll={onScroll}
+             className="flex gap-6 overflow-x-auto pb-4"
+             style={{
+               scrollSnapType: "x mandatory",
+               scrollbarWidth: "none",
+               WebkitOverflowScrolling: "touch",
+               overscrollBehaviorX: "contain",
+             }}
+           >
             {TESTIMONIALS.map((t) => (
               <TestimonialCard key={t.name} t={t} />
             ))}

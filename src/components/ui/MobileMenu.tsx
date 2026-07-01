@@ -47,8 +47,11 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
       }
     };
 
-    // Lock body scroll
-    document.body.style.overflow = "hidden";
+    // iOS-safe scroll lock — prevents background shift under overlay
+    const scrollY = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
 
     // ESC key close listener
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -69,7 +72,12 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
     }, 150);
 
     return () => {
+      const y = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
       document.body.style.overflow = "";
+      document.body.style.width = "";
+      if (y) window.scrollTo(0, parseInt(y) * -1);
       window.removeEventListener("keydown", handleFocusTrap);
       window.removeEventListener("keydown", handleKeyDown);
       clearTimeout(focusTimeout);

@@ -45,13 +45,13 @@ const EMPTY: FormState = {
 
 const inputClass =
   "w-full px-4 py-3 rounded-xl border border-[rgba(11,16,32,0.1)] bg-white " +
-  "text-[15px] text-[#0B1020] placeholder:text-[#0B1020]/35 " +
+  "text-base text-[#0B1020] placeholder:text-[#0B1020]/35 " +
   "focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30 focus:border-[#2563EB]/60 " +
   "transition-all duration-200";
 
 const selectClass =
   "w-full px-4 py-3 rounded-xl border border-[rgba(11,16,32,0.1)] bg-white " +
-  "text-[15px] text-[#0B1020] appearance-none " +
+  "text-base text-[#0B1020] appearance-none " +
   "focus:outline-none focus:ring-2 focus:ring-[#2563EB]/30 focus:border-[#2563EB]/60 " +
   "transition-all duration-200 cursor-pointer";
 

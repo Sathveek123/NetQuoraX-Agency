@@ -52,8 +52,11 @@ export default function SplashScreen({ onComplete, onUnmount }: SplashScreenProp
       return () => clearTimeout(timer);
     }
 
-    // Lock body scroll
-    document.body.style.overflow = "hidden";
+    // iOS-safe scroll lock — prevents rubber-band under-scroll
+    const scrollY = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
 
     // Start counter linear progression
     const animControls = animate(countVal, 100, {
@@ -73,7 +76,12 @@ export default function SplashScreen({ onComplete, onUnmount }: SplashScreenProp
     return () => {
       animControls.stop();
       clearTimeout(exitTimer);
+      const y = document.body.style.top;
+      document.body.style.position = "";
+      document.body.style.top = "";
       document.body.style.overflow = "";
+      document.body.style.width = "";
+      if (y) window.scrollTo(0, parseInt(y) * -1);
     };
   }, [shouldReduceMotion]);
 
@@ -91,7 +99,12 @@ export default function SplashScreen({ onComplete, onUnmount }: SplashScreenProp
       // Unmount splash entirely 0.6s after curtain starts (0.1s Layer B delay + 0.5s duration)
       const unmountTimer = setTimeout(() => {
         sessionStorage.setItem("nqx_visited", "true");
+        const y = document.body.style.top;
+        document.body.style.position = "";
+        document.body.style.top = "";
         document.body.style.overflow = "";
+        document.body.style.width = "";
+        if (y) window.scrollTo(0, parseInt(y) * -1);
         onUnmount();
       }, 1000);
 

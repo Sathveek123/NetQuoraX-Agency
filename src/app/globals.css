@@ -66,11 +66,16 @@
 /* Base custom font configurations and resets */
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
 }
 body {
   background: var(--light);
   color: var(--ink);
   overflow-x: hidden;
+  width: 100%;
+  position: relative;
   cursor: none; /* Hide default cursor on desktop */
   font-family: var(--font-inter), sans-serif;
 }
