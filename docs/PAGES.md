@@ -15,7 +15,7 @@ Complete documentation for all pages in the NetQuoraX website.
 4. **Industries** - Industry showcase with tabs
 5. **Why Us** - Value proposition with alternating layout
 6. **Portfolio** - Featured projects grid
-7. **Process** - 4-step development pipeline
+  7. **Process** - 7-step development pipeline
 8. **Stats** - Animated statistics counters
 9. **Testimonials** - Client testimonials carousel
 10. **FAQ** - Expandable FAQ accordion

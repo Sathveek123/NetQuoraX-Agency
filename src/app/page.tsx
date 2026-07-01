@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 
 // ── Section imports ──────────────────────────────────────────────────────────
 import SplashScreen    from "@/components/splash/SplashScreen";
-import Magnetic        from "@/components/ui/Magnetic";
 import Navbar          from "@/components/sections/Navbar";
 import Hero            from "@/components/sections/Hero";
 import TrustedBy       from "@/components/sections/TrustedBy";

@@ -8,7 +8,7 @@
   --dark: #0B1020;
   --surface: #111827;
   --light: #F8FAFC;
-  --ink: #0F172A;
+  --ink: #0B1020;
   --muted: #5B6478;
 }
 
@@ -23,7 +23,7 @@
   --color-ink: var(--ink);
   --color-muted: var(--muted);
   --font-sans: var(--font-inter), sans-serif;
-  --font-display: var(--font-manrope), sans-serif;
+  --font-display: var(--font-display), sans-serif;
 }
 
 /* Custom cursor */
@@ -75,7 +75,7 @@ body {
   font-family: var(--font-inter), sans-serif;
 }
 h1, h2, h3, h4, .display {
-  font-family: var(--font-manrope), sans-serif;
+  font-family: var(--font-display), sans-serif;
 }
 @media (max-width: 900px) {
   body {

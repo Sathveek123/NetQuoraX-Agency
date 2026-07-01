@@ -11,7 +11,6 @@ interface Testimonial {
   role: string;
   initials: string;
   avatarGrad: string;
-  avatarImg?: string;
 }
 
 const TESTIMONIALS: Testimonial[] = [
@@ -21,7 +20,6 @@ const TESTIMONIALS: Testimonial[] = [
     role: "Derivatives Trader, Mumbai",
     initials: "RV",
     avatarGrad: "linear-gradient(135deg, #2563EB, #7C3AED)",
-    avatarImg: "/images/avatar-rahul.png",
   },
   {
     quote: "Our agency website went from zero to booked calls within weeks. The design did the selling before we even picked up the phone. Completely transformed how we look online.",
@@ -29,7 +27,6 @@ const TESTIMONIALS: Testimonial[] = [
     role: "Director, Holloway Creative — London, UK",
     initials: "JH",
     avatarGrad: "linear-gradient(135deg, #06B6D4, #2563EB)",
-    avatarImg: "/images/avatar-james-h.png",
   },
   {
     quote: "Our Meta and Google ad spend went from a 1.2 ROAS to 3.8 within two months. They restructured everything — creatives, targeting, and the landing page funnel.",
@@ -37,7 +34,6 @@ const TESTIMONIALS: Testimonial[] = [
     role: "Marketing Director, Luxora — Dubai, UAE",
     initials: "FA",
     avatarGrad: "linear-gradient(135deg, #10B981, #06B6D4)",
-    avatarImg: "/images/avatar-fatima.png",
   },
   {
     quote: "The automation system eliminated three admin positions' worth of manual work from our operations. It paid for itself in the first month and keeps compounding.",
@@ -45,7 +41,6 @@ const TESTIMONIALS: Testimonial[] = [
     role: "COO, Meridian Logistics — Singapore",
     initials: "MT",
     avatarGrad: "linear-gradient(135deg, #7C3AED, #2563EB)",
-    avatarImg: "/images/avatar-marcus.png",
   },
   {
     quote: "Priya and her team needed a complete patient booking and reminder system. NetquoraX delivered it in 3 weeks. No-shows dropped by 22% in the first month.",
@@ -53,7 +48,6 @@ const TESTIMONIALS: Testimonial[] = [
     role: "Clinic Director, Healpath — Bengaluru, India",
     initials: "PN",
     avatarGrad: "linear-gradient(135deg, #F59E0B, #EF4444)",
-    avatarImg: "/images/avatar-priya.png",
   },
 ];
 
@@ -110,15 +104,7 @@ function TestimonialCard({ t }: { t: Testimonial }) {
             style={{ background: t.avatarGrad }}
             aria-hidden="true"
           >
-            {t.avatarImg ? (
-              <img
-                src={t.avatarImg}
-                alt={t.name}
-                className="w-full h-full object-cover"
-              />
-            ) : (
-              t.initials
-            )}
+            {t.initials}
           </div>
           <div>
             <p className="text-[15px] font-semibold text-[#0B1020]">{t.name}</p>

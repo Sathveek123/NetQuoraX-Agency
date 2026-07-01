@@ -11,7 +11,7 @@ NetQuoraX is a full-stack Next.js agency website showcasing services, solutions,
 - **Styling**: Tailwind CSS v4
 - **Animations**: Framer Motion
 - **Icons**: Lucide React
-- **Fonts**: Inter, Manrope (Google Fonts)
+- **Fonts**: Inter, Space Grotesk
 
 ## Features
 
@@ -194,14 +194,15 @@ public/                      # Static assets
 
 ### Color Palette
 - **Primary**: #2563EB (Blue)
-- **Secondary**: #06B6D4 (Cyan)
+- **Secondary**: #7C3AED (Violet)
+- **Accent**: #06B6D4 (Cyan)
 - **Background**: #F8FAFC (Slate-50)
-- **Text**: #0F172A (Slate-900)
+- **Text**: #0B1020 (Ink)
 - **Accent**: Various industry-specific colors
 
 ### Typography
-- **Headings**: Manrope font
-- **Body**: Inter font
+- **Headings**: Space Grotesk (font-display)
+- **Body**: Inter (font-sans)
 - Responsive font sizes using Tailwind classes
 
 ## Deployment

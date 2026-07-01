@@ -1,924 +1,1480 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NetquoraX — Automate. Innovate. Scale.</title>
-<meta name="description" content="NetquoraX builds AI systems, websites, apps, automation and trading solutions that generate measurable business growth.">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetquoraX — Automate. Innovate. Scale.</title>
+    <meta name="description"
+        content="NetquoraX builds AI systems, websites, apps, automation and trading solutions that generate measurable business growth.">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
 
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-<style>
-:root{
-  --primary:#2563EB;
-  --secondary:#7C3AED;
-  --accent:#06B6D4;
-  --success:#10B981;
-  --dark:#0B1020;
-  --surface:#111827;
-  --light:#F8FAFC;
-  --ink:#0F172A;
-  --muted:#5B6478;
-}
-*{cursor:none;}
-html{scroll-behavior:smooth;}
-body{
-  font-family:'Inter',sans-serif;
-  background:var(--light);
-  color:var(--ink);
-  overflow-x:hidden;
-}
-h1,h2,h3,h4,.display{font-family:'Manrope',sans-serif;}
-::selection{background:var(--primary);color:#fff;}
+    <style>
+        :root {
+            --primary: #2563EB;
+            --secondary: #7C3AED;
+            --accent: #06B6D4;
+            --success: #10B981;
+            --dark: #0B1020;
+            --surface: #111827;
+            --light: #F8FAFC;
+            --ink: #0F172A;
+            --muted: #5B6478;
+        }
 
-/* Custom cursor */
-#cursor-dot, #cursor-ring{position:fixed;top:0;left:0;pointer-events:none;z-index:9999;border-radius:50%;transform:translate(-50%,-50%);}
-#cursor-dot{width:8px;height:8px;background:var(--primary);}
-#cursor-ring{width:34px;height:34px;border:1.5px solid rgba(37,99,235,.5);transition:width .25s,height .25s,border-color .25s,background .25s;}
-#cursor-ring.hover{width:64px;height:64px;background:rgba(37,99,235,.08);border-color:var(--primary);}
-@media(max-width:900px){#cursor-dot,#cursor-ring{display:none;}*{cursor:auto;}}
+        * {
+            cursor: none;
+        }
 
-/* Grid backdrop */
-.grid-bg{
-  background-image:
-    linear-gradient(rgba(37,99,235,.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(37,99,235,.06) 1px, transparent 1px);
-  background-size:56px 56px;
-}
+        html {
+            scroll-behavior: smooth;
+        }
 
-/* Gradient text */
-.grad-text{
-  background:linear-gradient(100deg,var(--primary),var(--secondary) 55%,var(--accent));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--light);
+            color: var(--ink);
+            overflow-x: hidden;
+        }
 
-/* Glass */
-.glass{
-  background:rgba(255,255,255,.65);
-  backdrop-filter:blur(16px);
-  -webkit-backdrop-filter:blur(16px);
-  border:1px solid rgba(15,23,42,.06);
-}
-.glass-dark{
-  background:rgba(11,16,32,.55);
-  backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,.08);
-}
+        h1,
+        h2,
+        h3,
+        h4,
+        .display {
+            font-family: 'Manrope', sans-serif;
+        }
 
-/* Blobs */
-.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.35;}
+        ::selection {
+            background: var(--primary);
+            color: #fff;
+        }
 
-/* Magnetic button base */
-.magnetic{display:inline-flex;will-change:transform;}
+        /* Custom cursor */
+        #cursor-dot,
+        #cursor-ring {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-/* Card tilt */
-.tilt-card{transform-style:preserve-3d;transition:transform .15s ease-out;}
+        #cursor-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
+        }
 
-/* Marquee */
-.marquee-track{display:flex;width:max-content;animation:marquee 32s linear infinite;}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.marquee-wrap:hover .marquee-track{animation-play-state:paused;}
+        #cursor-ring {
+            width: 34px;
+            height: 34px;
+            border: 1.5px solid rgba(37, 99, 235, .5);
+            transition: width .25s, height .25s, border-color .25s, background .25s;
+        }
 
-/* Nav underline */
-.nav-link{position:relative;}
-.nav-link::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:1.5px;background:var(--primary);transition:width .25s ease;}
-.nav-link:hover::after{width:100%;}
+        #cursor-ring.hover {
+            width: 64px;
+            height: 64px;
+            background: rgba(37, 99, 235, .08);
+            border-color: var(--primary);
+        }
 
-/* Service card glow */
-.svc-card{position:relative;overflow:hidden;}
-.svc-card::before{
-  content:'';position:absolute;inset:0;border-radius:inherit;padding:1px;
-  background:linear-gradient(135deg,transparent 40%,rgba(37,99,235,.5),rgba(124,58,237,.5));
-  -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor; mask-composite:exclude;
-  opacity:0; transition:opacity .35s;
-}
-.svc-card:hover::before{opacity:1;}
-.svc-card .glow{position:absolute;width:220px;height:220px;background:radial-gradient(circle,rgba(37,99,235,.18),transparent 70%);border-radius:50%;opacity:0;transition:opacity .35s;pointer-events:none;}
-.svc-card:hover .glow{opacity:1;}
+        @media(max-width:900px) {
 
-/* fade elements pre-JS */
-.reveal{opacity:0;transform:translateY(28px);}
+            #cursor-dot,
+            #cursor-ring {
+                display: none;
+            }
 
-/* accordion */
-.faq-item[open] summary .chev{transform:rotate(45deg);}
-summary{list-style:none;cursor:none;}
-summary::-webkit-details-marker{display:none;}
+            * {
+                cursor: auto;
+            }
+        }
 
-/* Progress bar */
-#scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--secondary),var(--accent));z-index:9998;width:0%;}
+        /* Grid backdrop */
+        .grid-bg {
+            background-image:
+                linear-gradient(rgba(37, 99, 235, .06) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(37, 99, 235, .06) 1px, transparent 1px);
+            background-size: 56px 56px;
+        }
 
-.section-eyebrow{letter-spacing:.14em;}
+        /* Gradient text */
+        .grad-text {
+            background: linear-gradient(100deg, var(--primary), var(--secondary) 55%, var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
 
-/* Preloader */
-#preloader{position:fixed;inset:0;z-index:10000;background:var(--dark);display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;}
-#preloader .pl-blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.35;}
-#pl-mark{position:relative;display:flex;align-items:center;gap:14px;}
-#pl-mark .pl-box{width:56px;height:56px;border-radius:16px;background:linear-gradient(135deg,var(--primary),var(--secondary));display:flex;align-items:center;justify-content:center;box-shadow:0 0 60px rgba(37,99,235,.5);}
-#pl-mark .pl-box span{color:#fff;font-family:'Manrope',sans-serif;font-weight:800;font-size:26px;}
-#pl-mark .pl-word{font-family:'Manrope',sans-serif;font-weight:800;font-size:32px;color:#fff;letter-spacing:-0.02em;overflow:hidden;}
-#pl-mark .pl-word .x{background:linear-gradient(100deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;}
-#pl-bar-track{width:220px;height:2px;background:rgba(255,255,255,.12);margin-top:34px;border-radius:2px;overflow:hidden;position:relative;}
-#pl-bar-fill{position:absolute;left:0;top:0;height:100%;width:0%;background:linear-gradient(90deg,var(--primary),var(--secondary),var(--accent));}
-#pl-pct{margin-top:14px;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:.18em;color:rgba(255,255,255,.5);font-weight:600;}
-#pl-tagline{position:absolute;bottom:56px;font-family:'Inter',sans-serif;font-size:12px;letter-spacing:.22em;color:rgba(255,255,255,.35);font-weight:600;text-transform:uppercase;overflow:hidden;}
-#pl-curtain{position:fixed;inset:0;z-index:9999;background:var(--dark);transform:translateY(0);}
-body.pl-lock{overflow:hidden;height:100vh;}
+        /* Glass */
+        .glass {
+            background: rgba(255, 255, 255, .65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(15, 23, 42, .06);
+        }
 
-/* Mobile menu hamburger states */
-#menu-toggle.active span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
-  background-color: #fff;
-}
-#menu-toggle.active span:nth-child(2) {
-  transform: scaleX(0);
-}
-#menu-toggle.active span:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
-  background-color: #fff;
-}
-#menu-toggle.active {
-  color: #fff;
-}
-</style>
+        .glass-dark {
+            background: rgba(11, 16, 32, .55);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        /* Blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: .35;
+        }
+
+        /* Magnetic button base */
+        .magnetic {
+            display: inline-flex;
+            will-change: transform;
+        }
+
+        /* Card tilt */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transition: transform .15s ease-out;
+        }
+
+        /* Marquee */
+        .marquee-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 32s linear infinite;
+        }
+
+        @keyframes marquee {
+            from {
+                transform: translateX(0)
+            }
+
+            to {
+                transform: translateX(-50%)
+            }
+        }
+
+        .marquee-wrap:hover .marquee-track {
+            animation-play-state: paused;
+        }
+
+        /* Nav underline */
+        .nav-link {
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 1.5px;
+            background: var(--primary);
+            transition: width .25s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Service card glow */
+        .svc-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .svc-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            padding: 1px;
+            background: linear-gradient(135deg, transparent 40%, rgba(37, 99, 235, .5), rgba(124, 58, 237, .5));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity .35s;
+        }
+
+        .svc-card:hover::before {
+            opacity: 1;
+        }
+
+        .svc-card .glow {
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            background: radial-gradient(circle, rgba(37, 99, 235, .18), transparent 70%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity .35s;
+            pointer-events: none;
+        }
+
+        .svc-card:hover .glow {
+            opacity: 1;
+        }
+
+        /* fade elements pre-JS */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+        }
+
+        /* accordion */
+        .faq-item[open] summary .chev {
+            transform: rotate(45deg);
+        }
+
+        summary {
+            list-style: none;
+            cursor: none;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        /* Progress bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+            z-index: 9998;
+            width: 0%;
+        }
+
+        .section-eyebrow {
+            letter-spacing: .14em;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 10000;
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        #preloader .pl-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: .35;
+        }
+
+        #pl-mark {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        #pl-mark .pl-box {
+            width: 56px;
+            height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 60px rgba(37, 99, 235, .5);
+        }
+
+        #pl-mark .pl-box span {
+            color: #fff;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 800;
+            font-size: 26px;
+        }
+
+        #pl-mark .pl-word {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 800;
+            font-size: 32px;
+            color: #fff;
+            letter-spacing: -0.02em;
+            overflow: hidden;
+        }
+
+        #pl-mark .pl-word .x {
+            background: linear-gradient(100deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        #pl-bar-track {
+            width: 220px;
+            height: 2px;
+            background: rgba(255, 255, 255, .12);
+            margin-top: 34px;
+            border-radius: 2px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #pl-bar-fill {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+
+        #pl-pct {
+            margin-top: 14px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            letter-spacing: .18em;
+            color: rgba(255, 255, 255, .5);
+            font-weight: 600;
+        }
+
+        #pl-tagline {
+            position: absolute;
+            bottom: 56px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            letter-spacing: .22em;
+            color: rgba(255, 255, 255, .35);
+            font-weight: 600;
+            text-transform: uppercase;
+            overflow: hidden;
+        }
+
+        #pl-curtain {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            background: var(--dark);
+            transform: translateY(0);
+        }
+
+        body.pl-lock {
+            overflow: hidden;
+            height: 100vh;
+        }
+
+        /* Mobile menu hamburger states */
+        #menu-toggle.active span:nth-child(1) {
+            transform: translateY(6px) rotate(45deg);
+            background-color: #fff;
+        }
+
+        #menu-toggle.active span:nth-child(2) {
+            transform: scaleX(0);
+        }
+
+        #menu-toggle.active span:nth-child(3) {
+            transform: translateY(-6px) rotate(-45deg);
+            background-color: #fff;
+        }
+
+        #menu-toggle.active {
+            color: #fff;
+        }
+    </style>
 </head>
+
 <body class="bg-[var(--light)] pl-lock">
 
-<!-- ============= PRELOADER ============= -->
-<div id="preloader">
-  <div class="pl-blob w-[420px] h-[420px] bg-[var(--primary)] -top-32 -left-20"></div>
-  <div class="pl-blob w-[360px] h-[360px] bg-[var(--secondary)] bottom-[-140px] right-[-80px]"></div>
-  <div id="pl-mark">
-    <div class="pl-box"><span>N</span></div>
-    <div class="pl-word">Netquora<span class="x">X</span></div>
-  </div>
-  <div id="pl-bar-track"><div id="pl-bar-fill"></div></div>
-  <div id="pl-pct">00%</div>
-  <div id="pl-tagline">Automate · Innovate · Scale</div>
-</div>
-<div id="pl-curtain"></div>
-
-<div id="scroll-progress"></div>
-<div id="cursor-dot"></div>
-<div id="cursor-ring"></div>
-
-<!-- ================= NAVBAR ================= -->
-<header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between py-5">
-    <a href="#top" class="flex items-center gap-2 magnetic">
-      <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] flex items-center justify-center">
-        <span class="text-white font-black text-sm">N</span>
-      </span>
-      <span class="font-extrabold text-lg tracking-tight text-[var(--ink)]">Netquora<span class="grad-text">X</span></span>
-    </a>
-
-    <nav class="hidden lg:flex items-center gap-9 text-sm font-medium text-[var(--ink)]">
-      <a href="#services" class="nav-link">Services</a>
-      <a href="#solutions" class="nav-link">Solutions</a>
-      <a href="#industries" class="nav-link">Industries</a>
-      <a href="#portfolio" class="nav-link">Portfolio</a>
-      <a href="#process" class="nav-link">Process</a>
-      <a href="#faq" class="nav-link">FAQ</a>
-      <a href="#contact" class="nav-link">Contact</a>
-    </nav>
-
-    <div class="flex items-center gap-4">
-      <a href="#contact" class="magnetic hidden md:inline-flex items-center gap-2 bg-[var(--ink)] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[var(--primary)] transition-colors">
-        Book a Strategy Call
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-      
-      <!-- Hamburger Menu Button -->
-      <button id="menu-toggle" class="lg:hidden flex flex-col justify-between w-6 h-3.5 text-[var(--ink)] focus:outline-none z-50 relative magnetic">
-        <span class="w-6 h-0.5 bg-[var(--ink)] transition-all duration-300"></span>
-        <span class="w-6 h-0.5 bg-[var(--ink)] transition-all duration-300"></span>
-        <span class="w-6 h-0.5 bg-[var(--ink)] transition-all duration-300"></span>
-      </button>
-    </div>
-  </div>
-</header>
-
-<!-- Mobile Menu Overlay -->
-<div id="mobile-menu" class="fixed inset-0 z-40 bg-[var(--dark)]/95 backdrop-blur-xl flex flex-col justify-center p-8 transition-transform duration-500 translate-x-full lg:hidden">
-  <div class="flex flex-col gap-8 text-center max-w-md mx-auto w-full">
-    <nav class="flex flex-col gap-6 text-2xl font-bold text-white">
-      <a href="#services" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">Services</a>
-      <a href="#solutions" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">Solutions</a>
-      <a href="#industries" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">Industries</a>
-      <a href="#portfolio" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">Portfolio</a>
-      <a href="#process" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">Process</a>
-      <a href="#faq" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">FAQ</a>
-      <a href="#contact" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">Contact</a>
-    </nav>
-    <div class="mt-4 flex justify-center">
-      <a href="#contact" class="mobile-nav-link inline-flex items-center gap-2 bg-[var(--primary)] text-white text-base font-semibold px-6 py-3 rounded-full hover:bg-[var(--secondary)] transition-colors">
-        Book a Strategy Call
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- ================= HERO ================= -->
-<section id="top" class="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden grid-bg">
-  <div class="blob w-[520px] h-[520px] bg-[var(--primary)] -top-40 -left-40"></div>
-  <div class="blob w-[460px] h-[460px] bg-[var(--secondary)] top-20 right-[-140px]"></div>
-  <div class="blob w-[380px] h-[380px] bg-[var(--accent)] bottom-[-160px] left-1/3"></div>
-
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative w-full grid lg:grid-cols-[1.15fr_.85fr] gap-14 items-center">
-    <div>
-      <div class="reveal inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-xs font-semibold text-[var(--muted)] shadow-sm mb-8">
-        <span class="w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse"></span>
-        Now booking Q3 project slots
-      </div>
-
-      <h1 class="reveal display text-[13vw] leading-[.95] lg:text-[4.6rem] font-extrabold tracking-tight text-[var(--ink)]">
-        Helping businesses<br>
-        <span class="grad-text">automate,</span> scale<br>
-        &amp; grow faster.
-      </h1>
-
-      <p class="reveal mt-7 text-lg text-[var(--muted)] max-w-xl leading-relaxed">
-        We build AI systems, websites, mobile apps, automation workflows, trading platforms
-        and digital marketing engines that generate measurable business growth — engineered
-        by a small team that ships fast and communicates faster.
-      </p>
-
-      <div class="reveal mt-9 flex flex-wrap gap-4">
-        <a href="#contact" class="magnetic group relative inline-flex items-center gap-2 bg-[var(--primary)] text-white font-semibold px-7 py-3.5 rounded-full overflow-hidden">
-          <span class="relative z-10">Start Your Project</span>
-          <svg class="relative z-10" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </a>
-        <a href="#contact" class="magnetic inline-flex items-center gap-2 border border-slate-300 text-[var(--ink)] font-semibold px-7 py-3.5 rounded-full hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">
-          Book Free Consultation
-        </a>
-      </div>
-
-      <div class="reveal mt-14 flex flex-wrap gap-x-10 gap-y-4">
-        <div><span class="counter text-3xl font-extrabold text-[var(--ink)]" data-target="120">0</span><span class="text-3xl font-extrabold">+</span><p class="text-xs text-[var(--muted)] mt-1">Projects delivered</p></div>
-        <div><span class="counter text-3xl font-extrabold text-[var(--ink)]" data-target="34">0</span><span class="text-3xl font-extrabold">+</span><p class="text-xs text-[var(--muted)] mt-1">Countries served</p></div>
-        <div><span class="counter text-3xl font-extrabold text-[var(--ink)]" data-target="98">0</span><span class="text-3xl font-extrabold">%</span><p class="text-xs text-[var(--muted)] mt-1">Client retention</p></div>
-      </div>
-    </div>
-
-    <!-- floating mockup stack -->
-    <div class="relative h-[480px] hidden lg:block reveal">
-      <div id="float-card-1" class="tilt-card absolute top-0 right-4 w-72 glass rounded-2xl shadow-2xl p-5">
-        <div class="flex items-center justify-between mb-4">
-          <span class="text-xs font-semibold text-[var(--muted)]">Automation Flow</span>
-          <span class="w-2 h-2 rounded-full bg-[var(--success)]"></span>
+    <!-- ============= PRELOADER ============= -->
+    <div id="preloader">
+        <div class="pl-blob w-[420px] h-[420px] bg-[var(--primary)] -top-32 -left-20"></div>
+        <div class="pl-blob w-[360px] h-[360px] bg-[var(--secondary)] bottom-[-140px] right-[-80px]"></div>
+        <div id="pl-mark">
+            <div class="pl-box"><span>N</span></div>
+            <div class="pl-word">Netquora<span class="x">X</span></div>
         </div>
-        <div class="space-y-2.5 text-xs font-medium">
-          <div class="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-sm"><span class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>Lead captured</div>
-          <div class="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-sm ml-4"><span class="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span>AI agent qualifies</div>
-          <div class="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-sm ml-8"><span class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>WhatsApp follow-up</div>
+        <div id="pl-bar-track">
+            <div id="pl-bar-fill"></div>
         </div>
-      </div>
+        <div id="pl-pct">00%</div>
+        <div id="pl-tagline">Automate · Innovate · Scale</div>
+    </div>
+    <div id="pl-curtain"></div>
 
-      <div id="float-card-2" class="tilt-card absolute top-40 left-0 w-64 glass-dark rounded-2xl shadow-2xl p-5 text-white">
-        <p class="text-xs text-slate-300 mb-2">Portfolio return</p>
-        <p class="text-2xl font-extrabold">+18.4%</p>
-        <svg viewBox="0 0 200 60" class="w-full h-12 mt-3"><polyline fill="none" stroke="#06B6D4" stroke-width="2" points="0,45 30,38 55,42 80,20 105,28 130,12 155,18 180,4 200,8"/></svg>
-      </div>
+    <div id="scroll-progress"></div>
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
 
-      <div id="float-card-3" class="tilt-card absolute bottom-6 right-10 w-60 glass rounded-2xl shadow-2xl p-5">
-        <p class="text-xs font-semibold text-[var(--muted)] mb-3">This week</p>
-        <div class="flex items-end gap-1.5 h-16">
-          <div class="w-3 rounded bg-[var(--primary)]/30 h-[40%]"></div>
-          <div class="w-3 rounded bg-[var(--primary)]/50 h-[65%]"></div>
-          <div class="w-3 rounded bg-[var(--primary)]/70 h-[45%]"></div>
-          <div class="w-3 rounded bg-[var(--secondary)] h-[85%]"></div>
-          <div class="w-3 rounded bg-[var(--primary)]/40 h-[55%]"></div>
+    <!-- ================= NAVBAR ================= -->
+    <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between py-5">
+            <a href="#top" class="flex items-center gap-2 magnetic">
+                <span
+                    class="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] flex items-center justify-center">
+                    <span class="text-white font-black text-sm">N</span>
+                </span>
+                <span class="font-extrabold text-lg tracking-tight text-[var(--ink)]">Netquora<span
+                        class="grad-text">X</span></span>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-9 text-sm font-medium text-[var(--ink)]">
+                <a href="#services" class="nav-link">Services</a>
+                <a href="#solutions" class="nav-link">Solutions</a>
+                <a href="#industries" class="nav-link">Industries</a>
+                <a href="#portfolio" class="nav-link">Portfolio</a>
+                <a href="#process" class="nav-link">Process</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="flex items-center gap-4">
+                <a href="#contact"
+                    class="magnetic hidden md:inline-flex items-center gap-2 bg-[var(--ink)] text-white text-sm font-semibold px-5 py-2.5 rounded-full hover:bg-[var(--primary)] transition-colors">
+                    Book a Strategy Call
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </a>
+
+                <!-- Hamburger Menu Button -->
+                <button id="menu-toggle"
+                    class="lg:hidden flex flex-col justify-between w-6 h-3.5 text-[var(--ink)] focus:outline-none z-50 relative magnetic">
+                    <span class="w-6 h-0.5 bg-[var(--ink)] transition-all duration-300"></span>
+                    <span class="w-6 h-0.5 bg-[var(--ink)] transition-all duration-300"></span>
+                    <span class="w-6 h-0.5 bg-[var(--ink)] transition-all duration-300"></span>
+                </button>
+            </div>
         </div>
-      </div>
+    </header>
 
-      <svg class="absolute inset-0 w-full h-full -z-10" viewBox="0 0 400 480">
-        <circle cx="330" cy="70" r="90" fill="url(#g1)" opacity=".5"/>
-        <circle cx="60" cy="380" r="70" fill="url(#g2)" opacity=".4"/>
-        <defs>
-          <radialGradient id="g1"><stop offset="0%" stop-color="#2563EB"/><stop offset="100%" stop-color="#2563EB" stop-opacity="0"/></radialGradient>
-          <radialGradient id="g2"><stop offset="0%" stop-color="#7C3AED"/><stop offset="100%" stop-color="#7C3AED" stop-opacity="0"/></radialGradient>
-        </defs>
-      </svg>
-    </div>
-  </div>
-</section>
-
-<!-- ================= TRUSTED BY ================= -->
-<section class="py-14 border-y border-slate-200 bg-white">
-  <p class="text-center text-xs font-semibold tracking-widest text-[var(--muted)] mb-8 uppercase">Trusted by founders, agencies &amp; growing teams</p>
-  <div class="marquee-wrap overflow-hidden">
-    <div class="marquee-track gap-16 items-center opacity-70">
-      <span class="text-2xl font-extrabold text-slate-400">Orbitfy</span>
-      <span class="text-2xl font-extrabold text-slate-400">Lumenpay</span>
-      <span class="text-2xl font-extrabold text-slate-400">Verdant</span>
-      <span class="text-2xl font-extrabold text-slate-400">Northwave</span>
-      <span class="text-2xl font-extrabold text-slate-400">Kestrel</span>
-      <span class="text-2xl font-extrabold text-slate-400">Haloform</span>
-      <span class="text-2xl font-extrabold text-slate-400">Orbitfy</span>
-      <span class="text-2xl font-extrabold text-slate-400">Lumenpay</span>
-      <span class="text-2xl font-extrabold text-slate-400">Verdant</span>
-      <span class="text-2xl font-extrabold text-slate-400">Northwave</span>
-      <span class="text-2xl font-extrabold text-slate-400">Kestrel</span>
-      <span class="text-2xl font-extrabold text-slate-400">Haloform</span>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SERVICES ================= -->
-<section id="services" class="py-28 max-w-7xl mx-auto px-6 lg:px-10">
-  <div class="reveal max-w-2xl mb-16">
-    <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">What We Build</p>
-    <h2 class="display text-4xl lg:text-5xl font-extrabold tracking-tight">Engineering, automation &amp; growth — under one roof.</h2>
-  </div>
-
-  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-    <div class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
-      <div class="glow"></div>
-      <div class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center mb-5"><svg width="22" height="22" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div>
-      <h3 class="font-bold text-lg mb-2">Website Development</h3>
-      <p class="text-sm text-[var(--muted)] leading-relaxed">Custom, high-performance websites built to convert — from marketing sites to complex web apps.</p>
-    </div>
-
-    <div class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
-      <div class="glow"></div>
-      <div class="w-11 h-11 rounded-xl bg-violet-50 flex items-center justify-center mb-5"><svg width="22" height="22" fill="none" stroke="var(--secondary)" stroke-width="2" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></div>
-      <h3 class="font-bold text-lg mb-2">Mobile App Development</h3>
-      <p class="text-sm text-[var(--muted)] leading-relaxed">Native and cross-platform iOS &amp; Android apps designed for retention and speed.</p>
-    </div>
-
-    <div class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
-      <div class="glow"></div>
-      <div class="w-11 h-11 rounded-xl bg-cyan-50 flex items-center justify-center mb-5"><svg width="22" height="22" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg></div>
-      <h3 class="font-bold text-lg mb-2">UI/UX &amp; Brand Identity</h3>
-      <p class="text-sm text-[var(--muted)] leading-relaxed">Interfaces and brand systems that feel considered — not templated, not generic.</p>
-    </div>
-
-    <div class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
-      <div class="glow"></div>
-      <div class="w-11 h-11 rounded-xl bg-emerald-50 flex items-center justify-center mb-5"><svg width="22" height="22" fill="none" stroke="var(--success)" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
-      <h3 class="font-bold text-lg mb-2">AI Chatbots &amp; Agents</h3>
-      <p class="text-sm text-[var(--muted)] leading-relaxed">Conversational AI that qualifies leads, answers support and closes sales around the clock.</p>
-    </div>
-
-    <div class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
-      <div class="glow"></div>
-      <div class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center mb-5"><svg width="22" height="22" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.5 8.5 0 1 1 21 11.5z"/></svg></div>
-      <h3 class="font-bold text-lg mb-2">WhatsApp Automation</h3>
-      <p class="text-sm text-[var(--muted)] leading-relaxed">Automated WhatsApp flows for support, orders and marketing at scale.</p>
-    </div>
-
-    <div class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
-      <div class="glow"></div>
-      <div class="w-11 h-11 rounded-xl bg-violet-50 flex items-center justify-center mb-5"><svg width="22" height="22" fill="none" stroke="var(--secondary)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"/></svg></div>
-      <h3 class="font-bold text-lg mb-2">Voice AI &amp; Calling Agents</h3>
-      <p class="text-sm text-[var(--muted)] leading-relaxed">AI voice agents that handle inbound calls, bookings and support conversations.</p>
-    </div>
-
-    <div class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
-      <div class="glow"></div>
-      <div class="w-11 h-11 rounded-xl bg-cyan-50 flex items-center justify-center mb-5"><svg width="22" height="22" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16v4H4zM4 10h10v4H4zM4 16h16v4H4z"/></svg></div>
-      <h3 class="font-bold text-lg mb-2">Workflow Automation</h3>
-      <p class="text-sm text-[var(--muted)] leading-relaxed">Make, Zapier &amp; n8n systems that connect your tools and remove manual work.</p>
-    </div>
-
-    <div class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
-      <div class="glow"></div>
-      <div class="w-11 h-11 rounded-xl bg-emerald-50 flex items-center justify-center mb-5"><svg width="22" height="22" fill="none" stroke="var(--success)" stroke-width="2" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div>
-      <h3 class="font-bold text-lg mb-2">CRM &amp; Marketing Automation</h3>
-      <p class="text-sm text-[var(--muted)] leading-relaxed">Pipelines and lifecycle campaigns that nurture leads automatically.</p>
-    </div>
-
-    <div class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
-      <div class="glow"></div>
-      <div class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center mb-5"><svg width="22" height="22" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></div>
-      <h3 class="font-bold text-lg mb-2">Cloud Infrastructure &amp; Security</h3>
-      <p class="text-sm text-[var(--muted)] leading-relaxed">Scalable cloud architecture with cybersecurity built in from day one.</p>
-    </div>
-
-    <div class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
-      <div class="glow"></div>
-      <div class="w-11 h-11 rounded-xl bg-violet-50 flex items-center justify-center mb-5"><svg width="22" height="22" fill="none" stroke="var(--secondary)" stroke-width="2" viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
-      <h3 class="font-bold text-lg mb-2">Trading Bots &amp; Pine Script</h3>
-      <p class="text-sm text-[var(--muted)] leading-relaxed">Custom TradingView indicators, alerts and automated strategy execution.</p>
-    </div>
-
-    <div class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
-      <div class="glow"></div>
-      <div class="w-11 h-11 rounded-xl bg-cyan-50 flex items-center justify-center mb-5"><svg width="22" height="22" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.3-4.3"/></svg></div>
-      <h3 class="font-bold text-lg mb-2">SEO, Ads &amp; Lead Generation</h3>
-      <p class="text-sm text-[var(--muted)] leading-relaxed">Performance marketing across Google, Meta and search that's built to convert.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= WHY CHOOSE ================= -->
-<section class="py-24 bg-[var(--dark)] text-white relative overflow-hidden">
-  <div class="blob w-[500px] h-[500px] bg-[var(--secondary)] -top-40 right-0 opacity-20"></div>
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative">
-    <p class="reveal section-eyebrow text-xs font-bold text-[var(--accent)] uppercase mb-3">Why NetquoraX</p>
-    <h2 class="reveal display text-4xl lg:text-5xl font-extrabold tracking-tight max-w-2xl mb-16">One partner, every system your business needs to scale.</h2>
-
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-      <div class="reveal">
-        <p class="text-3xl font-extrabold text-[var(--accent)] mb-2">01</p>
-        <h3 class="font-bold mb-2">One Digital Partner</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">Design, development, automation and marketing — no juggling five vendors.</p>
-      </div>
-      <div class="reveal">
-        <p class="text-3xl font-extrabold text-[var(--accent)] mb-2">02</p>
-        <h3 class="font-bold mb-2">AI &amp; Automation Expertise</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">We build the systems most agencies only talk about.</p>
-      </div>
-      <div class="reveal">
-        <p class="text-3xl font-extrabold text-[var(--accent)] mb-2">03</p>
-        <h3 class="font-bold mb-2">Fast, Transparent Delivery</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">Clear timelines, weekly updates, no disappearing acts.</p>
-      </div>
-      <div class="reveal">
-        <p class="text-3xl font-extrabold text-[var(--accent)] mb-2">04</p>
-        <h3 class="font-bold mb-2">Built to Scale &amp; Secure</h3>
-        <p class="text-sm text-slate-400 leading-relaxed">Architecture that holds up as you grow, secured from day one.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= SOLUTIONS / INDUSTRIES ================= -->
-<section id="solutions" class="py-28 max-w-7xl mx-auto px-6 lg:px-10">
-  <div id="industries" class="reveal max-w-2xl mb-16">
-    <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">Solutions by Industry</p>
-    <h2 class="display text-4xl lg:text-5xl font-extrabold tracking-tight">Built around how your industry actually works.</h2>
-  </div>
-
-  <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-    <div class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300"><p class="font-bold">Startups</p><p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">MVP to scale</p></div>
-    <div class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300"><p class="font-bold">Healthcare</p><p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Booking &amp; care ops</p></div>
-    <div class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300"><p class="font-bold">Finance</p><p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Trading &amp; fintech</p></div>
-    <div class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300"><p class="font-bold">Real Estate</p><p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Lead &amp; listing systems</p></div>
-    <div class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300"><p class="font-bold">Ecommerce</p><p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Conversion &amp; retention</p></div>
-    <div class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300"><p class="font-bold">Education</p><p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Enrollment &amp; LMS</p></div>
-    <div class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300"><p class="font-bold">Manufacturing</p><p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Ops automation</p></div>
-    <div class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300"><p class="font-bold">Agencies</p><p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">White-label build</p></div>
-    <div class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300"><p class="font-bold">Hospitality</p><p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Bookings &amp; guest AI</p></div>
-    <div class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300"><p class="font-bold">Logistics</p><p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Tracking &amp; dispatch</p></div>
-  </div>
-</section>
-
-<!-- ================= AI AUTOMATION SHOWCASE ================= -->
-<section class="py-28 bg-white">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="reveal max-w-2xl mb-16">
-      <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">AI &amp; Automation</p>
-      <h2 class="display text-4xl lg:text-5xl font-extrabold tracking-tight">From first message to closed sale — automatically.</h2>
-    </div>
-
-    <div class="reveal flex flex-wrap items-center justify-center gap-3 lg:gap-2">
-      <div class="flow-step bg-blue-50 border border-blue-100 rounded-xl px-5 py-4 text-center min-w-[130px]"><p class="text-xs font-semibold text-[var(--primary)]">Lead</p></div>
-      <svg class="flow-arrow w-6 h-6 text-slate-300 rotate-90 lg:rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      <div class="flow-step bg-violet-50 border border-violet-100 rounded-xl px-5 py-4 text-center min-w-[130px]"><p class="text-xs font-semibold text-[var(--secondary)]">CRM</p></div>
-      <svg class="flow-arrow w-6 h-6 text-slate-300 rotate-90 lg:rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      <div class="flow-step bg-cyan-50 border border-cyan-100 rounded-xl px-5 py-4 text-center min-w-[130px]"><p class="text-xs font-semibold text-[var(--accent)]">AI Agent</p></div>
-      <svg class="flow-arrow w-6 h-6 text-slate-300 rotate-90 lg:rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      <div class="flow-step bg-emerald-50 border border-emerald-100 rounded-xl px-5 py-4 text-center min-w-[130px]"><p class="text-xs font-semibold text-[var(--success)]">WhatsApp</p></div>
-      <svg class="flow-arrow w-6 h-6 text-slate-300 rotate-90 lg:rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      <div class="flow-step bg-blue-50 border border-blue-100 rounded-xl px-5 py-4 text-center min-w-[130px]"><p class="text-xs font-semibold text-[var(--primary)]">Sales</p></div>
-      <svg class="flow-arrow w-6 h-6 text-slate-300 rotate-90 lg:rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      <div class="flow-step bg-violet-50 border border-violet-100 rounded-xl px-5 py-4 text-center min-w-[130px]"><p class="text-xs font-semibold text-[var(--secondary)]">Payment</p></div>
-      <svg class="flow-arrow w-6 h-6 text-slate-300 rotate-90 lg:rotate-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-      <div class="flow-step bg-cyan-50 border border-cyan-100 rounded-xl px-5 py-4 text-center min-w-[130px]"><p class="text-xs font-semibold text-[var(--accent)]">Analytics</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= TRADING SHOWCASE ================= -->
-<section class="py-28 bg-[var(--surface)] text-white relative overflow-hidden">
-  <div class="blob w-[460px] h-[460px] bg-[var(--primary)] top-0 left-0 opacity-20"></div>
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative grid lg:grid-cols-2 gap-14 items-center">
-    <div class="reveal">
-      <p class="section-eyebrow text-xs font-bold text-[var(--accent)] uppercase mb-3">Trading Solutions</p>
-      <h2 class="display text-4xl font-extrabold tracking-tight mb-5">Trading systems built on data, not guesswork.</h2>
-      <p class="text-slate-400 leading-relaxed mb-8">Custom Pine Script indicators, backtested strategies and AI-assisted signal generation — built for traders who want an edge grounded in code, not intuition.</p>
-      <div class="grid grid-cols-2 gap-4 text-sm">
-        <div class="glass-dark rounded-xl p-4"><p class="font-bold mb-1">Custom Indicators</p><p class="text-xs text-slate-400">Pine Script &amp; alerts</p></div>
-        <div class="glass-dark rounded-xl p-4"><p class="font-bold mb-1">Strategy Backtesting</p><p class="text-xs text-slate-400">Historical validation</p></div>
-        <div class="glass-dark rounded-xl p-4"><p class="font-bold mb-1">Automated Bots</p><p class="text-xs text-slate-400">Rule-based execution</p></div>
-        <div class="glass-dark rounded-xl p-4"><p class="font-bold mb-1">AI Predictions</p><p class="text-xs text-slate-400">Model-driven signals</p></div>
-      </div>
-    </div>
-    <div class="reveal glass-dark rounded-2xl p-6">
-      <div class="flex items-center justify-between mb-5">
-        <span class="text-xs text-slate-400">BTC/USD · 4H</span>
-        <span class="text-xs font-semibold text-[var(--success)]">+18.4%</span>
-      </div>
-      <svg viewBox="0 0 400 180" class="w-full h-40">
-        <g stroke="#10B981" stroke-width="2">
-          <line x1="10" y1="120" x2="10" y2="90"/><line x1="30" y1="110" x2="30" y2="75"/>
-          <line x1="50" y1="130" x2="50" y2="95"/><line x1="70" y1="95" x2="70" y2="60"/>
-          <line x1="90" y1="100" x2="90" y2="55"/>
-        </g>
-        <g stroke="#EF4444" stroke-width="2">
-          <line x1="110" y1="60" x2="110" y2="90"/><line x1="130" y1="70" x2="130" y2="100"/>
-        </g>
-        <g stroke="#10B981" stroke-width="2">
-          <line x1="150" y1="95" x2="150" y2="50"/><line x1="170" y1="60" x2="170" y2="30"/>
-          <line x1="190" y1="45" x2="190" y2="20"/><line x1="210" y1="35" x2="210" y2="10"/>
-        </g>
-        <polyline fill="none" stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="4 3" points="0,110 40,95 80,70 120,80 160,55 200,35 240,45 280,25 320,30 360,15 400,20"/>
-      </svg>
-      <div class="grid grid-cols-3 gap-3 mt-4 text-center text-xs">
-        <div class="bg-white/5 rounded-lg py-2"><p class="text-slate-400">Win rate</p><p class="font-bold text-white mt-1">64%</p></div>
-        <div class="bg-white/5 rounded-lg py-2"><p class="text-slate-400">Trades</p><p class="font-bold text-white mt-1">312</p></div>
-        <div class="bg-white/5 rounded-lg py-2"><p class="text-slate-400">Drawdown</p><p class="font-bold text-white mt-1">6.2%</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PORTFOLIO ================= -->
-<section id="portfolio" class="py-28 max-w-7xl mx-auto px-6 lg:px-10">
-  <div class="reveal max-w-2xl mb-16">
-    <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">Portfolio</p>
-    <h2 class="display text-4xl lg:text-5xl font-extrabold tracking-tight">Selected work.</h2>
-  </div>
-
-  <div class="grid md:grid-cols-3 gap-6">
-    <div class="reveal group rounded-2xl overflow-hidden border border-slate-200">
-      <div class="h-52 bg-gradient-to-br from-blue-100 to-violet-100 flex items-center justify-center relative overflow-hidden">
-        <div class="w-40 h-24 bg-white rounded-lg shadow-xl group-hover:-translate-y-2 transition-transform duration-500 flex items-center px-3 gap-1">
-          <span class="w-1.5 h-1.5 rounded-full bg-red-300"></span><span class="w-1.5 h-1.5 rounded-full bg-yellow-300"></span><span class="w-1.5 h-1.5 rounded-full bg-green-300"></span>
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-40 bg-[var(--dark)]/95 backdrop-blur-xl flex flex-col justify-center p-8 transition-transform duration-500 translate-x-full lg:hidden">
+        <div class="flex flex-col gap-8 text-center max-w-md mx-auto w-full">
+            <nav class="flex flex-col gap-6 text-2xl font-bold text-white">
+                <a href="#services" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">Services</a>
+                <a href="#solutions" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">Solutions</a>
+                <a href="#industries"
+                    class="mobile-nav-link hover:text-[var(--primary)] transition-colors">Industries</a>
+                <a href="#portfolio" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">Portfolio</a>
+                <a href="#process" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">Process</a>
+                <a href="#faq" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">FAQ</a>
+                <a href="#contact" class="mobile-nav-link hover:text-[var(--primary)] transition-colors">Contact</a>
+            </nav>
+            <div class="mt-4 flex justify-center">
+                <a href="#contact"
+                    class="mobile-nav-link inline-flex items-center gap-2 bg-[var(--primary)] text-white text-base font-semibold px-6 py-3 rounded-full hover:bg-[var(--secondary)] transition-colors">
+                    Book a Strategy Call
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="M5 12h14M13 6l6 6-6 6" />
+                    </svg>
+                </a>
+            </div>
         </div>
-      </div>
-      <div class="p-6">
-        <p class="text-xs text-[var(--muted)] mb-1">Ecommerce · Web Platform</p>
-        <h3 class="font-bold">Lumenpay Checkout Redesign</h3>
-        <p class="text-sm text-[var(--muted)] mt-2">Cart abandonment down 31% after a full checkout rebuild.</p>
-      </div>
     </div>
-    <div class="reveal group rounded-2xl overflow-hidden border border-slate-200">
-      <div class="h-52 bg-gradient-to-br from-cyan-100 to-blue-100 flex items-center justify-center">
-        <div class="w-24 h-40 bg-white rounded-2xl shadow-xl group-hover:-translate-y-2 transition-transform duration-500 border-4 border-slate-800"></div>
-      </div>
-      <div class="p-6">
-        <p class="text-xs text-[var(--muted)] mb-1">Healthcare · Mobile App</p>
-        <h3 class="font-bold">Orbitfy Patient Booking App</h3>
-        <p class="text-sm text-[var(--muted)] mt-2">Automated scheduling cut no-shows by 22%.</p>
-      </div>
-    </div>
-    <div class="reveal group rounded-2xl overflow-hidden border border-slate-200">
-      <div class="h-52 bg-gradient-to-br from-emerald-100 to-cyan-100 flex items-center justify-center">
-        <div class="w-40 h-24 bg-white rounded-lg shadow-xl group-hover:-translate-y-2 transition-transform duration-500 p-3">
-          <div class="w-full h-2 bg-slate-200 rounded mb-2"></div>
-          <div class="w-2/3 h-2 bg-slate-200 rounded"></div>
+
+    <!-- ================= HERO ================= -->
+    <section id="top" class="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden grid-bg">
+        <div class="blob w-[520px] h-[520px] bg-[var(--primary)] -top-40 -left-40"></div>
+        <div class="blob w-[460px] h-[460px] bg-[var(--secondary)] top-20 right-[-140px]"></div>
+        <div class="blob w-[380px] h-[380px] bg-[var(--accent)] bottom-[-160px] left-1/3"></div>
+
+        <div
+            class="max-w-7xl mx-auto px-6 lg:px-10 relative w-full grid lg:grid-cols-[1.15fr_.85fr] gap-14 items-center">
+            <div>
+                <div
+                    class="reveal inline-flex items-center gap-2 bg-white border border-slate-200 rounded-full px-4 py-1.5 text-xs font-semibold text-[var(--muted)] shadow-sm mb-8">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[var(--success)] animate-pulse"></span>
+                    Now booking Q3 project slots
+                </div>
+
+                <h1
+                    class="reveal display text-[13vw] leading-[.95] lg:text-[4.6rem] font-extrabold tracking-tight text-[var(--ink)]">
+                    Helping businesses<br>
+                    <span class="grad-text">automate,</span> scale<br>
+                    &amp; grow faster.
+                </h1>
+
+                <p class="reveal mt-7 text-lg text-[var(--muted)] max-w-xl leading-relaxed">
+                    We build AI systems, websites, mobile apps, automation workflows, trading platforms
+                    and digital marketing engines that generate measurable business growth — engineered
+                    by a small team that ships fast and communicates faster.
+                </p>
+
+                <div class="reveal mt-9 flex flex-wrap gap-4">
+                    <a href="#contact"
+                        class="magnetic group relative inline-flex items-center gap-2 bg-[var(--primary)] text-white font-semibold px-7 py-3.5 rounded-full overflow-hidden">
+                        <span class="relative z-10">Start Your Project</span>
+                        <svg class="relative z-10" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2.5">
+                            <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                    </a>
+                    <a href="#contact"
+                        class="magnetic inline-flex items-center gap-2 border border-slate-300 text-[var(--ink)] font-semibold px-7 py-3.5 rounded-full hover:border-[var(--primary)] hover:text-[var(--primary)] transition-colors">
+                        Book Free Consultation
+                    </a>
+                </div>
+
+                <div class="reveal mt-14 flex flex-wrap gap-x-10 gap-y-4">
+                    <div><span class="counter text-3xl font-extrabold text-[var(--ink)]" data-target="120">0</span><span
+                            class="text-3xl font-extrabold">+</span>
+                        <p class="text-xs text-[var(--muted)] mt-1">Projects delivered</p>
+                    </div>
+                    <div><span class="counter text-3xl font-extrabold text-[var(--ink)]" data-target="34">0</span><span
+                            class="text-3xl font-extrabold">+</span>
+                        <p class="text-xs text-[var(--muted)] mt-1">Countries served</p>
+                    </div>
+                    <div><span class="counter text-3xl font-extrabold text-[var(--ink)]" data-target="98">0</span><span
+                            class="text-3xl font-extrabold">%</span>
+                        <p class="text-xs text-[var(--muted)] mt-1">Client retention</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- floating mockup stack -->
+            <div class="relative h-[480px] hidden lg:block reveal">
+                <div id="float-card-1" class="tilt-card absolute top-0 right-4 w-72 glass rounded-2xl shadow-2xl p-5">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-xs font-semibold text-[var(--muted)]">Automation Flow</span>
+                        <span class="w-2 h-2 rounded-full bg-[var(--success)]"></span>
+                    </div>
+                    <div class="space-y-2.5 text-xs font-medium">
+                        <div class="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-sm"><span
+                                class="w-1.5 h-1.5 rounded-full bg-[var(--primary)]"></span>Lead captured</div>
+                        <div class="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-sm ml-4"><span
+                                class="w-1.5 h-1.5 rounded-full bg-[var(--secondary)]"></span>AI agent qualifies</div>
+                        <div class="flex items-center gap-2 bg-white rounded-lg px-3 py-2 shadow-sm ml-8"><span
+                                class="w-1.5 h-1.5 rounded-full bg-[var(--accent)]"></span>WhatsApp follow-up</div>
+                    </div>
+                </div>
+
+                <div id="float-card-2"
+                    class="tilt-card absolute top-40 left-0 w-64 glass-dark rounded-2xl shadow-2xl p-5 text-white">
+                    <p class="text-xs text-slate-300 mb-2">Portfolio return</p>
+                    <p class="text-2xl font-extrabold">+18.4%</p>
+                    <svg viewBox="0 0 200 60" class="w-full h-12 mt-3">
+                        <polyline fill="none" stroke="#06B6D4" stroke-width="2"
+                            points="0,45 30,38 55,42 80,20 105,28 130,12 155,18 180,4 200,8" />
+                    </svg>
+                </div>
+
+                <div id="float-card-3"
+                    class="tilt-card absolute bottom-6 right-10 w-60 glass rounded-2xl shadow-2xl p-5">
+                    <p class="text-xs font-semibold text-[var(--muted)] mb-3">This week</p>
+                    <div class="flex items-end gap-1.5 h-16">
+                        <div class="w-3 rounded bg-[var(--primary)]/30 h-[40%]"></div>
+                        <div class="w-3 rounded bg-[var(--primary)]/50 h-[65%]"></div>
+                        <div class="w-3 rounded bg-[var(--primary)]/70 h-[45%]"></div>
+                        <div class="w-3 rounded bg-[var(--secondary)] h-[85%]"></div>
+                        <div class="w-3 rounded bg-[var(--primary)]/40 h-[55%]"></div>
+                    </div>
+                </div>
+
+                <svg class="absolute inset-0 w-full h-full -z-10" viewBox="0 0 400 480">
+                    <circle cx="330" cy="70" r="90" fill="url(#g1)" opacity=".5" />
+                    <circle cx="60" cy="380" r="70" fill="url(#g2)" opacity=".4" />
+                    <defs>
+                        <radialGradient id="g1">
+                            <stop offset="0%" stop-color="#2563EB" />
+                            <stop offset="100%" stop-color="#2563EB" stop-opacity="0" />
+                        </radialGradient>
+                        <radialGradient id="g2">
+                            <stop offset="0%" stop-color="#7C3AED" />
+                            <stop offset="100%" stop-color="#7C3AED" stop-opacity="0" />
+                        </radialGradient>
+                    </defs>
+                </svg>
+            </div>
         </div>
-      </div>
-      <div class="p-6">
-        <p class="text-xs text-[var(--muted)] mb-1">Finance · Trading System</p>
-        <h3 class="font-bold">Kestrel Signal Engine</h3>
-        <p class="text-sm text-[var(--muted)] mt-2">AI-assisted signals with a 64% backtested win rate.</p>
-      </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- ================= PROCESS ================= -->
-<section id="process" class="py-28 bg-white border-y border-slate-200">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="reveal max-w-2xl mb-16">
-      <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">How We Work</p>
-      <h2 class="display text-4xl lg:text-5xl font-extrabold tracking-tight">A clear process, start to finish.</h2>
-    </div>
-    <div class="grid md:grid-cols-4 gap-8">
-      <div class="reveal"><p class="text-xs font-bold text-[var(--primary)] mb-2">STEP 01</p><h3 class="font-bold mb-2">Discovery &amp; Planning</h3><p class="text-sm text-[var(--muted)]">We map your goals, audience and technical needs.</p></div>
-      <div class="reveal"><p class="text-xs font-bold text-[var(--primary)] mb-2">STEP 02</p><h3 class="font-bold mb-2">Design &amp; Development</h3><p class="text-sm text-[var(--muted)]">Design system built, then engineered end to end.</p></div>
-      <div class="reveal"><p class="text-xs font-bold text-[var(--primary)] mb-2">STEP 03</p><h3 class="font-bold mb-2">Testing &amp; Launch</h3><p class="text-sm text-[var(--muted)]">QA, performance checks, then a controlled go-live.</p></div>
-      <div class="reveal"><p class="text-xs font-bold text-[var(--primary)] mb-2">STEP 04</p><h3 class="font-bold mb-2">Growth &amp; Support</h3><p class="text-sm text-[var(--muted)]">Ongoing optimization, support and scaling.</p></div>
-    </div>
-  </div>
-</section>
+    <!-- ================= TRUSTED BY ================= -->
+    <section class="py-14 border-y border-slate-200 bg-white">
+        <p class="text-center text-xs font-semibold tracking-widest text-[var(--muted)] mb-8 uppercase">Trusted by
+            founders, agencies &amp; growing teams</p>
+        <div class="marquee-wrap overflow-hidden">
+            <div class="marquee-track gap-16 items-center opacity-70">
+                <span class="text-2xl font-extrabold text-slate-400">Orbitfy</span>
+                <span class="text-2xl font-extrabold text-slate-400">Lumenpay</span>
+                <span class="text-2xl font-extrabold text-slate-400">Verdant</span>
+                <span class="text-2xl font-extrabold text-slate-400">Northwave</span>
+                <span class="text-2xl font-extrabold text-slate-400">Kestrel</span>
+                <span class="text-2xl font-extrabold text-slate-400">Haloform</span>
+                <span class="text-2xl font-extrabold text-slate-400">Orbitfy</span>
+                <span class="text-2xl font-extrabold text-slate-400">Lumenpay</span>
+                <span class="text-2xl font-extrabold text-slate-400">Verdant</span>
+                <span class="text-2xl font-extrabold text-slate-400">Northwave</span>
+                <span class="text-2xl font-extrabold text-slate-400">Kestrel</span>
+                <span class="text-2xl font-extrabold text-slate-400">Haloform</span>
+            </div>
+        </div>
+    </section>
 
-<!-- ================= TESTIMONIALS ================= -->
-<section class="py-28 max-w-7xl mx-auto px-6 lg:px-10">
-  <div class="reveal max-w-2xl mb-16">
-    <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">Client Results</p>
-    <h2 class="display text-4xl lg:text-5xl font-extrabold tracking-tight">What clients say.</h2>
-  </div>
-  <div class="grid md:grid-cols-3 gap-6">
-    <div class="reveal glass rounded-2xl p-7 shadow-sm border border-slate-200">
-      <div class="flex gap-1 mb-4 text-[var(--accent)]">★★★★★</div>
-      <p class="text-sm text-[var(--ink)] leading-relaxed mb-6">NetquoraX rebuilt our lead flow end to end. We stopped losing leads overnight and our close rate is up noticeably.</p>
-      <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-400 to-violet-400"></div><div><p class="text-sm font-semibold">Aisha Rahman</p><p class="text-xs text-[var(--muted)]">Founder, Verdant</p></div></div>
-    </div>
-    <div class="reveal glass rounded-2xl p-7 shadow-sm border border-slate-200">
-      <div class="flex gap-1 mb-4 text-[var(--accent)]">★★★★★</div>
-      <p class="text-sm text-[var(--ink)] leading-relaxed mb-6">The trading indicators they built are the first tools we've actually kept using daily. Clean code, real logic.</p>
-      <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-400 to-blue-400"></div><div><p class="text-sm font-semibold">Marco Ferreira</p><p class="text-xs text-[var(--muted)]">Trader, Kestrel Capital</p></div></div>
-    </div>
-    <div class="reveal glass rounded-2xl p-7 shadow-sm border border-slate-200">
-      <div class="flex gap-1 mb-4 text-[var(--accent)]">★★★★★</div>
-      <p class="text-sm text-[var(--ink)] leading-relaxed mb-6">Fast communication, clean handoffs, and a website that actually converts. Exactly what we needed as a small team.</p>
-      <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-400"></div><div><p class="text-sm font-semibold">Priya Nair</p><p class="text-xs text-[var(--muted)]">COO, Northwave</p></div></div>
-    </div>
-  </div>
-</section>
+    <!-- ================= SERVICES ================= -->
+    <section id="services" class="py-28 max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="reveal max-w-2xl mb-16">
+            <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">What We Build</p>
+            <h2 class="display text-4xl lg:text-5xl font-extrabold tracking-tight">Engineering, automation &amp; growth
+                — under one roof.</h2>
+        </div>
 
-<!-- ================= FAQ ================= -->
-<section id="faq" class="py-28 bg-white border-t border-slate-200">
-  <div class="max-w-3xl mx-auto px-6 lg:px-10">
-    <div class="reveal mb-14 text-center">
-      <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">FAQ</p>
-      <h2 class="display text-4xl font-extrabold tracking-tight">Common questions.</h2>
-    </div>
-    <div class="space-y-3">
-      <details class="faq-item reveal border border-slate-200 rounded-xl px-6 py-5">
-        <summary class="flex items-center justify-between font-semibold"><span>What's the typical project timeline?</span><span class="chev transition-transform">+</span></summary>
-        <p class="text-sm text-[var(--muted)] mt-3 leading-relaxed">Most websites take 2–4 weeks, apps 6–10 weeks, and automation systems 1–3 weeks depending on scope. We'll give you an exact timeline after discovery.</p>
-      </details>
-      <details class="faq-item reveal border border-slate-200 rounded-xl px-6 py-5">
-        <summary class="flex items-center justify-between font-semibold"><span>Do you work with early-stage startups?</span><span class="chev transition-transform">+</span></summary>
-        <p class="text-sm text-[var(--muted)] mt-3 leading-relaxed">Yes — a large share of our clients are founders building their first product or automating a growing business.</p>
-      </details>
-      <details class="faq-item reveal border border-slate-200 rounded-xl px-6 py-5">
-        <summary class="flex items-center justify-between font-semibold"><span>Can you handle both build and ongoing growth?</span><span class="chev transition-transform">+</span></summary>
-        <p class="text-sm text-[var(--muted)] mt-3 leading-relaxed">Yes. Most clients start with a build project and move into ongoing support, automation maintenance or marketing retainers.</p>
-      </details>
-      <details class="faq-item reveal border border-slate-200 rounded-xl px-6 py-5">
-        <summary class="flex items-center justify-between font-semibold"><span>How do trading system engagements work?</span><span class="chev transition-transform">+</span></summary>
-        <p class="text-sm text-[var(--muted)] mt-3 leading-relaxed">We build and backtest indicators or strategies to your spec. We don't provide financial advice — only the engineering.</p>
-      </details>
-    </div>
-  </div>
-</section>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div
+                class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
+                <div class="glow"></div>
+                <div class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center mb-5"><svg width="22"
+                        height="22" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                    </svg></div>
+                <h3 class="font-bold text-lg mb-2">Website Development</h3>
+                <p class="text-sm text-[var(--muted)] leading-relaxed">Custom, high-performance websites built to
+                    convert — from marketing sites to complex web apps.</p>
+            </div>
 
-<!-- ================= CTA ================= -->
-<section id="contact" class="relative py-32 overflow-hidden bg-[var(--ink)] text-white">
-  <div class="blob w-[600px] h-[600px] bg-[var(--primary)] -top-52 left-1/4 opacity-30"></div>
-  <div class="blob w-[400px] h-[400px] bg-[var(--secondary)] bottom-[-160px] right-1/4 opacity-30"></div>
-  <div class="max-w-3xl mx-auto px-6 text-center relative reveal">
-    <h2 class="display text-4xl lg:text-6xl font-extrabold tracking-tight mb-6">Let's build something incredible.</h2>
-    <p class="text-slate-300 mb-10 max-w-xl mx-auto">Tell us about your project and we'll reply within one business day with next steps.</p>
-    <div class="flex flex-wrap gap-4 justify-center">
-      <a href="mailto:hello@netquorax.com" class="magnetic bg-white text-[var(--ink)] font-semibold px-8 py-4 rounded-full">Start Your Project</a>
-      <a href="mailto:hello@netquorax.com" class="magnetic border border-white/30 font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-colors">Schedule Free Consultation</a>
-    </div>
-  </div>
-</section>
+            <div
+                class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
+                <div class="glow"></div>
+                <div class="w-11 h-11 rounded-xl bg-violet-50 flex items-center justify-center mb-5"><svg width="22"
+                        height="22" fill="none" stroke="var(--secondary)" stroke-width="2" viewBox="0 0 24 24">
+                        <rect x="7" y="2" width="10" height="20" rx="2" />
+                        <path d="M11 18h2" />
+                    </svg></div>
+                <h3 class="font-bold text-lg mb-2">Mobile App Development</h3>
+                <p class="text-sm text-[var(--muted)] leading-relaxed">Native and cross-platform iOS &amp; Android apps
+                    designed for retention and speed.</p>
+            </div>
 
-<!-- ================= FOOTER ================= -->
-<footer class="bg-[var(--dark)] text-slate-400 py-16">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-5 gap-10">
-    <div class="md:col-span-2">
-      <div class="flex items-center gap-2 mb-4">
-        <span class="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] flex items-center justify-center"><span class="text-white font-black text-sm">N</span></span>
-        <span class="font-extrabold text-lg text-white">NetquoraX</span>
-      </div>
-      <p class="text-sm max-w-xs leading-relaxed">Automate. Innovate. Scale. We build the software, automation and marketing systems that help businesses grow.</p>
-    </div>
-    <div>
-      <p class="text-white font-semibold text-sm mb-4">Company</p>
-      <ul class="space-y-2 text-sm"><li><a href="#top" class="hover:text-white">About</a></li><li><a href="#portfolio" class="hover:text-white">Portfolio</a></li><li><a href="#contact" class="hover:text-white">Contact</a></li></ul>
-    </div>
-    <div>
-      <p class="text-white font-semibold text-sm mb-4">Services</p>
-      <ul class="space-y-2 text-sm"><li><a href="#services" class="hover:text-white">Web &amp; App Development</a></li><li><a href="#services" class="hover:text-white">AI &amp; Automation</a></li><li><a href="#services" class="hover:text-white">Trading Systems</a></li></ul>
-    </div>
-    <div>
-      <p class="text-white font-semibold text-sm mb-4">Legal</p>
-      <ul class="space-y-2 text-sm"><li><a href="#" class="hover:text-white">Privacy Policy</a></li><li><a href="#" class="hover:text-white">Terms of Service</a></li></ul>
-    </div>
-  </div>
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 mt-12 pt-8 border-t border-white/10 text-xs flex flex-wrap justify-between gap-4">
-    <p>© 2026 NetquoraX. All rights reserved.</p>
-    <div class="flex gap-5"><a href="#" class="hover:text-white">LinkedIn</a><a href="#" class="hover:text-white">Instagram</a><a href="#" class="hover:text-white">X</a></div>
-  </div>
-</footer>
+            <div
+                class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
+                <div class="glow"></div>
+                <div class="w-11 h-11 rounded-xl bg-cyan-50 flex items-center justify-center mb-5"><svg width="22"
+                        height="22" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M8 12l3 3 5-6" />
+                    </svg></div>
+                <h3 class="font-bold text-lg mb-2">UI/UX &amp; Brand Identity</h3>
+                <p class="text-sm text-[var(--muted)] leading-relaxed">Interfaces and brand systems that feel considered
+                    — not templated, not generic.</p>
+            </div>
 
-<script>
-gsap.registerPlugin(ScrollTrigger);
+            <div
+                class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
+                <div class="glow"></div>
+                <div class="w-11 h-11 rounded-xl bg-emerald-50 flex items-center justify-center mb-5"><svg width="22"
+                        height="22" fill="none" stroke="var(--success)" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="12" cy="12" r="3" />
+                        <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" />
+                    </svg></div>
+                <h3 class="font-bold text-lg mb-2">AI Chatbots &amp; Agents</h3>
+                <p class="text-sm text-[var(--muted)] leading-relaxed">Conversational AI that qualifies leads, answers
+                    support and closes sales around the clock.</p>
+            </div>
 
-/* ============= ENTRANCE / PRELOADER ============= */
-(function(){
-  const pct=document.getElementById('pl-pct');
-  const fill=document.getElementById('pl-bar-fill');
-  const counter={val:0};
-  const tl=gsap.timeline({
-    onComplete:()=>{ document.body.classList.remove('pl-lock'); }
-  });
+            <div
+                class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
+                <div class="glow"></div>
+                <div class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center mb-5"><svg width="22"
+                        height="22" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24">
+                        <path
+                            d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.5 8.5 0 1 1 21 11.5z" />
+                    </svg></div>
+                <h3 class="font-bold text-lg mb-2">WhatsApp Automation</h3>
+                <p class="text-sm text-[var(--muted)] leading-relaxed">Automated WhatsApp flows for support, orders and
+                    marketing at scale.</p>
+            </div>
 
-  gsap.set('#pl-mark',{opacity:0,y:14});
-  gsap.set('#pl-tagline',{opacity:0,y:8});
+            <div
+                class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
+                <div class="glow"></div>
+                <div class="w-11 h-11 rounded-xl bg-violet-50 flex items-center justify-center mb-5"><svg width="22"
+                        height="22" fill="none" stroke="var(--secondary)" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                        <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8" />
+                    </svg></div>
+                <h3 class="font-bold text-lg mb-2">Voice AI &amp; Calling Agents</h3>
+                <p class="text-sm text-[var(--muted)] leading-relaxed">AI voice agents that handle inbound calls,
+                    bookings and support conversations.</p>
+            </div>
 
-  tl.to('#pl-mark',{opacity:1,y:0,duration:.7,ease:'power3.out'})
-    .to('#pl-tagline',{opacity:1,y:0,duration:.6,ease:'power3.out'},'-=.35')
-    .to(counter,{val:100,duration:1.6,ease:'power1.inOut',
-        onUpdate:()=>{
-          const v=Math.floor(counter.val);
-          pct.textContent=String(v).padStart(2,'0')+'%';
-          fill.style.width=v+'%';
+            <div
+                class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
+                <div class="glow"></div>
+                <div class="w-11 h-11 rounded-xl bg-cyan-50 flex items-center justify-center mb-5"><svg width="22"
+                        height="22" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M4 4h16v4H4zM4 10h10v4H4zM4 16h16v4H4z" />
+                    </svg></div>
+                <h3 class="font-bold text-lg mb-2">Workflow Automation</h3>
+                <p class="text-sm text-[var(--muted)] leading-relaxed">Make, Zapier &amp; n8n systems that connect your
+                    tools and remove manual work.</p>
+            </div>
+
+            <div
+                class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
+                <div class="glow"></div>
+                <div class="w-11 h-11 rounded-xl bg-emerald-50 flex items-center justify-center mb-5"><svg width="22"
+                        height="22" fill="none" stroke="var(--success)" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M3 3v18h18" />
+                        <path d="M7 15l4-4 3 3 5-6" />
+                    </svg></div>
+                <h3 class="font-bold text-lg mb-2">CRM &amp; Marketing Automation</h3>
+                <p class="text-sm text-[var(--muted)] leading-relaxed">Pipelines and lifecycle campaigns that nurture
+                    leads automatically.</p>
+            </div>
+
+            <div
+                class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
+                <div class="glow"></div>
+                <div class="w-11 h-11 rounded-xl bg-blue-50 flex items-center justify-center mb-5"><svg width="22"
+                        height="22" fill="none" stroke="var(--primary)" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+                    </svg></div>
+                <h3 class="font-bold text-lg mb-2">Cloud Infrastructure &amp; Security</h3>
+                <p class="text-sm text-[var(--muted)] leading-relaxed">Scalable cloud architecture with cybersecurity
+                    built in from day one.</p>
+            </div>
+
+            <div
+                class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
+                <div class="glow"></div>
+                <div class="w-11 h-11 rounded-xl bg-violet-50 flex items-center justify-center mb-5"><svg width="22"
+                        height="22" fill="none" stroke="var(--secondary)" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M3 17l6-6 4 4 8-8" />
+                        <path d="M14 7h7v7" />
+                    </svg></div>
+                <h3 class="font-bold text-lg mb-2">Trading Bots &amp; Pine Script</h3>
+                <p class="text-sm text-[var(--muted)] leading-relaxed">Custom TradingView indicators, alerts and
+                    automated strategy execution.</p>
+            </div>
+
+            <div
+                class="svc-card reveal bg-white border border-slate-200 rounded-2xl p-7 hover:-translate-y-1.5 transition-transform duration-300 shadow-sm hover:shadow-xl">
+                <div class="glow"></div>
+                <div class="w-11 h-11 rounded-xl bg-cyan-50 flex items-center justify-center mb-5"><svg width="22"
+                        height="22" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24">
+                        <circle cx="11" cy="11" r="8" />
+                        <path d="M21 21l-4.3-4.3" />
+                    </svg></div>
+                <h3 class="font-bold text-lg mb-2">SEO, Ads &amp; Lead Generation</h3>
+                <p class="text-sm text-[var(--muted)] leading-relaxed">Performance marketing across Google, Meta and
+                    search that's built to convert.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= WHY CHOOSE ================= -->
+    <section class="py-24 bg-[var(--dark)] text-white relative overflow-hidden">
+        <div class="blob w-[500px] h-[500px] bg-[var(--secondary)] -top-40 right-0 opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative">
+            <p class="reveal section-eyebrow text-xs font-bold text-[var(--accent)] uppercase mb-3">Why NetquoraX</p>
+            <h2 class="reveal display text-4xl lg:text-5xl font-extrabold tracking-tight max-w-2xl mb-16">One partner,
+                every system your business needs to scale.</h2>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="reveal">
+                    <p class="text-3xl font-extrabold text-[var(--accent)] mb-2">01</p>
+                    <h3 class="font-bold mb-2">One Digital Partner</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Design, development, automation and marketing — no
+                        juggling five vendors.</p>
+                </div>
+                <div class="reveal">
+                    <p class="text-3xl font-extrabold text-[var(--accent)] mb-2">02</p>
+                    <h3 class="font-bold mb-2">AI &amp; Automation Expertise</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">We build the systems most agencies only talk
+                        about.</p>
+                </div>
+                <div class="reveal">
+                    <p class="text-3xl font-extrabold text-[var(--accent)] mb-2">03</p>
+                    <h3 class="font-bold mb-2">Fast, Transparent Delivery</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Clear timelines, weekly updates, no disappearing
+                        acts.</p>
+                </div>
+                <div class="reveal">
+                    <p class="text-3xl font-extrabold text-[var(--accent)] mb-2">04</p>
+                    <h3 class="font-bold mb-2">Built to Scale &amp; Secure</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed">Architecture that holds up as you grow, secured
+                        from day one.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= SOLUTIONS / INDUSTRIES ================= -->
+    <section id="solutions" class="py-28 max-w-7xl mx-auto px-6 lg:px-10">
+        <div id="industries" class="reveal max-w-2xl mb-16">
+            <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">Solutions by Industry</p>
+            <h2 class="display text-4xl lg:text-5xl font-extrabold tracking-tight">Built around how your industry
+                actually works.</h2>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            <div
+                class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300">
+                <p class="font-bold">Startups</p>
+                <p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">MVP to scale</p>
+            </div>
+            <div
+                class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300">
+                <p class="font-bold">Healthcare</p>
+                <p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Booking &amp; care ops</p>
+            </div>
+            <div
+                class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300">
+                <p class="font-bold">Finance</p>
+                <p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Trading &amp; fintech</p>
+            </div>
+            <div
+                class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300">
+                <p class="font-bold">Real Estate</p>
+                <p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Lead &amp; listing systems</p>
+            </div>
+            <div
+                class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300">
+                <p class="font-bold">Ecommerce</p>
+                <p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Conversion &amp; retention</p>
+            </div>
+            <div
+                class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300">
+                <p class="font-bold">Education</p>
+                <p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Enrollment &amp; LMS</p>
+            </div>
+            <div
+                class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300">
+                <p class="font-bold">Manufacturing</p>
+                <p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Ops automation</p>
+            </div>
+            <div
+                class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300">
+                <p class="font-bold">Agencies</p>
+                <p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">White-label build</p>
+            </div>
+            <div
+                class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300">
+                <p class="font-bold">Hospitality</p>
+                <p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Bookings &amp; guest AI</p>
+            </div>
+            <div
+                class="reveal group border border-slate-200 rounded-2xl p-6 hover:bg-[var(--ink)] hover:text-white transition-colors duration-300">
+                <p class="font-bold">Logistics</p>
+                <p class="text-xs text-[var(--muted)] group-hover:text-slate-300 mt-1">Tracking &amp; dispatch</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= AI AUTOMATION SHOWCASE ================= -->
+    <section class="py-28 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="reveal max-w-2xl mb-16">
+                <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">AI &amp; Automation
+                </p>
+                <h2 class="display text-4xl lg:text-5xl font-extrabold tracking-tight">From first message to closed sale
+                    — automatically.</h2>
+            </div>
+
+            <div class="reveal flex flex-wrap items-center justify-center gap-3 lg:gap-2">
+                <div class="flow-step bg-blue-50 border border-blue-100 rounded-xl px-5 py-4 text-center min-w-[130px]">
+                    <p class="text-xs font-semibold text-[var(--primary)]">Lead</p>
+                </div>
+                <svg class="flow-arrow w-6 h-6 text-slate-300 rotate-90 lg:rotate-0" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+                <div
+                    class="flow-step bg-violet-50 border border-violet-100 rounded-xl px-5 py-4 text-center min-w-[130px]">
+                    <p class="text-xs font-semibold text-[var(--secondary)]">CRM</p>
+                </div>
+                <svg class="flow-arrow w-6 h-6 text-slate-300 rotate-90 lg:rotate-0" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+                <div class="flow-step bg-cyan-50 border border-cyan-100 rounded-xl px-5 py-4 text-center min-w-[130px]">
+                    <p class="text-xs font-semibold text-[var(--accent)]">AI Agent</p>
+                </div>
+                <svg class="flow-arrow w-6 h-6 text-slate-300 rotate-90 lg:rotate-0" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+                <div
+                    class="flow-step bg-emerald-50 border border-emerald-100 rounded-xl px-5 py-4 text-center min-w-[130px]">
+                    <p class="text-xs font-semibold text-[var(--success)]">WhatsApp</p>
+                </div>
+                <svg class="flow-arrow w-6 h-6 text-slate-300 rotate-90 lg:rotate-0" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+                <div class="flow-step bg-blue-50 border border-blue-100 rounded-xl px-5 py-4 text-center min-w-[130px]">
+                    <p class="text-xs font-semibold text-[var(--primary)]">Sales</p>
+                </div>
+                <svg class="flow-arrow w-6 h-6 text-slate-300 rotate-90 lg:rotate-0" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+                <div
+                    class="flow-step bg-violet-50 border border-violet-100 rounded-xl px-5 py-4 text-center min-w-[130px]">
+                    <p class="text-xs font-semibold text-[var(--secondary)]">Payment</p>
+                </div>
+                <svg class="flow-arrow w-6 h-6 text-slate-300 rotate-90 lg:rotate-0" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+                <div class="flow-step bg-cyan-50 border border-cyan-100 rounded-xl px-5 py-4 text-center min-w-[130px]">
+                    <p class="text-xs font-semibold text-[var(--accent)]">Analytics</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TRADING SHOWCASE ================= -->
+    <section class="py-28 bg-[var(--surface)] text-white relative overflow-hidden">
+        <div class="blob w-[460px] h-[460px] bg-[var(--primary)] top-0 left-0 opacity-20"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 relative grid lg:grid-cols-2 gap-14 items-center">
+            <div class="reveal">
+                <p class="section-eyebrow text-xs font-bold text-[var(--accent)] uppercase mb-3">Trading Solutions</p>
+                <h2 class="display text-4xl font-extrabold tracking-tight mb-5">Trading systems built on data, not
+                    guesswork.</h2>
+                <p class="text-slate-400 leading-relaxed mb-8">Custom Pine Script indicators, backtested strategies and
+                    AI-assisted signal generation — built for traders who want an edge grounded in code, not intuition.
+                </p>
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div class="glass-dark rounded-xl p-4">
+                        <p class="font-bold mb-1">Custom Indicators</p>
+                        <p class="text-xs text-slate-400">Pine Script &amp; alerts</p>
+                    </div>
+                    <div class="glass-dark rounded-xl p-4">
+                        <p class="font-bold mb-1">Strategy Backtesting</p>
+                        <p class="text-xs text-slate-400">Historical validation</p>
+                    </div>
+                    <div class="glass-dark rounded-xl p-4">
+                        <p class="font-bold mb-1">Automated Bots</p>
+                        <p class="text-xs text-slate-400">Rule-based execution</p>
+                    </div>
+                    <div class="glass-dark rounded-xl p-4">
+                        <p class="font-bold mb-1">AI Predictions</p>
+                        <p class="text-xs text-slate-400">Model-driven signals</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal glass-dark rounded-2xl p-6">
+                <div class="flex items-center justify-between mb-5">
+                    <span class="text-xs text-slate-400">BTC/USD · 4H</span>
+                    <span class="text-xs font-semibold text-[var(--success)]">+18.4%</span>
+                </div>
+                <svg viewBox="0 0 400 180" class="w-full h-40">
+                    <g stroke="#10B981" stroke-width="2">
+                        <line x1="10" y1="120" x2="10" y2="90" />
+                        <line x1="30" y1="110" x2="30" y2="75" />
+                        <line x1="50" y1="130" x2="50" y2="95" />
+                        <line x1="70" y1="95" x2="70" y2="60" />
+                        <line x1="90" y1="100" x2="90" y2="55" />
+                    </g>
+                    <g stroke="#EF4444" stroke-width="2">
+                        <line x1="110" y1="60" x2="110" y2="90" />
+                        <line x1="130" y1="70" x2="130" y2="100" />
+                    </g>
+                    <g stroke="#10B981" stroke-width="2">
+                        <line x1="150" y1="95" x2="150" y2="50" />
+                        <line x1="170" y1="60" x2="170" y2="30" />
+                        <line x1="190" y1="45" x2="190" y2="20" />
+                        <line x1="210" y1="35" x2="210" y2="10" />
+                    </g>
+                    <polyline fill="none" stroke="#06B6D4" stroke-width="1.5" stroke-dasharray="4 3"
+                        points="0,110 40,95 80,70 120,80 160,55 200,35 240,45 280,25 320,30 360,15 400,20" />
+                </svg>
+                <div class="grid grid-cols-3 gap-3 mt-4 text-center text-xs">
+                    <div class="bg-white/5 rounded-lg py-2">
+                        <p class="text-slate-400">Win rate</p>
+                        <p class="font-bold text-white mt-1">64%</p>
+                    </div>
+                    <div class="bg-white/5 rounded-lg py-2">
+                        <p class="text-slate-400">Trades</p>
+                        <p class="font-bold text-white mt-1">312</p>
+                    </div>
+                    <div class="bg-white/5 rounded-lg py-2">
+                        <p class="text-slate-400">Drawdown</p>
+                        <p class="font-bold text-white mt-1">6.2%</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PORTFOLIO ================= -->
+    <section id="portfolio" class="py-28 max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="reveal max-w-2xl mb-16">
+            <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">Portfolio</p>
+            <h2 class="display text-4xl lg:text-5xl font-extrabold tracking-tight">Selected work.</h2>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="reveal group rounded-2xl overflow-hidden border border-slate-200">
+                <div
+                    class="h-52 bg-gradient-to-br from-blue-100 to-violet-100 flex items-center justify-center relative overflow-hidden">
+                    <div
+                        class="w-40 h-24 bg-white rounded-lg shadow-xl group-hover:-translate-y-2 transition-transform duration-500 flex items-center px-3 gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-red-300"></span><span
+                            class="w-1.5 h-1.5 rounded-full bg-yellow-300"></span><span
+                            class="w-1.5 h-1.5 rounded-full bg-green-300"></span>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-[var(--muted)] mb-1">Ecommerce · Web Platform</p>
+                    <h3 class="font-bold">Lumenpay Checkout Redesign</h3>
+                    <p class="text-sm text-[var(--muted)] mt-2">Cart abandonment down 31% after a full checkout rebuild.
+                    </p>
+                </div>
+            </div>
+            <div class="reveal group rounded-2xl overflow-hidden border border-slate-200">
+                <div class="h-52 bg-gradient-to-br from-cyan-100 to-blue-100 flex items-center justify-center">
+                    <div
+                        class="w-24 h-40 bg-white rounded-2xl shadow-xl group-hover:-translate-y-2 transition-transform duration-500 border-4 border-slate-800">
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-[var(--muted)] mb-1">Healthcare · Mobile App</p>
+                    <h3 class="font-bold">Orbitfy Patient Booking App</h3>
+                    <p class="text-sm text-[var(--muted)] mt-2">Automated scheduling cut no-shows by 22%.</p>
+                </div>
+            </div>
+            <div class="reveal group rounded-2xl overflow-hidden border border-slate-200">
+                <div class="h-52 bg-gradient-to-br from-emerald-100 to-cyan-100 flex items-center justify-center">
+                    <div
+                        class="w-40 h-24 bg-white rounded-lg shadow-xl group-hover:-translate-y-2 transition-transform duration-500 p-3">
+                        <div class="w-full h-2 bg-slate-200 rounded mb-2"></div>
+                        <div class="w-2/3 h-2 bg-slate-200 rounded"></div>
+                    </div>
+                </div>
+                <div class="p-6">
+                    <p class="text-xs text-[var(--muted)] mb-1">Finance · Trading System</p>
+                    <h3 class="font-bold">Kestrel Signal Engine</h3>
+                    <p class="text-sm text-[var(--muted)] mt-2">AI-assisted signals with a 64% backtested win rate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= PROCESS ================= -->
+    <section id="process" class="py-28 bg-white border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10">
+            <div class="reveal max-w-2xl mb-16">
+                <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">How We Work</p>
+                <h2 class="display text-4xl lg:text-5xl font-extrabold tracking-tight">A clear process, start to finish.
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="reveal">
+                    <p class="text-xs font-bold text-[var(--primary)] mb-2">STEP 01</p>
+                    <h3 class="font-bold mb-2">Discovery &amp; Planning</h3>
+                    <p class="text-sm text-[var(--muted)]">We map your goals, audience and technical needs.</p>
+                </div>
+                <div class="reveal">
+                    <p class="text-xs font-bold text-[var(--primary)] mb-2">STEP 02</p>
+                    <h3 class="font-bold mb-2">Design &amp; Development</h3>
+                    <p class="text-sm text-[var(--muted)]">Design system built, then engineered end to end.</p>
+                </div>
+                <div class="reveal">
+                    <p class="text-xs font-bold text-[var(--primary)] mb-2">STEP 03</p>
+                    <h3 class="font-bold mb-2">Testing &amp; Launch</h3>
+                    <p class="text-sm text-[var(--muted)]">QA, performance checks, then a controlled go-live.</p>
+                </div>
+                <div class="reveal">
+                    <p class="text-xs font-bold text-[var(--primary)] mb-2">STEP 04</p>
+                    <h3 class="font-bold mb-2">Growth &amp; Support</h3>
+                    <p class="text-sm text-[var(--muted)]">Ongoing optimization, support and scaling.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= TESTIMONIALS ================= -->
+    <section class="py-28 max-w-7xl mx-auto px-6 lg:px-10">
+        <div class="reveal max-w-2xl mb-16">
+            <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">Client Results</p>
+            <h2 class="display text-4xl lg:text-5xl font-extrabold tracking-tight">What clients say.</h2>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="reveal glass rounded-2xl p-7 shadow-sm border border-slate-200">
+                <div class="flex gap-1 mb-4 text-[var(--accent)]">★★★★★</div>
+                <p class="text-sm text-[var(--ink)] leading-relaxed mb-6">NetquoraX rebuilt our lead flow end to end. We
+                    stopped losing leads overnight and our close rate is up noticeably.</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-400 to-violet-400"></div>
+                    <div>
+                        <p class="text-sm font-semibold">Aisha Rahman</p>
+                        <p class="text-xs text-[var(--muted)]">Founder, Verdant</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal glass rounded-2xl p-7 shadow-sm border border-slate-200">
+                <div class="flex gap-1 mb-4 text-[var(--accent)]">★★★★★</div>
+                <p class="text-sm text-[var(--ink)] leading-relaxed mb-6">The trading indicators they built are the
+                    first tools we've actually kept using daily. Clean code, real logic.</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-400 to-blue-400"></div>
+                    <div>
+                        <p class="text-sm font-semibold">Marco Ferreira</p>
+                        <p class="text-xs text-[var(--muted)]">Trader, Kestrel Capital</p>
+                    </div>
+                </div>
+            </div>
+            <div class="reveal glass rounded-2xl p-7 shadow-sm border border-slate-200">
+                <div class="flex gap-1 mb-4 text-[var(--accent)]">★★★★★</div>
+                <p class="text-sm text-[var(--ink)] leading-relaxed mb-6">Fast communication, clean handoffs, and a
+                    website that actually converts. Exactly what we needed as a small team.</p>
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-cyan-400"></div>
+                    <div>
+                        <p class="text-sm font-semibold">Priya Nair</p>
+                        <p class="text-xs text-[var(--muted)]">COO, Northwave</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FAQ ================= -->
+    <section id="faq" class="py-28 bg-white border-t border-slate-200">
+        <div class="max-w-3xl mx-auto px-6 lg:px-10">
+            <div class="reveal mb-14 text-center">
+                <p class="section-eyebrow text-xs font-bold text-[var(--primary)] uppercase mb-3">FAQ</p>
+                <h2 class="display text-4xl font-extrabold tracking-tight">Common questions.</h2>
+            </div>
+            <div class="space-y-3">
+                <details class="faq-item reveal border border-slate-200 rounded-xl px-6 py-5">
+                    <summary class="flex items-center justify-between font-semibold"><span>What's the typical project
+                            timeline?</span><span class="chev transition-transform">+</span></summary>
+                    <p class="text-sm text-[var(--muted)] mt-3 leading-relaxed">Most websites take 2–4 weeks, apps 6–10
+                        weeks, and automation systems 1–3 weeks depending on scope. We'll give you an exact timeline
+                        after discovery.</p>
+                </details>
+                <details class="faq-item reveal border border-slate-200 rounded-xl px-6 py-5">
+                    <summary class="flex items-center justify-between font-semibold"><span>Do you work with early-stage
+                            startups?</span><span class="chev transition-transform">+</span></summary>
+                    <p class="text-sm text-[var(--muted)] mt-3 leading-relaxed">Yes — a large share of our clients are
+                        founders building their first product or automating a growing business.</p>
+                </details>
+                <details class="faq-item reveal border border-slate-200 rounded-xl px-6 py-5">
+                    <summary class="flex items-center justify-between font-semibold"><span>Can you handle both build and
+                            ongoing growth?</span><span class="chev transition-transform">+</span></summary>
+                    <p class="text-sm text-[var(--muted)] mt-3 leading-relaxed">Yes. Most clients start with a build
+                        project and move into ongoing support, automation maintenance or marketing retainers.</p>
+                </details>
+                <details class="faq-item reveal border border-slate-200 rounded-xl px-6 py-5">
+                    <summary class="flex items-center justify-between font-semibold"><span>How do trading system
+                            engagements work?</span><span class="chev transition-transform">+</span></summary>
+                    <p class="text-sm text-[var(--muted)] mt-3 leading-relaxed">We build and backtest indicators or
+                        strategies to your spec. We don't provide financial advice — only the engineering.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section id="contact" class="relative py-32 overflow-hidden bg-[var(--ink)] text-white">
+        <div class="blob w-[600px] h-[600px] bg-[var(--primary)] -top-52 left-1/4 opacity-30"></div>
+        <div class="blob w-[400px] h-[400px] bg-[var(--secondary)] bottom-[-160px] right-1/4 opacity-30"></div>
+        <div class="max-w-3xl mx-auto px-6 text-center relative reveal">
+            <h2 class="display text-4xl lg:text-6xl font-extrabold tracking-tight mb-6">Let's build something
+                incredible.</h2>
+            <p class="text-slate-300 mb-10 max-w-xl mx-auto">Tell us about your project and we'll reply within one
+                business day with next steps.</p>
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="mailto:hello@netquorax.com"
+                    class="magnetic bg-white text-[var(--ink)] font-semibold px-8 py-4 rounded-full">Start Your
+                    Project</a>
+                <a href="mailto:hello@netquorax.com"
+                    class="magnetic border border-white/30 font-semibold px-8 py-4 rounded-full hover:bg-white/10 transition-colors">Schedule
+                    Free Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="bg-[var(--dark)] text-slate-400 py-16">
+        <div class="max-w-7xl mx-auto px-6 lg:px-10 grid md:grid-cols-5 gap-10">
+            <div class="md:col-span-2">
+                <div class="flex items-center gap-2 mb-4">
+                    <span
+                        class="w-8 h-8 rounded-lg bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] flex items-center justify-center"><span
+                            class="text-white font-black text-sm">N</span></span>
+                    <span class="font-extrabold text-lg text-white">NetquoraX</span>
+                </div>
+                <p class="text-sm max-w-xs leading-relaxed">Automate. Innovate. Scale. We build the software, automation
+                    and marketing systems that help businesses grow.</p>
+            </div>
+            <div>
+                <p class="text-white font-semibold text-sm mb-4">Company</p>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#top" class="hover:text-white">About</a></li>
+                    <li><a href="#portfolio" class="hover:text-white">Portfolio</a></li>
+                    <li><a href="#contact" class="hover:text-white">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="text-white font-semibold text-sm mb-4">Services</p>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#services" class="hover:text-white">Web &amp; App Development</a></li>
+                    <li><a href="#services" class="hover:text-white">AI &amp; Automation</a></li>
+                    <li><a href="#services" class="hover:text-white">Trading Systems</a></li>
+                </ul>
+            </div>
+            <div>
+                <p class="text-white font-semibold text-sm mb-4">Legal</p>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                    <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div
+            class="max-w-7xl mx-auto px-6 lg:px-10 mt-12 pt-8 border-t border-white/10 text-xs flex flex-wrap justify-between gap-4">
+            <p>© 2026 NetquoraX. All rights reserved.</p>
+            <div class="flex gap-5"><a href="#" class="hover:text-white">LinkedIn</a><a href="#"
+                    class="hover:text-white">Instagram</a><a href="#" class="hover:text-white">X</a></div>
+        </div>
+    </footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* ============= ENTRANCE / PRELOADER ============= */
+        (function () {
+            const pct = document.getElementById('pl-pct');
+            const fill = document.getElementById('pl-bar-fill');
+            const counter = { val: 0 };
+            const tl = gsap.timeline({
+                onComplete: () => { document.body.classList.remove('pl-lock'); }
+            });
+
+            gsap.set('#pl-mark', { opacity: 0, y: 14 });
+            gsap.set('#pl-tagline', { opacity: 0, y: 8 });
+
+            tl.to('#pl-mark', { opacity: 1, y: 0, duration: .7, ease: 'power3.out' })
+                .to('#pl-tagline', { opacity: 1, y: 0, duration: .6, ease: 'power3.out' }, '-=.35')
+                .to(counter, {
+                    val: 100, duration: 1.6, ease: 'power1.inOut',
+                    onUpdate: () => {
+                        const v = Math.floor(counter.val);
+                        pct.textContent = String(v).padStart(2, '0') + '%';
+                        fill.style.width = v + '%';
+                    }
+                }, '-=.2')
+                .to('#pl-mark, #pl-tagline, #pl-bar-track, #pl-pct', { opacity: 0, y: -14, duration: .4, ease: 'power2.in' })
+                .to('#preloader', { yPercent: -100, duration: .9, ease: 'power4.inOut' }, '-=.05')
+                .to('#pl-curtain', { yPercent: -100, duration: .9, ease: 'power4.inOut' }, '-=.85')
+                .set('#preloader', { display: 'none' })
+                .set('#pl-curtain', { display: 'none' })
+                .fromTo('#top .reveal', { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: .9, ease: 'power3.out', stagger: 0.06 }, '-=.55')
+                .from('#navbar', { y: -30, opacity: 0, duration: .6, ease: 'power3.out' }, '-=.7');
+        })();
+
+        /* Custom cursor */
+        const dot = document.getElementById('cursor-dot'), ring = document.getElementById('cursor-ring');
+        let mx = 0, my = 0, rx = 0, ry = 0;
+        window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+        gsap.ticker.add(() => { rx += (mx - rx) * 0.15; ry += (my - ry) * 0.15; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; });
+        document.querySelectorAll('a,button,summary,.svc-card,.magnetic,#menu-toggle').forEach(el => {
+            el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+            el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+        });
+
+        /* Magnetic buttons */
+        document.querySelectorAll('.magnetic').forEach(el => {
+            el.addEventListener('mousemove', e => {
+                const r = el.getBoundingClientRect();
+                const x = e.clientX - (r.left + r.width / 2);
+                const y = e.clientY - (r.top + r.height / 2);
+                gsap.to(el, {
+                    x: x * 0.3,
+                    y: y * 0.3,
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            el.addEventListener('mouseleave', () => {
+                gsap.to(el, {
+                    x: 0,
+                    y: 0,
+                    duration: 0.5,
+                    ease: 'elastic.out(1, 0.3)'
+                });
+            });
+        });
+
+        /* Card tilt */
+        document.querySelectorAll('.tilt-card').forEach(el => {
+            el.addEventListener('mousemove', e => {
+                const r = el.getBoundingClientRect();
+                const x = e.clientX - (r.left + r.width / 2);
+                const y = e.clientY - (r.top + r.height / 2);
+                const rotateX = -(y / r.height) * 15;
+                const rotateY = (x / r.width) * 15;
+                gsap.to(el, {
+                    rotateX: rotateX,
+                    rotateY: rotateY,
+                    transformPerspective: 1000,
+                    ease: 'power2.out',
+                    duration: 0.3
+                });
+            });
+            el.addEventListener('mouseleave', () => {
+                gsap.to(el, {
+                    rotateX: 0,
+                    rotateY: 0,
+                    ease: 'power2.out',
+                    duration: 0.5
+                });
+            });
+        });
+
+        /* Counter animation */
+        document.querySelectorAll('.counter').forEach(el => {
+            const target = parseInt(el.getAttribute('data-target'), 10);
+            gsap.fromTo(el, { textContent: 0 }, {
+                textContent: target,
+                duration: 2.5,
+                ease: 'power2.out',
+                scrollTrigger: {
+                    trigger: el,
+                    start: 'top 90%',
+                    toggleActions: 'play none none none'
+                },
+                snap: { textContent: 1 },
+                onUpdate: function () {
+                    el.textContent = Math.floor(el.textContent);
+                }
+            });
+        });
+
+        /* Service card glow follow cursor */
+        document.querySelectorAll('.svc-card').forEach(card => {
+            const glow = card.querySelector('.glow');
+            if (glow) {
+                card.addEventListener('mousemove', e => {
+                    const r = card.getBoundingClientRect();
+                    const x = e.clientX - r.left;
+                    const y = e.clientY - r.top;
+                    gsap.to(glow, {
+                        left: x - 110 + 'px',
+                        top: y - 110 + 'px',
+                        duration: 0.1
+                    });
+                });
+            }
+        });
+
+        /* Scroll progress indicator */
+        gsap.to('#scroll-progress', {
+            width: '100%',
+            ease: 'none',
+            scrollTrigger: {
+                trigger: 'body',
+                start: 'top top',
+                end: 'bottom bottom',
+                scrub: 0.3
+            }
+        });
+
+        /* Navbar scroll effect */
+        const header = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('glass', 'shadow-md');
+                header.classList.remove('py-5');
+                header.classList.add('py-3');
+            } else {
+                header.classList.remove('glass', 'shadow-md');
+                header.classList.remove('py-3');
+                header.classList.add('py-5');
+            }
+        });
+
+        /* Reveal animations on scroll */
+        document.querySelectorAll('section').forEach(section => {
+            if (section.id === 'top') return; // Handled by preloader
+            const reveals = section.querySelectorAll('.reveal');
+            if (reveals.length > 0) {
+                gsap.fromTo(reveals,
+                    { opacity: 0, y: 28 },
+                    {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.8,
+                        stagger: 0.08,
+                        ease: 'power3.out',
+                        scrollTrigger: {
+                            trigger: section,
+                            start: 'top 80%',
+                            toggleActions: 'play none none none'
+                        }
+                    }
+                );
+            }
+        });
+
+        /* Mobile Menu Animation */
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+        let menuOpen = false;
+
+        function toggleMenu() {
+            menuOpen = !menuOpen;
+            if (menuOpen) {
+                menuToggle.classList.add('active');
+                gsap.to(mobileMenu, { x: '0%', duration: 0.5, ease: 'power3.out' });
+                gsap.fromTo(mobileLinks,
+                    { y: 20, opacity: 0 },
+                    { y: 0, opacity: 1, duration: 0.4, stagger: 0.08, ease: 'power2.out', delay: 0.2 }
+                );
+            } else {
+                menuToggle.classList.remove('active');
+                gsap.to(mobileMenu, { x: '100%', duration: 0.5, ease: 'power3.inOut' });
+            }
         }
-      },'-=.2')
-    .to('#pl-mark, #pl-tagline, #pl-bar-track, #pl-pct',{opacity:0,y:-14,duration:.4,ease:'power2.in'})
-    .to('#preloader',{yPercent:-100,duration:.9,ease:'power4.inOut'},'-=.05')
-    .to('#pl-curtain',{yPercent:-100,duration:.9,ease:'power4.inOut'},'-=.85')
-    .set('#preloader',{display:'none'})
-    .set('#pl-curtain',{display:'none'})
-    .fromTo('#top .reveal',{opacity:0,y:28},{opacity:1,y:0,duration:.9,ease:'power3.out',stagger:0.06},'-=.55')
-    .from('#navbar',{y:-30,opacity:0,duration:.6,ease:'power3.out'},'-=.7');
-})();
 
-/* Custom cursor */
-const dot=document.getElementById('cursor-dot'), ring=document.getElementById('cursor-ring');
-let mx=0,my=0,rx=0,ry=0;
-window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;dot.style.left=mx+'px';dot.style.top=my+'px';});
-gsap.ticker.add(()=>{rx+=(mx-rx)*0.15;ry+=(my-ry)*0.15;ring.style.left=rx+'px';ring.style.top=ry+'px';});
-document.querySelectorAll('a,button,summary,.svc-card,.magnetic,#menu-toggle').forEach(el=>{
-  el.addEventListener('mouseenter',()=>ring.classList.add('hover'));
-  el.addEventListener('mouseleave',()=>ring.classList.remove('hover'));
-});
+        menuToggle.addEventListener('click', toggleMenu);
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
 
-/* Magnetic buttons */
-document.querySelectorAll('.magnetic').forEach(el=>{
-  el.addEventListener('mousemove',e=>{
-    const r=el.getBoundingClientRect();
-    const x=e.clientX - (r.left + r.width/2);
-    const y=e.clientY - (r.top + r.height/2);
-    gsap.to(el, {
-      x: x * 0.3,
-      y: y * 0.3,
-      duration: 0.3,
-      ease: 'power2.out'
-    });
-  });
-  el.addEventListener('mouseleave',()=>{
-    gsap.to(el, {
-      x: 0,
-      y: 0,
-      duration: 0.5,
-      ease: 'elastic.out(1, 0.3)'
-    });
-  });
-});
-
-/* Card tilt */
-document.querySelectorAll('.tilt-card').forEach(el => {
-  el.addEventListener('mousemove', e => {
-    const r = el.getBoundingClientRect();
-    const x = e.clientX - (r.left + r.width / 2);
-    const y = e.clientY - (r.top + r.height / 2);
-    const rotateX = -(y / r.height) * 15;
-    const rotateY = (x / r.width) * 15;
-    gsap.to(el, {
-      rotateX: rotateX,
-      rotateY: rotateY,
-      transformPerspective: 1000,
-      ease: 'power2.out',
-      duration: 0.3
-    });
-  });
-  el.addEventListener('mouseleave', () => {
-    gsap.to(el, {
-      rotateX: 0,
-      rotateY: 0,
-      ease: 'power2.out',
-      duration: 0.5
-    });
-  });
-});
-
-/* Counter animation */
-document.querySelectorAll('.counter').forEach(el => {
-  const target = parseInt(el.getAttribute('data-target'), 10);
-  gsap.fromTo(el, { textContent: 0 }, {
-    textContent: target,
-    duration: 2.5,
-    ease: 'power2.out',
-    scrollTrigger: {
-      trigger: el,
-      start: 'top 90%',
-      toggleActions: 'play none none none'
-    },
-    snap: { textContent: 1 },
-    onUpdate: function() {
-      el.textContent = Math.floor(el.textContent);
-    }
-  });
-});
-
-/* Service card glow follow cursor */
-document.querySelectorAll('.svc-card').forEach(card => {
-  const glow = card.querySelector('.glow');
-  if (glow) {
-    card.addEventListener('mousemove', e => {
-      const r = card.getBoundingClientRect();
-      const x = e.clientX - r.left;
-      const y = e.clientY - r.top;
-      gsap.to(glow, {
-        left: x - 110 + 'px',
-        top: y - 110 + 'px',
-        duration: 0.1
-      });
-    });
-  }
-});
-
-/* Scroll progress indicator */
-gsap.to('#scroll-progress', {
-  width: '100%',
-  ease: 'none',
-  scrollTrigger: {
-    trigger: 'body',
-    start: 'top top',
-    end: 'bottom bottom',
-    scrub: 0.3
-  }
-});
-
-/* Navbar scroll effect */
-const header = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    header.classList.add('glass', 'shadow-md');
-    header.classList.remove('py-5');
-    header.classList.add('py-3');
-  } else {
-    header.classList.remove('glass', 'shadow-md');
-    header.classList.remove('py-3');
-    header.classList.add('py-5');
-  }
-});
-
-/* Reveal animations on scroll */
-document.querySelectorAll('section').forEach(section => {
-  if (section.id === 'top') return; // Handled by preloader
-  const reveals = section.querySelectorAll('.reveal');
-  if (reveals.length > 0) {
-    gsap.fromTo(reveals, 
-      { opacity: 0, y: 28 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: 0.08,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: section,
-          start: 'top 80%',
-          toggleActions: 'play none none none'
-        }
-      }
-    );
-  }
-});
-
-/* Mobile Menu Animation */
-const menuToggle = document.getElementById('menu-toggle');
-const mobileMenu = document.getElementById('mobile-menu');
-const mobileLinks = document.querySelectorAll('.mobile-nav-link');
-let menuOpen = false;
-
-function toggleMenu() {
-  menuOpen = !menuOpen;
-  if (menuOpen) {
-    menuToggle.classList.add('active');
-    gsap.to(mobileMenu, { x: '0%', duration: 0.5, ease: 'power3.out' });
-    gsap.fromTo(mobileLinks, 
-      { y: 20, opacity: 0 }, 
-      { y: 0, opacity: 1, duration: 0.4, stagger: 0.08, ease: 'power2.out', delay: 0.2 }
-    );
-  } else {
-    menuToggle.classList.remove('active');
-    gsap.to(mobileMenu, { x: '100%', duration: 0.5, ease: 'power3.inOut' });
-  }
-}
-
-menuToggle.addEventListener('click', toggleMenu);
-mobileLinks.forEach(link => {
-  link.addEventListener('click', toggleMenu);
-});
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href');
-    if (targetId === '#top') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-  });
-});
-</script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#top') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                } else {
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>
-
-

@@ -3,8 +3,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, animate } from "framer-motion";
 import MagneticWrap from "@/components/ui/MagneticWrap";
-import TiltCard from "@/components/ui/TiltCard";
-import RepelCard from "@/components/ui/RepelCard";
 
 // Numerical count-up helper
 function StatCounter({ value, suffix, delay }: { value: number; suffix: string; delay: number }) {
@@ -64,14 +62,14 @@ export default function Hero() {
   // Spring transition
   const springConfig = { type: "spring" as const, stiffness: 180, damping: 20, mass: 0.8 };
 
-  const bgPhotoVariants = {
+  const abstractPanelVariants = {
     rest: {
       x: 0,
-      y: (isMobile || isStatic) ? 0 : [0, -5, 0],
+      y: (isMobile || isStatic) ? 0 : [0, -3, 0],
       rotate: -1,
       scale: 1,
       transition: (isMobile || isStatic) ? {} : {
-        y: { repeat: Infinity, repeatType: "reverse" as const, duration: 6.5, ease: "easeInOut" as const }
+        y: { repeat: Infinity, repeatType: "reverse" as const, duration: 7, ease: "easeInOut" as const }
       }
     },
     hover: {
@@ -82,23 +80,23 @@ export default function Hero() {
     }
   };
 
-  const workflowCardVariants = {
+  const midCardVariants = {
     rest: {
       x: 0,
-      y: (isMobile || isStatic) ? 0 : [0, -8, 0],
-      rotate: 2,
+      y: (isMobile || isStatic) ? 0 : [0, -6, 0],
+      rotate: 1.5,
       scale: 1,
-      boxShadow: '0 20px 40px rgba(11,16,32,0.12)',
+      boxShadow: '0 16px 32px rgba(11,16,32,0.08)',
       transition: (isMobile || isStatic) ? {} : {
-        y: { repeat: Infinity, repeatType: "reverse" as const, duration: 5, ease: "easeInOut" as const }
+        y: { repeat: Infinity, repeatType: "reverse" as const, duration: 5.5, ease: "easeInOut" as const }
       }
     },
     hover: {
-      x: 28,
-      y: -24,
-      rotate: 4,
+      x: 24,
+      y: -20,
+      rotate: 3.5,
       scale: 1.03,
-      boxShadow: '0 32px 60px rgba(11,16,32,0.18)'
+      boxShadow: '0 28px 56px rgba(11,16,32,0.14)'
     }
   };
 
@@ -322,54 +320,48 @@ export default function Hero() {
               animate={animateVal}
               className="relative w-full h-full cursor-pointer pointer-events-auto"
             >
-              {/* Layer 1: Background photo panel (back-most, desaturated context photo) */}
+              {/* Layer 1: Abstract glass panel (back-most, floating composition piece) */}
               <motion.div
-                variants={bgPhotoVariants}
+                variants={abstractPanelVariants}
                 transition={springConfig}
-                className="absolute inset-0 m-auto w-[85%] h-[85%] rounded-[24px] overflow-hidden shadow-xl"
+                className="absolute inset-0 m-auto w-[90%] h-[88%] rounded-[28px] overflow-hidden shadow-2xl"
                 style={{ zIndex: 10 }}
               >
-                <img
-                  src="/images/hero-team.png"
-                  alt="NetquoraX team at work"
-                  className="w-full h-full object-cover"
-                  style={{ filter: "brightness(1.02) saturate(0.85)" }}
-                />
-                {/* Soft overlay so glass panels stay readable */}
-                <div className="absolute inset-0 bg-gradient-to-br from-white/30 to-white/10" />
+                <div className="w-full h-full rounded-[28px] border border-white/70 bg-white/45 backdrop-blur-2xl relative overflow-hidden">
+                  <div className="absolute inset-0" style={{
+                    backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(37,99,235,0.12) 1px, transparent 0)',
+                    backgroundSize: '22px 22px'
+                  }} />
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-white/20" />
+                  <motion.div animate={{ scale: [1, 1.05, 1], opacity: [0.3, 0.5, 0.3] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} className="absolute top-[-10%] right-[-5%] w-[140px] h-[140px] rounded-full bg-primary/15 blur-2xl" />
+                  <motion.div animate={{ scale: [1, 1.08, 1], opacity: [0.2, 0.4, 0.2] }} transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1.2 }} className="absolute bottom-[-8%] left-[-5%] w-[120px] h-[120px] rounded-full bg-secondary/15 blur-2xl" />
+                </div>
               </motion.div>
 
-              {/* Layer 2: Workflow card (mid-layer, offset top-right) */}
+              {/* Layer 2: Abstract metrics card (mid-layer, offset top-right) */}
               <motion.div
-                variants={workflowCardVariants}
+                variants={midCardVariants}
                 transition={springConfig}
-                className="absolute top-4 right-4 w-[60%] h-[42%]"
+                className="absolute top-4 right-4 w-[58%] h-[40%]"
                 style={{ zIndex: 20 }}
               >
-                <div
-                  className="w-full h-full rounded-2xl p-5 border border-white/80 flex flex-col justify-between select-none"
-                  style={{
-                    background: "rgba(255,255,255,0.88)",
-                    backdropFilter: "blur(20px)",
-                    WebkitBackdropFilter: "blur(20px)",
-                  }}
-                >
-                  <div>
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#64748B]">Active Workflow</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
-                    </div>
-                    <div className="space-y-2 text-xs font-semibold text-[#0B1020]">
-                      <div className="flex items-center gap-2 bg-white rounded-lg px-3 py-1.5 shadow-sm border border-slate-100">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB]" /> Lead Capture
+                <div className="w-full h-full rounded-2xl p-5 border border-white/60 bg-white/55 backdrop-blur-xl flex flex-col justify-between relative overflow-hidden shadow-lg">
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+                      <div className="h-1.5 flex-1 rounded-full bg-[#0B1020]/5 overflow-hidden">
+                        <motion.div animate={{ width: ["0%", "78%", "78%"] }} transition={{ duration: 2, repeat: Infinity, repeatType: "reverse" }} className="h-full rounded-full bg-gradient-to-r from-primary to-secondary" />
                       </div>
-                      <div className="flex items-center gap-2 bg-white rounded-lg px-3 py-1.5 shadow-sm border border-slate-100 ml-3">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#7C3AED]" /> AI Qualified
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-accent animate-pulse" style={{ animationDelay: "0.5s" }} />
+                      <div className="h-1.5 flex-1 rounded-full bg-[#0B1020]/5 overflow-hidden">
+                        <motion.div animate={{ width: ["0%", "94%", "94%"] }} transition={{ duration: 2.5, repeat: Infinity, repeatType: "reverse", delay: 0.3 }} className="h-full rounded-full bg-gradient-to-r from-accent to-primary" />
                       </div>
                     </div>
                   </div>
-                  <div className="text-[10px] text-[#64748B]/80 font-bold border-t border-slate-100 pt-2 flex justify-between">
-                    <span>98.6% Accuracy</span><span>v1.0.2</span>
+                  <div className="text-[10px] text-[#0B1020]/40 font-bold border-t border-slate-100 pt-2 flex justify-between">
+                    <span>98.6% Accuracy</span><span>v2.4</span>
                   </div>
                 </div>
               </motion.div>

@@ -243,7 +243,7 @@ export default function SplashScreen({ onComplete, onUnmount }: SplashScreenProp
               initial="hidden"
               animate="visible"
               className="text-3xl font-extrabold tracking-tight text-white flex gap-[1px]"
-              style={{ fontFamily: "'Manrope', sans-serif" }}
+              style={{ fontFamily: "var(--font-display), sans-serif" }}
             >
               {"NetquoraX".split("").map((letter, idx) => (
                 <motion.span
