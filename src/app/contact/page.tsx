@@ -374,22 +374,39 @@ export default function ContactPage() {
                 </h3>
                 <div className="space-y-4">
                   <a
-                    href="mailto:hello@netquorax.com"
+                    href="mailto:netquorax@gmail.com"
                     className="flex items-center gap-3 text-[15px] text-slate-600 hover:text-primary transition-colors"
                   >
                     <Mail size={20} className="text-slate-400" />
-                    hello@netquorax.com
+                    netquorax@gmail.com
                   </a>
-                  <div className="flex items-center gap-3 text-[15px] text-slate-600">
-                    <Phone size={20} className="text-slate-400" />
-                    <span>+91 XXXXX XXXXX</span>
+                  <div className="flex flex-col gap-3 pt-2 text-[14px] text-slate-600 border-t border-slate-100">
+                    <div>
+                      <span className="block font-bold text-slate-700">Sathveek (Developer — All Services)</span>
+                      <a href="tel:+919441782469" className="hover:text-primary transition-colors">+91 9441782469</a>
+                    </div>
+                    <div>
+                      <span className="block font-bold text-slate-700">Moin (Digital Marketer — Sales & Revenues)</span>
+                      <a href="tel:+18779365117" className="hover:text-primary transition-colors">+1 (877) 936-5117</a>
+                    </div>
+                    <div>
+                      <span className="block font-bold text-slate-700">Instagram</span>
+                      <a
+                        href="https://www.instagram.com/netquorax?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:text-primary transition-colors"
+                      >
+                        @netquorax
+                      </a>
+                    </div>
                   </div>
                 </div>
 
                 {/* Response time */}
                 <div className="mt-6 pt-6 border-t border-slate-100">
-                  <p className="text-[13px] text-slate-500">
-                    Usually responds within a few hours
+                  <p className="text-[13px] text-slate-500 font-medium">
+                    ⚡ Usually responds within a few hours
                   </p>
                 </div>
               </div>

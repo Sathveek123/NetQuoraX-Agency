@@ -120,6 +120,7 @@ export default function Testimonials() {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft,  setCanScrollLeft]  = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
 
   const scroll = (dir: "left" | "right") => {
     if (!scrollRef.current) return;
@@ -133,6 +134,25 @@ export default function Testimonials() {
     setCanScrollLeft(scrollLeft > 8);
     setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 8);
   };
+
+  React.useEffect(() => {
+    if (isHovered) return;
+
+    const interval = setInterval(() => {
+      if (!scrollRef.current) return;
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const maxScroll = scrollWidth - clientWidth;
+      const step = CARD_WIDTH + CARD_GAP;
+
+      if (scrollLeft >= maxScroll - 16) {
+        scrollRef.current.scrollTo({ left: 0, behavior: "smooth" });
+      } else {
+        scrollRef.current.scrollBy({ left: step, behavior: "smooth" });
+      }
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [isHovered]);
 
   return (
     <section
@@ -209,6 +229,8 @@ export default function Testimonials() {
           <div
              ref={scrollRef}
              onScroll={onScroll}
+             onMouseEnter={() => setIsHovered(true)}
+             onMouseLeave={() => setIsHovered(false)}
              className="flex gap-6 overflow-x-auto pb-4"
              style={{
                scrollSnapType: "x mandatory",

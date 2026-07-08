@@ -90,7 +90,7 @@ export default function FinalCTA() {
             {/* Primary — white bg, Ink text */}
             <MagneticWrap radius={100} maxDistance={8}>
               <a
-                href="mailto:hello@netquorax.com"
+                href="/contact"
                 className="inline-flex items-center gap-2.5 bg-white text-[#0B1020] text-[15px] font-semibold px-8 py-4 rounded-full hover:bg-slate-100 transition-colors duration-300 outline-none focus-visible:ring-2 focus-visible:ring-white cursor-none shadow-lg shadow-black/30"
               >
                 Start Your Project
@@ -103,7 +103,7 @@ export default function FinalCTA() {
             {/* Secondary — outline */}
             <MagneticWrap radius={80} maxDistance={6}>
               <a
-                href="mailto:hello@netquorax.com"
+                href="/contact"
                 className="inline-flex items-center text-white text-[15px] font-semibold px-8 py-4 rounded-full border border-white/30 hover:bg-white/5 transition-colors duration-300 outline-none focus-visible:ring-2 focus-visible:ring-white cursor-none"
               >
                 Schedule Free Consultation

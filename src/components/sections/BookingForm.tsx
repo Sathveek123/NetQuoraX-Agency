@@ -141,17 +141,28 @@ export default function BookingForm() {
             </motion.ul>
 
             {/* Quick contact */}
-            <motion.div variants={headerItem} className="mt-10 space-y-3">
-              <a href="mailto:hello@netquorax.com"
+            <motion.div variants={headerItem} className="mt-10 space-y-4">
+              <a href="mailto:netquorax@gmail.com"
                 className="flex items-center gap-3 text-[14px] text-[#0B1020]/60 hover:text-[#2563EB] transition-colors group">
                 <Mail size={16} aria-hidden="true" className="group-hover:text-[#2563EB]" />
-                hello@netquorax.com
+                netquorax@gmail.com
               </a>
-              <a href="tel:+919999999999"
-                className="flex items-center gap-3 text-[14px] text-[#0B1020]/60 hover:text-[#2563EB] transition-colors group">
-                <Phone size={16} aria-hidden="true" className="group-hover:text-[#2563EB]" />
-                +91 99999 99999
-              </a>
+              <div>
+                <span className="block text-[11px] font-bold text-slate-400 uppercase">Sathveek (Developer)</span>
+                <a href="tel:+919441782469"
+                  className="flex items-center gap-3 text-[14px] text-[#0B1020]/60 hover:text-[#2563EB] transition-colors group mt-0.5">
+                  <Phone size={16} aria-hidden="true" className="group-hover:text-[#2563EB]" />
+                  +91 9441782469
+                </a>
+              </div>
+              <div>
+                <span className="block text-[11px] font-bold text-slate-400 uppercase">Moin (Sales & Revenues)</span>
+                <a href="tel:+18779365117"
+                  className="flex items-center gap-3 text-[14px] text-[#0B1020]/60 hover:text-[#2563EB] transition-colors group mt-0.5">
+                  <Phone size={16} aria-hidden="true" className="group-hover:text-[#2563EB]" />
+                  +1 (877) 936-5117
+                </a>
+              </div>
             </motion.div>
 
             {/* Avatar trust cluster */}

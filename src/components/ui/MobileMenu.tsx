@@ -186,21 +186,28 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
               className="mt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-white/50 text-xs font-semibold uppercase tracking-wider"
             >
               <a
-                href="mailto:hello@netquorax.com"
+                href="mailto:netquorax@gmail.com"
                 className="hover:text-white transition-colors outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1 cursor-none"
               >
-                hello@netquorax.com
+                netquorax@gmail.com
               </a>
               <div className="flex gap-4">
-                {["LinkedIn", "Instagram", "X"].map((social) => (
-                  <a
-                    key={social}
-                    href="#"
-                    className="hover:text-white transition-colors outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1 cursor-none"
-                  >
-                    {social}
-                  </a>
-                ))}
+                <a
+                  href="https://www.instagram.com/netquorax?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1 cursor-none"
+                >
+                  Instagram
+                </a>
+                <a
+                  href="https://linkedin.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1 cursor-none"
+                >
+                  LinkedIn
+                </a>
               </div>
             </motion.div>
           </div>
