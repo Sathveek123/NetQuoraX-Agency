@@ -83,10 +83,10 @@ export default function Navbar() {
   // Navbar dynamic styles
   const navStyles = solid
     ? {
-        backgroundColor: "rgba(248, 250, 252, 0.85)",
+        backgroundColor: theme === "dark" ? "rgba(8, 12, 22, 0.85)" : "rgba(248, 250, 252, 0.85)",
         backdropFilter: "blur(16px)",
-        borderBottom: "1px solid rgba(229, 231, 235, 0.8)",
-        boxShadow: "0 4px 24px rgba(11, 16, 32, 0.04)",
+        borderBottom: theme === "dark" ? "1px solid rgba(255, 255, 255, 0.08)" : "1px solid rgba(229, 231, 235, 0.8)",
+        boxShadow: theme === "dark" ? "0 4px 24px rgba(0, 0, 0, 0.2)" : "0 4px 24px rgba(11, 16, 32, 0.04)",
         height: "72px"
       }
     : {

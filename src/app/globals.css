@@ -329,7 +329,8 @@ h1, h2, h3, h4, .display {
 .dark .text-\[\#0B1020\] {
   color: var(--ink) !important;
 }
-.dark .text-\[\#0B1020\]\/60 {
+.dark .text-\[\#0B1020\]\/60,
+.dark .text-\[\#0B1020\]\/65 {
   color: rgba(248, 250, 252, 0.65) !important;
 }
 .dark .text-\[\#0B1020\]\/75 {
