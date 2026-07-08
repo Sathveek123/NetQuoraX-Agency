@@ -387,7 +387,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <span className="block font-bold text-slate-700">Moin (Digital Marketer — Sales & Revenues)</span>
-                      <a href="tel:+18779365117" className="hover:text-primary transition-colors">+1 (877) 936-5117</a>
+                      <a href="tel:+918779365117" className="hover:text-primary transition-colors">+91 8779365117</a>
                     </div>
                     <div>
                       <span className="block font-bold text-slate-700">Instagram</span>

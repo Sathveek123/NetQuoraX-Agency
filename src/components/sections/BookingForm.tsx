@@ -157,10 +157,10 @@ export default function BookingForm() {
               </div>
               <div>
                 <span className="block text-[11px] font-bold text-slate-400 uppercase">Moin (Sales & Revenues)</span>
-                <a href="tel:+18779365117"
+                <a href="tel:+918779365117"
                   className="flex items-center gap-3 text-[14px] text-[#0B1020]/60 hover:text-[#2563EB] transition-colors group mt-0.5">
                   <Phone size={16} aria-hidden="true" className="group-hover:text-[#2563EB]" />
-                  +1 (877) 936-5117
+                  +91 8779365117
                 </a>
               </div>
             </motion.div>

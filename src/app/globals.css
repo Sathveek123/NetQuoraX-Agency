@@ -338,6 +338,9 @@ h1, h2, h3, h4, .display {
 .dark .text-slate-900 {
   color: var(--ink) !important;
 }
+.dark .text-slate-800 {
+  color: var(--ink) !important;
+}
 .dark .text-slate-700 {
   color: rgba(248, 250, 252, 0.85) !important;
 }

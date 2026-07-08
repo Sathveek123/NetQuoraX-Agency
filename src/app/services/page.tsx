@@ -13,6 +13,7 @@ const CATEGORIES = [
     title: "Websites & Digital Products",
     desc: "Premium, responsive web experiences designed to engage and convert.",
     icon: Code,
+    imgUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
     services: [
       {
         title: "Custom Website Development",
@@ -39,6 +40,7 @@ const CATEGORIES = [
     title: "Intelligent Workflows & Agents",
     desc: "Automate administrative overhead, qualify leads instantly, and save hundreds of manual hours.",
     icon: Cpu,
+    imgUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
     services: [
       {
         title: "Workflow Automation",
@@ -65,6 +67,7 @@ const CATEGORIES = [
     title: "Automated Strategy Engineering",
     desc: "Custom indicator scripts, strategy backtesters, and trading bot executions built to your rules.",
     icon: LineChart,
+    imgUrl: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80",
     services: [
       {
         title: "Pine Script Development",
@@ -85,6 +88,7 @@ const CATEGORIES = [
     title: "Paid Ads & Conversion Funnels",
     desc: "Drive qualified traffic, optimize landing conversion pages, and scale ROI metrics.",
     icon: Sparkles,
+    imgUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
     services: [
       {
         title: "Meta & Google Ad Setup",
@@ -151,68 +155,78 @@ export default function ServicesPage() {
               <section
                 key={cat.title}
                 className={`p-8 md:p-12 rounded-[32px] transition-colors border ${
-                  isAlt ? "bg-white border-slate-200/50 shadow-sm" : "bg-[#F8FAFC] border-transparent"
+                  isAlt ? "bg-white border-slate-200/50 shadow-sm" : "bg-transparent border-transparent"
                 }`}
               >
-                <div className="flex flex-col md:flex-row md:items-start justify-between gap-6 mb-10">
-                  <div>
-                    <span className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
-                      {cat.eyebrow}
-                    </span>
-                    <h2 className="mt-2 font-display text-[28px] md:text-[36px] font-extrabold tracking-tight text-[#0F172A]">
-                      {cat.title}
-                    </h2>
-                    <p className="mt-3 text-[15px] text-slate-500 max-w-xl">
-                      {cat.desc}
-                    </p>
-                  </div>
-                  <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary flex-shrink-0">
-                    <CatIcon size={24} />
-                  </div>
-                </div>
+                <div className="grid lg:grid-cols-3 gap-10 items-start">
+                  {/* Left Column: Title, description, and real internet image */}
+                  <div className="space-y-6 lg:sticky lg:top-28">
+                    <div>
+                      <span className="text-xs font-bold uppercase tracking-[0.18em] text-primary">
+                        {cat.eyebrow}
+                      </span>
+                      <h2 className="mt-2 font-display text-[26px] md:text-[32px] font-extrabold tracking-tight text-[#0F172A] leading-tight">
+                        {cat.title}
+                      </h2>
+                      <p className="mt-3 text-[14px] text-slate-500 leading-relaxed">
+                        {cat.desc}
+                      </p>
+                    </div>
 
-                {/* Service Cards Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                  {cat.services.map((svc) => (
-                    <div
-                      key={svc.title}
-                      className="bg-white rounded-2xl p-6 border border-slate-200/60 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all flex flex-col justify-between"
-                    >
-                      <div>
-                        <h3 className="text-[18px] font-bold text-[#0F172A] leading-snug">
-                          {svc.title}
-                        </h3>
-                        <p className="mt-3 text-[14px] text-slate-500 leading-relaxed">
-                          {svc.desc}
-                        </p>
-                        
-                        {/* What's included checklist */}
-                        <div className="mt-6 border-t border-slate-100 pt-5">
-                          <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
-                            What's Included
+                    {/* Image Block */}
+                    <div className="rounded-2xl overflow-hidden aspect-[4/3] relative border border-slate-200/60 dark:border-slate-800 shadow-sm bg-slate-50">
+                      <img
+                        src={cat.imgUrl}
+                        alt={cat.title}
+                        className="w-full h-full object-cover hover:scale-[1.03] transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Right Column: Service Cards Grid */}
+                  <div className="lg:col-span-2 grid md:grid-cols-2 gap-6">
+                    {cat.services.map((svc) => (
+                      <div
+                        key={svc.title}
+                        className="bg-white dark:bg-[#111B30] rounded-2xl p-6 border border-slate-200/60 dark:border-slate-800 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all flex flex-col justify-between"
+                      >
+                        <div>
+                          <h3 className="text-[17px] font-bold text-[#0F172A] dark:text-white leading-snug">
+                            {svc.title}
+                          </h3>
+                          <p className="mt-2.5 text-[13px] text-slate-500 leading-relaxed">
+                            {svc.desc}
+                          </p>
+                          
+                          {/* What's included checklist */}
+                          <div className="mt-5 border-t border-slate-100 dark:border-slate-800/80 pt-4">
+                            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                              What's Included
+                            </span>
+                            <ul className="mt-3 space-y-2">
+                              {svc.included.map((item, idx) => (
+                                <li key={idx} className="flex items-start gap-2 text-[12.5px] text-slate-600 dark:text-slate-300 leading-snug">
+                                  <CheckCircle2 size={13} className="text-primary mt-0.5 flex-shrink-0" />
+                                  <span>{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+
+                        {/* Pricing Tag */}
+                        <div className="mt-6 border-t border-slate-100 dark:border-slate-800/80 pt-4 flex items-center justify-between">
+                          <span className="text-[12px] font-bold text-primary bg-primary/5 px-2.5 py-1 rounded-md">
+                            {svc.price}
                           </span>
-                          <ul className="mt-3 space-y-2.5">
-                            {svc.included.map((item, idx) => (
-                              <li key={idx} className="flex items-start gap-2 text-[13px] text-slate-600 leading-snug">
-                                <CheckCircle2 size={14} className="text-primary mt-0.5 flex-shrink-0" />
-                                <span>{item}</span>
-                              </li>
-                            ))}
-                          </ul>
+                          <Link href="/contact" className="text-[12.5px] font-semibold text-slate-400 hover:text-primary transition-colors flex items-center gap-1">
+                            Inquire <ArrowRight size={13} />
+                          </Link>
                         </div>
                       </div>
-
-                      {/* Pricing Tag */}
-                      <div className="mt-6 border-t border-slate-100 pt-4 flex items-center justify-between">
-                        <span className="text-[13px] font-bold text-primary bg-primary/5 px-2.5 py-1 rounded-md">
-                          {svc.price}
-                        </span>
-                        <Link href="/contact" className="text-[13px] font-semibold text-slate-400 hover:text-primary transition-colors flex items-center gap-1">
-                          Inquire <ArrowRight size={14} />
-                        </Link>
-                      </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </section>
             );

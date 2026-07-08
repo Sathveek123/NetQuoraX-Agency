@@ -87,55 +87,137 @@ export default function AboutPage() {
 
         {/* OUR STORY / FOUNDERS STORY */}
         <section className="py-16 lg:py-24">
-          <div className="grid md:grid-cols-3 gap-12 items-start">
-            <div className="md:col-span-1 md:sticky md:top-28">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-16">
               <span className="text-xs font-bold uppercase tracking-[0.18em] text-primary mb-4 block">
                 The Journey
               </span>
-              <h2 className="font-display text-[28px] md:text-[36px] font-extrabold text-[#0F172A] tracking-tight leading-tight">
-                Our Genesis & Struggles
+              <h2 className="font-display text-[32px] md:text-[48px] font-extrabold text-[#0F172A] tracking-tight leading-tight">
+                Our Genesis & Evolution
               </h2>
-              <p className="mt-4 text-[14px] text-slate-500 leading-relaxed">
-                How two founders fought through fake agencies, scammed software, and lost capital to build a premium engineering house.
+              <p className="mt-4 text-[16px] text-slate-500 max-w-xl mx-auto leading-relaxed">
+                How we fought through fake agencies, scammed indicator systems, and system fragmentation to engineer outcome-driven software.
               </p>
             </div>
-            
-            <div className="md:col-span-2 space-y-12">
-              <div className="border-l-2 border-primary/20 pl-6 space-y-3">
-                <h3 className="text-[18px] font-bold text-[#0F172A]">
-                  01 / The Catalyst: Trapped in False Promises
-                </h3>
-                <p className="text-[15px] text-slate-600 leading-relaxed">
-                  Before launching NetquoraX, we were builders, traders, and founders ourselves. But like many growing businesses, we were held back by fragmented systems and deceptive services. We hired marketing agencies that charged massive premiums but only delivered bots and fake traffic metrics. We bought trading indicators and algorithms that turned out to be scammed, copy-pasted code that failed completely in live market conditions.
-                </p>
-                <p className="text-[15px] text-slate-600 leading-relaxed">
-                  We lost our capital, struggled with databases that didn't sync, and watched our leads fall into a black hole because our website didn't connect to our CRM. It was a stressful, expensive lesson in system fragmentation.
-                </p>
+
+            {/* Tree Timeline Container */}
+            <div className="relative border-l-2 border-slate-200/80 dark:border-slate-800/80 ml-4 md:mx-auto md:w-[2px] space-y-16">
+              {/* Milestone 1 */}
+              <div className="relative pl-8 md:pl-0 md:w-[420px] md:ml-[-440px] md:text-right">
+                {/* Node Dot */}
+                <div className="absolute top-1.5 left-[-9px] md:left-auto md:right-[-431px] w-4 h-4 rounded-full bg-rose-500 ring-4 ring-rose-100 dark:ring-rose-950 flex items-center justify-center" />
+                
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-white dark:bg-[#111B30] rounded-2xl p-6 border border-slate-200/60 dark:border-slate-800 shadow-sm"
+                >
+                  <span className="text-[11px] font-bold text-rose-500 uppercase tracking-widest block mb-2">
+                    Phase 01 / The Catalyst (2023)
+                  </span>
+                  <h3 className="text-[18px] font-bold text-[#0F172A] dark:text-white leading-snug">
+                    Trapped in Fragile Frameworks & Scams
+                  </h3>
+                  <p className="mt-3 text-[14px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                    We were building our own D2C ecommerce and indicator setups. We hired traditional marketing agencies who burned thousands of dollars in ad budgets generating empty bot clicks, while conversion charts stayed completely flat. We bought commercial Pine Script indicators that completely crashed in live markets because they were built as copy-paste marketing hacks instead of robust math strategies.
+                  </p>
+                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-2 md:justify-end">
+                    <span className="text-[11px] font-semibold text-rose-500 bg-rose-500/5 px-2 py-0.5 rounded">Scammed Tools</span>
+                    <span className="text-[11px] font-semibold text-rose-500 bg-rose-500/5 px-2 py-0.5 rounded">Lost Capital</span>
+                    <span className="text-[11px] font-semibold text-rose-500 bg-rose-500/5 px-2 py-0.5 rounded">Broken APIs</span>
+                  </div>
+                </motion.div>
               </div>
 
-              <div className="border-l-2 border-secondary/20 pl-6 space-y-3">
-                <h3 className="text-[18px] font-bold text-[#0F172A]">
-                  02 / The Grind: Building the Foundations
-                </h3>
-                <p className="text-[15px] text-slate-600 leading-relaxed">
-                  Out of sheer survival, we fired the agencies, threw away the third-party templates, and decided to learn the engineering from the ground up.
-                </p>
-                <p className="text-[15px] text-slate-600 leading-relaxed">
-                  Sathveek dedicated months to mastering robust full-stack engineering, API synchronization, serverless webhooks, and secure database architecture. He learned Pine Script v5 strategy optimization to build indicators that pass rigorous backtests instead of scamming clients. Moin spent his time auditing conversion loops, setting up official Meta Conversions API tracking, writing high-intent funnel scripts, and structuring advertising pipelines around real sales revenue instead of vanity views.
-                </p>
+              {/* Milestone 2 */}
+              <div className="relative pl-8 md:pl-0 md:w-[420px] md:ml-[20px]">
+                {/* Node Dot */}
+                <div className="absolute top-1.5 left-[-9px] md:left-[-30px] w-4 h-4 rounded-full bg-primary ring-4 ring-primary/10 flex items-center justify-center" />
+                
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-white dark:bg-[#111B30] rounded-2xl p-6 border border-slate-200/60 dark:border-slate-800 shadow-sm"
+                >
+                  <span className="text-[11px] font-bold text-primary uppercase tracking-widest block mb-2">
+                    Phase 02 / The Grind (Early 2024)
+                  </span>
+                  <h3 className="text-[18px] font-bold text-[#0F172A] dark:text-white leading-snug">
+                    Engineering From Scratch
+                  </h3>
+                  <p className="mt-3 text-[14px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Out of survival, we threw out templates and decided to learn engineering ourselves. Sathveek dedicated months to mastering Next.js backend services, writing robust node webhook execution servers, and routing orders securely across multiple Indian broker APIs (Zerodha Kite, Upstox) with automatic fallback handlers. Moin took over pixel engineering, developing offline tracking databases using Meta Conversions API logs to combat iOS privacy barriers and optimize paid funnels.
+                  </p>
+                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-2">
+                    <span className="text-[11px] font-semibold text-primary bg-primary/5 px-2 py-0.5 rounded">Next.js App Router</span>
+                    <span className="text-[11px] font-semibold text-primary bg-primary/5 px-2 py-0.5 rounded">Meta Conversions API</span>
+                    <span className="text-[11px] font-semibold text-primary bg-primary/5 px-2 py-0.5 rounded">Broker Integrations</span>
+                  </div>
+                </motion.div>
               </div>
 
-              <div className="border-l-2 border-accent/20 pl-6 space-y-3">
-                <h3 className="text-[18px] font-bold text-[#0F172A]">
-                  03 / The Standard: A Partnership Model
-                </h3>
-                <p className="text-[15px] text-slate-600 leading-relaxed">
-                  We built NetquoraX to be the standard of honesty we needed back then. We don't deliver a single project and disappear.
-                </p>
-                <p className="text-[15px] text-slate-600 leading-relaxed">
-                  We specialize in collaborating closely with startup owners at early-stage phases to architect unified systems. Whether it is a website, a CRM automation sync, an ads campaign, or an automated trading webhook bot, we build it to scale. Every system we launch is verified, secure, and backed by actual, transparent numbers.
-                </p>
+              {/* Milestone 3 */}
+              <div className="relative pl-8 md:pl-0 md:w-[420px] md:ml-[-440px] md:text-right">
+                {/* Node Dot */}
+                <div className="absolute top-1.5 left-[-9px] md:left-auto md:right-[-431px] w-4 h-4 rounded-full bg-secondary ring-4 ring-secondary/10 flex items-center justify-center" />
+                
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-white dark:bg-[#111B30] rounded-2xl p-6 border border-slate-200/60 dark:border-slate-800 shadow-sm"
+                >
+                  <span className="text-[11px] font-bold text-secondary uppercase tracking-widest block mb-2">
+                    Phase 03 / The Synergy (Late 2024)
+                  </span>
+                  <h3 className="text-[18px] font-bold text-[#0F172A] dark:text-white leading-snug">
+                    Bespoke Systems That Perform
+                  </h3>
+                  <p className="mt-3 text-[14px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                    We started launching systems for clients. We built clinic patient booking portals syncing live calendars with Twilio SMS followups that dropped no-show appointments by 22% in the first month. We developed serverless Pine Script execution pipelines running live trades with an average execution latency of 12ms. We bridged CRM databases and invoicing webhooks to save dispatchers 180+ manual spreadsheet hours every week.
+                  </p>
+                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-2 md:justify-end">
+                    <span className="text-[11px] font-semibold text-secondary bg-secondary/5 px-2 py-0.5 rounded">Twilio SMS</span>
+                    <span className="text-[11px] font-semibold text-secondary bg-secondary/5 px-2 py-0.5 rounded">12ms Latency</span>
+                    <span className="text-[11px] font-semibold text-secondary bg-secondary/5 px-2 py-0.5 rounded">n8n Sync Pipelines</span>
+                  </div>
+                </motion.div>
               </div>
+
+              {/* Milestone 4 */}
+              <div className="relative pl-8 md:pl-0 md:w-[420px] md:ml-[20px]">
+                {/* Node Dot */}
+                <div className="absolute top-1.5 left-[-9px] md:left-[-30px] w-4 h-4 rounded-full bg-accent ring-4 ring-accent/10 flex items-center justify-center" />
+                
+                <motion.div
+                  initial={{ opacity: 0, x: 20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-white dark:bg-[#111B30] rounded-2xl p-6 border border-slate-200/60 dark:border-slate-800 shadow-sm"
+                >
+                  <span className="text-[11px] font-bold text-accent uppercase tracking-widest block mb-2">
+                    Phase 04 / The Standard (Present)
+                  </span>
+                  <h3 className="text-[18px] font-bold text-[#0F172A] dark:text-white leading-snug">
+                    NetquoraX - Unifying Sales & Code
+                  </h3>
+                  <p className="mt-3 text-[14px] text-slate-600 dark:text-slate-300 leading-relaxed">
+                    Today, we collaborate directly with early-stage startup owners, quant traders, and operators to design clean, high-performance infrastructure. We replace fragmented workflows with unified products, combining Next.js, customized databases, marketing analytics tracking, and API strategy automation. No agencies, no excuses, just pure execution.
+                  </p>
+                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-2">
+                    <span className="text-[11px] font-semibold text-accent bg-accent/5 px-2 py-0.5 rounded">Startup Scoping</span>
+                    <span className="text-[11px] font-semibold text-accent bg-accent/5 px-2 py-0.5 rounded">Outcome Alignment</span>
+                    <span className="text-[11px] font-semibold text-accent bg-accent/5 px-2 py-0.5 rounded">Infinite Scalability</span>
+                  </div>
+                </motion.div>
+              </div>
+
             </div>
           </div>
         </section>
@@ -261,11 +343,11 @@ export default function AboutPage() {
 
                 <div className="mt-8 pt-6 border-t border-slate-100 space-y-3">
                   <a
-                    href="tel:+18779365117"
+                    href="tel:+918779365117"
                     className="flex items-center gap-2.5 text-[13px] text-slate-500 hover:text-primary transition-colors"
                   >
                     <Phone size={14} />
-                    +1 (877) 936-5117
+                    +91 8779365117
                   </a>
                   <a
                     href="mailto:netquorax@gmail.com"

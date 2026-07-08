@@ -114,8 +114,11 @@ export default function PortfolioPage() {
               <button
                 key={f}
                 onClick={() => setSelectedFilter(f)}
-                className="relative px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-colors cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary"
-                style={{ color: isSelected ? "#FFFFFF" : "#5B6478" }}
+                className={`relative px-4 py-2 rounded-full text-xs font-semibold tracking-wide transition-colors cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary ${
+                  isSelected
+                    ? "text-white"
+                    : "text-[#5B6478] dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                }`}
               >
                 <span className="relative z-10">{f}</span>
                 {isSelected && (

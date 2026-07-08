@@ -12,6 +12,7 @@ const SOLUTIONS = [
     problem: "“We are getting clicks on our ads, but we are too slow to reply. By the time our team follows up, the lead has already gone cold.”",
     fixTitle: "Fast Response & Lead Capture Pipeline",
     fixDesc: "Connect your ad networks directly to a smart qualifier that answers questions instantly and books calls automatically.",
+    imgUrl: "https://images.unsplash.com/photo-1552581230-c01591d3c99a?auto=format&fit=crop&w=600&q=80",
     tags: [
       { name: "Conversational AI Agents", href: "/services" },
       { name: "WhatsApp API Integration", href: "/services" },
@@ -23,6 +24,7 @@ const SOLUTIONS = [
     problem: "“Our team spends half the day copy-pasting data between Google Sheets, our CRM, and invoicing software. We're wasting hours on admin work.”",
     fixTitle: "Unified System Sync",
     fixDesc: "Stitch your administrative tools together with a central database broker so every status update flows automatically.",
+    imgUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
     tags: [
       { name: "Workflow Automation", href: "/services" },
       { name: "SaaS Platforms & Web Apps", href: "/services" }
@@ -33,6 +35,7 @@ const SOLUTIONS = [
     problem: "“Our current website is slow, outdated, and isn't generating qualified calls. It looks like a brochure from 2018.”",
     fixTitle: "High-Performance Web Funnel",
     fixDesc: "Build a custom, fast-loading Next.js site optimized for SEO and conversion layouts that sells before you pick up the phone.",
+    imgUrl: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80",
     tags: [
       { name: "Custom Website Development", href: "/services" },
       { name: "Conversion Optimization (CRO)", href: "/services" }
@@ -43,6 +46,7 @@ const SOLUTIONS = [
     problem: "“I have strategies that work on paper or inside TradingView alerts, but executing them manually is too slow and prone to human errors.”",
     fixTitle: "Webhook Trading Strategy Broker",
     fixDesc: "Convert TradingView indicator alerts directly to API orders executed instantly at the broker exchange.",
+    imgUrl: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=600&q=80",
     tags: [
       { name: "Pine Script Development", href: "/services" },
       { name: "Webhook Auto-Execution", href: "/services" }
@@ -53,6 +57,7 @@ const SOLUTIONS = [
     problem: "“We have a good product, but not enough potential clients know we exist. Our organic traffic is flat.”",
     fixTitle: "Qualified Sales Ad Engine",
     fixDesc: "Launch Meta & Google paid campaigns focused strictly on qualified booking conversions rather than vanity impressions.",
+    imgUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80",
     tags: [
       { name: "Meta & Google Ad Setup", href: "/services" },
       { name: "Conversion Optimization (CRO)", href: "/services" }
@@ -96,29 +101,41 @@ export default function SolutionsPage() {
                 className="grid md:grid-cols-2 gap-10 md:gap-16 items-center min-h-[300px]"
               >
                 {/* Left column: Problem */}
-                <div className={`${isAlt ? "md:order-2" : "md:order-1"} flex flex-col justify-center`}>
-                  <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-500 mb-3">
-                    <HelpCircle size={14} /> The Problem
+                <div className={`${isAlt ? "md:order-2" : "md:order-1"} flex flex-col justify-center space-y-6`}>
+                  <div>
+                    <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-rose-500 mb-3">
+                      <HelpCircle size={14} /> The Problem
+                    </div>
+                    <blockquote className="text-[18px] md:text-[20px] font-medium italic text-slate-700 dark:text-slate-300 leading-relaxed border-l-4 border-rose-500/50 pl-5 py-1">
+                      {sol.problem}
+                    </blockquote>
                   </div>
-                  <blockquote className="text-[20px] md:text-[22px] font-medium italic text-slate-700 leading-relaxed border-l-4 border-rose-500/50 pl-5 py-1">
-                    {sol.problem}
-                  </blockquote>
+
+                  {/* Real internet image visualizer */}
+                  <div className="rounded-2xl overflow-hidden aspect-[16/9] relative border border-slate-200/60 dark:border-slate-850 shadow-sm bg-slate-50">
+                    <img
+                      src={sol.imgUrl}
+                      alt={sol.fixTitle}
+                      className="w-full h-full object-cover hover:scale-[1.02] transition-transform duration-500"
+                      loading="lazy"
+                    />
+                  </div>
                 </div>
 
                 {/* Right column: The Fix */}
-                <div className={`${isAlt ? "md:order-1" : "md:order-2"} flex flex-col justify-center bg-white p-8 md:p-10 rounded-3xl border border-slate-200/60 shadow-sm`}>
+                <div className={`${isAlt ? "md:order-1" : "md:order-2"} flex flex-col justify-center bg-white dark:bg-[#111B30] p-8 md:p-10 rounded-3xl border border-slate-200/60 dark:border-slate-800 shadow-sm`}>
                   <div className="text-xs font-bold uppercase tracking-wider text-[#2563EB] mb-3">
                     ✓ The Fix
                   </div>
-                  <h3 className="font-display text-[22px] md:text-[26px] font-bold text-[#0F172A]">
+                  <h3 className="font-display text-[22px] md:text-[26px] font-bold text-[#0F172A] dark:text-white">
                     {sol.fixTitle}
                   </h3>
-                  <p className="mt-3 text-[15px] text-slate-500 leading-relaxed">
+                  <p className="mt-3 text-[14px] text-slate-500 leading-relaxed">
                     {sol.fixDesc}
                   </p>
 
                   {/* Dynamic linked tags */}
-                  <div className="mt-6 border-t border-slate-100 pt-5">
+                  <div className="mt-6 border-t border-slate-100 dark:border-slate-800/80 pt-5">
                     <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                       Linked Services
                     </span>
@@ -138,7 +155,7 @@ export default function SolutionsPage() {
                   <div className="mt-6 flex justify-start">
                     <Link
                       href={sol.portfolioLink}
-                      className="text-[13px] font-bold text-primary hover:text-slate-900 transition-colors flex items-center gap-1.5"
+                      className="text-[13px] font-bold text-primary hover:text-slate-900 dark:hover:text-white transition-colors flex items-center gap-1.5"
                     >
                       See how this works in action <ArrowRight size={14} />
                     </Link>

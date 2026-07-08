@@ -94,7 +94,7 @@ export default function Footer() {
               </div>
               <div>
                 <span className="block font-bold text-white/80">Moin (Digital Marketer — Sales & Revenues)</span>
-                <a href="tel:+18779365117" className="hover:text-[#2563EB] transition-colors duration-200">+1 (877) 936-5117</a>
+                <a href="tel:+918779365117" className="hover:text-[#2563EB] transition-colors duration-200">+91 8779365117</a>
               </div>
               <div>
                 <span className="block font-bold text-white/80">Email</span>
