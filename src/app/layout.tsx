@@ -34,6 +34,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} scroll-smooth`} suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                var saved = localStorage.getItem("nqx_theme");
+                var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+                if (saved === "dark" || (!saved && prefersDark)) {
+                  document.documentElement.classList.add("dark");
+                } else {
+                  document.documentElement.classList.remove("dark");
+                }
+              })()
+            `,
+          }}
+        />
+      </head>
       <body className="antialiased font-sans bg-[#F8FAFC] text-[#0B1020] min-h-screen">
         <ClientLayout>
           {children}

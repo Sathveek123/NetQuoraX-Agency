@@ -87,33 +87,56 @@ export default function AboutPage() {
 
         {/* OUR STORY / FOUNDERS STORY */}
         <section className="py-16 lg:py-24">
-          <div className="max-w-3xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
+          <div className="grid md:grid-cols-3 gap-12 items-start">
+            <div className="md:col-span-1 md:sticky md:top-28">
               <span className="text-xs font-bold uppercase tracking-[0.18em] text-primary mb-4 block">
-                Our Story
+                The Journey
               </span>
-              <div className="space-y-6 text-[16px] text-slate-600 leading-relaxed">
-                <p>
-                  Before starting NetquoraX, we were entrepreneurs, traders, and builders ourselves. And like most business owners, we hit a massive brick wall early on.
+              <h2 className="font-display text-[28px] md:text-[36px] font-extrabold text-[#0F172A] tracking-tight leading-tight">
+                Our Genesis & Struggles
+              </h2>
+              <p className="mt-4 text-[14px] text-slate-500 leading-relaxed">
+                How two founders fought through fake agencies, scammed software, and lost capital to build a premium engineering house.
+              </p>
+            </div>
+            
+            <div className="md:col-span-2 space-y-12">
+              <div className="border-l-2 border-primary/20 pl-6 space-y-3">
+                <h3 className="text-[18px] font-bold text-[#0F172A]">
+                  01 / The Catalyst: Trapped in False Promises
+                </h3>
+                <p className="text-[15px] text-slate-600 leading-relaxed">
+                  Before launching NetquoraX, we were builders, traders, and founders ourselves. But like many growing businesses, we were held back by fragmented systems and deceptive services. We hired marketing agencies that charged massive premiums but only delivered bots and fake traffic metrics. We bought trading indicators and algorithms that turned out to be scammed, copy-pasted code that failed completely in live market conditions.
                 </p>
-                <p>
-                  We paid external agencies thousands to optimize our marketing, only to get scammed by agencies that generated fake clicks and impressions while our actual conversions remained completely flat. We tried to automate our trading workflows, only to buy scammed strategies and indicators that failed under real-world market volatility. We lost our hard-earned capital, struggled to pay for systems that didn't talk to each other, and watched our business suffer from poor integrations.
-                </p>
-                <p>
-                  <strong>That's when we decided to stop hiring middlemen and build it ourselves.</strong>
-                </p>
-                <p>
-                  <strong>Sathveek</strong> went deep into backend architecture, system automation, and algorithm design — mastering how to code everything from custom Next.js platforms to ultra-low latency webhook strategy controllers. <strong>Moin</strong> mastered conversion rate optimization, Google & Meta campaign engineering, and full-funnel sales metrics to ensure every click translated directly to bottom-line revenue.
-                </p>
-                <p>
-                  NetquoraX was born to be the exact partner we wish we had when we were struggling. We specialize in helping early-stage startup owners, traders, and growing businesses bypass the trial-and-error phase. We build integrated products, setup automated workflows, scale networks, and engineer custom strategies that actually execute.
+                <p className="text-[15px] text-slate-600 leading-relaxed">
+                  We lost our capital, struggled with databases that didn't sync, and watched our leads fall into a black hole because our website didn't connect to our CRM. It was a stressful, expensive lesson in system fragmentation.
                 </p>
               </div>
-            </motion.div>
+
+              <div className="border-l-2 border-secondary/20 pl-6 space-y-3">
+                <h3 className="text-[18px] font-bold text-[#0F172A]">
+                  02 / The Grind: Building the Foundations
+                </h3>
+                <p className="text-[15px] text-slate-600 leading-relaxed">
+                  Out of sheer survival, we fired the agencies, threw away the third-party templates, and decided to learn the engineering from the ground up.
+                </p>
+                <p className="text-[15px] text-slate-600 leading-relaxed">
+                  Sathveek dedicated months to mastering robust full-stack engineering, API synchronization, serverless webhooks, and secure database architecture. He learned Pine Script v5 strategy optimization to build indicators that pass rigorous backtests instead of scamming clients. Moin spent his time auditing conversion loops, setting up official Meta Conversions API tracking, writing high-intent funnel scripts, and structuring advertising pipelines around real sales revenue instead of vanity views.
+                </p>
+              </div>
+
+              <div className="border-l-2 border-accent/20 pl-6 space-y-3">
+                <h3 className="text-[18px] font-bold text-[#0F172A]">
+                  03 / The Standard: A Partnership Model
+                </h3>
+                <p className="text-[15px] text-slate-600 leading-relaxed">
+                  We built NetquoraX to be the standard of honesty we needed back then. We don't deliver a single project and disappear.
+                </p>
+                <p className="text-[15px] text-slate-600 leading-relaxed">
+                  We specialize in collaborating closely with startup owners at early-stage phases to architect unified systems. Whether it is a website, a CRM automation sync, an ads campaign, or an automated trading webhook bot, we build it to scale. Every system we launch is verified, secure, and backed by actual, transparent numbers.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 

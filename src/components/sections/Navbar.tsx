@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import Link from "next/link";
+import { Sun, Moon } from "lucide-react";
 import MagneticWrap from "@/components/ui/MagneticWrap";
 import HamburgerIcon from "@/components/ui/HamburgerIcon";
 import MobileMenu from "@/components/ui/MobileMenu";
@@ -22,6 +23,23 @@ export default function Navbar() {
   const [solid, setSolid] = useState(false);
   const [visible, setVisible] = useState(true);
   const [logoHovered, setLogoHovered] = useState(false);
+  const [theme, setTheme] = useState<"light" | "dark">("light");
+
+  useEffect(() => {
+    const isDark = document.documentElement.classList.contains("dark");
+    setTheme(isDark ? "dark" : "light");
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === "light" ? "dark" : "light";
+    setTheme(next);
+    localStorage.setItem("nqx_theme", next);
+    if (next === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  };
 
   const lastScrollY = useRef(0);
   const { scrollY } = useScroll();
@@ -140,6 +158,15 @@ export default function Navbar() {
 
           {/* ZONE 3 - CTA / HAMBURGER */}
           <div className="flex items-center gap-4">
+            {/* Dark Mode Toggle */}
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle Theme"
+              className="w-10 h-10 rounded-full border border-slate-200 dark:border-slate-800 flex items-center justify-center text-ink hover:bg-slate-100 dark:hover:bg-slate-800 transition-all cursor-none outline-none"
+            >
+              {theme === "light" ? <Moon size={18} /> : <Sun size={18} />}
+            </button>
+
             {/* CTA Button (Desktop) */}
             <div className="hidden lg:block">
               <MagneticWrap>
