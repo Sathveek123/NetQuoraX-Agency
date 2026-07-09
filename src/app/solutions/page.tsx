@@ -67,6 +67,14 @@ const SOLUTIONS = [
 ];
 
 export default function SolutionsPage() {
+  React.useEffect(() => {
+    document.title = "Targeted Solutions | NetQuorax";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute("content", "Discover customized technical solutions built to address your specific operational, automation, and trading bottlenecks.");
+    }
+  }, []);
+
   return (
     <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen">
       <Navbar />

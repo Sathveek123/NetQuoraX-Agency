@@ -347,6 +347,15 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
               ))}
             </div>
 
+            {/* Trading Risk Disclaimer inline */}
+            {(project.category === "Trading Systems" || project.slug === "nifty-bot" || project.slug === "signal-engine") && (
+              <div className="mt-8 mb-12 p-5 bg-slate-100 dark:bg-[#111827] border border-slate-200/50 dark:border-slate-800 rounded-2xl">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 leading-relaxed">
+                  <strong>Risk Disclosure:</strong> Trading involves substantial risk of loss and is not suitable for all investors. Backtested and historical performance results (including the 64% win rate score shown above) do not guarantee future results. NetQuorax builds and delivers trading system logic as a technology product service; we are not a registered investment advisor or broker-dealer, and nothing here constitutes financial advice. Clients are solely responsible for regulatory compliance in their jurisdiction.
+                </p>
+              </div>
+            )}
+
             {/* Testimonial */}
             {caseStudy.testimonial && (
               <motion.div

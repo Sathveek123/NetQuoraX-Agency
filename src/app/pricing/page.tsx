@@ -94,6 +94,14 @@ const FAQ_ITEMS = [
 ];
 
 export default function PricingPage() {
+  React.useEffect(() => {
+    document.title = "Project Pricing & Packages | NetQuorax";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute("content", "Get transparent fixed pricing details and delivery ranges for workflow automation, custom Pine Script indicators, and web builds.");
+    }
+  }, []);
+
   return (
     <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen">
       <Navbar />

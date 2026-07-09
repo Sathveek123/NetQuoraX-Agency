@@ -47,6 +47,14 @@ const PRINCIPLES = [
 ];
 
 export default function AboutPage() {
+  React.useEffect(() => {
+    document.title = "Our Story & Core Team | NetQuorax";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute("content", "Learn about the struggles that drove Sathveek and Moin to build a premium, transparent technical engineering house.");
+    }
+  }, []);
+
   return (
     <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen">
       <Navbar />
@@ -299,18 +307,11 @@ export default function AboutPage() {
 
                 <div className="mt-8 pt-6 border-t border-slate-100 space-y-3">
                   <a
-                    href="tel:+919441782469"
-                    className="flex items-center gap-2.5 text-[13px] text-slate-500 hover:text-primary transition-colors"
-                  >
-                    <Phone size={14} />
-                    +91 9441782469
-                  </a>
-                  <a
-                    href="mailto:netquorax@gmail.com"
+                    href="mailto:hello@netquorax.com"
                     className="flex items-center gap-2.5 text-[13px] text-slate-500 hover:text-primary transition-colors"
                   >
                     <Mail size={14} />
-                    netquorax@gmail.com
+                    hello@netquorax.com
                   </a>
                 </div>
               </motion.div>
@@ -343,18 +344,11 @@ export default function AboutPage() {
 
                 <div className="mt-8 pt-6 border-t border-slate-100 space-y-3">
                   <a
-                    href="tel:+918779365117"
-                    className="flex items-center gap-2.5 text-[13px] text-slate-500 hover:text-primary transition-colors"
-                  >
-                    <Phone size={14} />
-                    +91 8779365117
-                  </a>
-                  <a
-                    href="mailto:netquorax@gmail.com"
+                    href="mailto:hello@netquorax.com"
                     className="flex items-center gap-2.5 text-[13px] text-slate-500 hover:text-primary transition-colors"
                   >
                     <Mail size={14} />
-                    netquorax@gmail.com
+                    hello@netquorax.com
                   </a>
                 </div>
               </motion.div>

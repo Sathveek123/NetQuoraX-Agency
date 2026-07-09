@@ -108,6 +108,11 @@ export default function TradingShowcase() {
                 <ArrowRight size={16} className="transition-transform group-hover:translate-x-1 duration-200" />
               </a>
             </motion.div>
+
+            {/* Trading Risk Disclosure inline */}
+            <motion.p variants={headerItem} className="mt-6 text-[11px] text-[#0B1020]/45 dark:text-white/40 leading-relaxed max-w-[480px]">
+              <strong>Risk Disclosure:</strong> Trading involves substantial risk of loss. Backtested and historical performance results (68% win rate shown) do not guarantee future results. NetQuorax builds and delivers trading system logic as a technology product service; we are not a registered investment advisor, and nothing here constitutes financial advice.
+            </motion.p>
           </motion.div>
 
           {/* ── DASHBOARD MOCKUP ── */}

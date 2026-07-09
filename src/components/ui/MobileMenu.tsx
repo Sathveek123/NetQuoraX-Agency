@@ -186,10 +186,10 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
               className="mt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 text-white/50 text-xs font-semibold uppercase tracking-wider"
             >
               <a
-                href="mailto:netquorax@gmail.com"
+                href="mailto:hello@netquorax.com"
                 className="hover:text-white transition-colors outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1 cursor-none"
               >
-                netquorax@gmail.com
+                hello@netquorax.com
               </a>
               <div className="flex gap-4">
                 <a

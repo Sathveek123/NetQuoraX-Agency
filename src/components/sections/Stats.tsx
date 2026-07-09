@@ -19,12 +19,13 @@ const STATS: StatItem[] = [
 ];
 
 function CountUp({ value, suffix, prefix = "", delay, trigger }: StatItem & { trigger: boolean }) {
-  const [display, setDisplay] = useState(0);
+  const [display, setDisplay] = useState(value);
   const hasRun = useRef(false);
 
   useEffect(() => {
     if (!trigger || hasRun.current) return;
     hasRun.current = true;
+    setDisplay(0);
     const timer = setTimeout(() => {
       const ctrl = animate(0, value, {
         duration: 1.5,

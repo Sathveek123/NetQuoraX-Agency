@@ -58,11 +58,10 @@ export default function SplashScreen({ onComplete, onUnmount }: SplashScreenProp
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = "100%";
 
-    // Start counter linear progression
+    // Start counter linear progression immediately on mount
     const animControls = animate(countVal, 100, {
-      duration: 1.6,
-      ease: "linear",
-      delay: 1.6,
+      duration: 3.2,
+      ease: "easeInOut",
       onUpdate: (latest) => {
         setPercent(Math.round(latest));
       }
@@ -286,7 +285,7 @@ export default function SplashScreen({ onComplete, onUnmount }: SplashScreenProp
                   className="h-full bg-gradient-to-r from-primary via-secondary to-accent rounded-full"
                   initial={{ width: "0%" }}
                   animate={{ width: "100%" }}
-                  transition={{ duration: 1.6, ease: "linear", delay: 1.6 }}
+                  transition={{ duration: 3.2, ease: "easeInOut" }}
                 />
               </div>
               <div className="absolute right-0 top-[-22px]">

@@ -8,6 +8,14 @@ import Link from "next/link";
 import { Mail, Phone, Calendar, CheckCircle2, Loader2, Send } from "lucide-react";
 
 export default function ContactPage() {
+  React.useEffect(() => {
+    document.title = "Contact Our Team | NetQuorax";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute("content", "Get a fixed scope quote and delivery timeline for your next automation, web backend, or trading project.");
+    }
+  }, []);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -374,21 +382,20 @@ export default function ContactPage() {
                 </h3>
                 <div className="space-y-4">
                   <a
-                    href="mailto:netquorax@gmail.com"
+                    href="mailto:hello@netquorax.com"
                     className="flex items-center gap-3 text-[15px] text-slate-600 hover:text-primary transition-colors"
                   >
                     <Mail size={20} className="text-slate-400" />
-                    netquorax@gmail.com
+                    hello@netquorax.com (General inquiries)
+                  </a>
+                  <a
+                    href="mailto:support@netquorax.com"
+                    className="flex items-center gap-3 text-[15px] text-slate-600 hover:text-primary transition-colors"
+                  >
+                    <Mail size={20} className="text-slate-400" />
+                    support@netquorax.com (Client support)
                   </a>
                   <div className="flex flex-col gap-3 pt-2 text-[14px] text-slate-600 border-t border-slate-100">
-                    <div>
-                      <span className="block font-bold text-slate-700">Sathveek (Developer — All Services)</span>
-                      <a href="tel:+919441782469" className="hover:text-primary transition-colors">+91 9441782469</a>
-                    </div>
-                    <div>
-                      <span className="block font-bold text-slate-700">Moin (Digital Marketer — Sales & Revenues)</span>
-                      <a href="tel:+918779365117" className="hover:text-primary transition-colors">+91 8779365117</a>
-                    </div>
                     <div>
                       <span className="block font-bold text-slate-700">Instagram</span>
                       <a

@@ -6,9 +6,10 @@ import MagneticWrap from "@/components/ui/MagneticWrap";
 
 // Numerical count-up helper
 function StatCounter({ value, suffix, delay }: { value: number; suffix: string; delay: number }) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(value);
 
   useEffect(() => {
+    setCount(0);
     const timer = setTimeout(() => {
       const anim = animate(0, value, {
         duration: 1.2,
@@ -183,7 +184,7 @@ export default function Hero() {
               transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" as const }}
               className="w-1.5 h-1.5 rounded-full bg-[#2563EB]"
             />
-            Digital Growth Partner
+            Automation &middot; AI Systems &middot; Trading Infrastructure
           </motion.div>
 
           {/* H1 — Word Stagger */}
@@ -193,13 +194,13 @@ export default function Hero() {
             variants={h1ContainerVariants}
             className="font-display text-[44px] md:text-[56px] lg:text-[72px] leading-[1.08] font-extrabold tracking-tight text-[#0B1020]"
           >
-            {"Helping Businesses".split(" ").map((word, i) => (
+            {["Automation", "&"].map((word, i) => (
               <span key={`line1-${i}`} className="inline-block mr-[0.22em]">
                 <motion.span variants={h1WordVariants} className="inline-block">{word}</motion.span>
               </span>
             ))}
             <br />
-            {["Automate,", "Scale"].map((word, i) => (
+            {["AI", "Systems"].map((word, i) => (
               <span key={`line2-${i}`} className="inline-block mr-[0.22em]">
                 <motion.span
                   variants={h1WordVariants}
@@ -211,7 +212,7 @@ export default function Hero() {
               </span>
             ))}
             <br />
-            {"& Grow Faster.".split(" ").map((word, i) => (
+            {"for Teams Who Ship".split(" ").map((word, i) => (
               <span key={`line3-${i}`} className="inline-block mr-[0.22em]">
                 <motion.span variants={h1WordVariants} className="inline-block">{word}</motion.span>
               </span>
@@ -225,8 +226,7 @@ export default function Hero() {
             transition={{ duration: 0.4, delay: 0.35, ease: "easeOut" as const }}
             className="mt-6 text-[18px] leading-[1.6] text-[#0B1020]/65 max-w-[480px] font-normal"
           >
-            We build websites, apps, AI automation, trading systems and growth campaigns
-            that move real business numbers.
+            We build the trading logic, backend automation, and AI pipelines that run quietly in the background so your team doesn't have to babysit them.
           </motion.p>
 
           {/* CTA Row */}

@@ -78,6 +78,7 @@ const FILTERS = ["All", "Websites", "Apps", "AI & Automation", "Trading Systems"
 
 export default function PortfolioPage() {
   const [selectedFilter, setSelectedFilter] = useState("All");
+  const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
   const filteredProjects = selectedFilter === "All"
     ? PROJECTS
@@ -151,6 +152,12 @@ export default function PortfolioPage() {
                 >
                   <Link
                     href={`/portfolio/${p.slug}`}
+                    onClick={(e) => {
+                      if (window.matchMedia("(max-width: 768px)").matches && activeSlug !== p.slug) {
+                        e.preventDefault();
+                        setActiveSlug(p.slug);
+                      }
+                    }}
                     className="group block relative rounded-[24px] overflow-hidden bg-white border border-slate-200/60 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all select-none cursor-none"
                   >
                     {/* Visual Area */}
@@ -158,8 +165,10 @@ export default function PortfolioPage() {
                       className="relative h-[240px] flex items-center justify-center p-8 text-white relative overflow-hidden"
                       style={{ background: p.bgGrad }}
                     >
-                      {/* Metric Display Overlay on Hover */}
-                      <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-6 z-20">
+                      {/* Metric Display Overlay on Hover/Tap */}
+                      <div className={`absolute inset-0 bg-black/60 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-6 z-20 ${
+                        activeSlug === p.slug ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                      }`}>
                         <span className="text-[44px] font-extrabold tracking-tight text-white block transform translate-y-3 group-hover:translate-y-0 transition-transform duration-300">
                           {p.metric}
                         </span>
@@ -222,6 +231,13 @@ export default function PortfolioPage() {
             </Link>
           </div>
         </section>
+
+        {/* Trading Risk Disclaimer inline */}
+        <div className="mt-8 mb-16 pt-6 border-t border-slate-200/50">
+          <p className="text-[11px] text-slate-400 leading-relaxed">
+            <strong>Risk Disclosure:</strong> Trading involves substantial risk of loss and is not suitable for all investors. Backtested and historical performance results (including the 64% win rate score shown above for Nifty Futures) do not guarantee future results. NetQuorax builds and delivers trading system logic as a technology product service; we are not a registered investment advisor or broker-dealer, and nothing here constitutes financial advice. Clients are solely responsible for regulatory compliance in their jurisdiction.
+          </p>
+        </div>
       </main>
 
       <Footer />

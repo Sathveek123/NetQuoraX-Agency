@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import RepelCard from "@/components/ui/RepelCard";
@@ -160,9 +160,12 @@ function PhoneFrame({ accent }: { accent: string }) {
 
 // ── Card ──────────────────────────────────────────────────────────────────────
 function PortfolioCard({ project }: { project: Project }) {
+  const [clicked, setClicked] = useState(false);
+
   return (
     <RepelCard strength={20} stiffness={180} damping={20}>
       <motion.article
+        onClick={() => setClicked(!clicked)}
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -187,12 +190,14 @@ function PortfolioCard({ project }: { project: Project }) {
           }
         </motion.div>
 
-        {/* Hover overlay — metrics */}
+        {/* Hover/Tap overlay — metrics */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
+          animate={clicked ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
           whileHover={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
-          className="absolute inset-0 flex flex-col items-center justify-center gap-4"
+          className={`absolute inset-0 flex flex-col items-center justify-center gap-4 transition-all duration-300 ${
+            clicked ? "pointer-events-auto" : "pointer-events-none group-hover:pointer-events-auto"
+          }`}
           style={{ background: "rgba(11,16,32,0.82)", backdropFilter: "blur(4px)" }}
         >
           <div className="flex items-center gap-6">
@@ -281,6 +286,13 @@ export default function Portfolio() {
           {PROJECTS.map((p) => (
             <PortfolioCard key={p.slug} project={p} />
           ))}
+        </div>
+
+        {/* Trading Risk Disclaimer inline */}
+        <div className="mt-12 pt-6 border-t border-slate-100 dark:border-slate-800">
+          <p className="text-[11px] text-[#0B1020]/45 dark:text-white/40 leading-relaxed">
+            <strong>Risk Disclosure:</strong> Trading involves substantial risk of loss and is not suitable for all investors. Backtested and historical performance results (including the 64% win rate shown above for Kestrel) do not guarantee future results. NetQuorax builds and delivers trading system logic as a technology product service; we are not a registered investment advisor or broker-dealer, and nothing here constitutes financial advice. Clients are solely responsible for regulatory compliance in their jurisdiction.
+          </p>
         </div>
 
       </div>

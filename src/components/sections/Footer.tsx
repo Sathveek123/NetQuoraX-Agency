@@ -24,7 +24,7 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const SOCIAL = [
   { Icon: InstagramIcon, href: "https://www.instagram.com/netquorax?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
   { Icon: Globe, href: "https://linkedin.com", label: "LinkedIn" },
-  { Icon: Mail, href: "mailto:netquorax@gmail.com", label: "Email" },
+  { Icon: Mail, href: "mailto:hello@netquorax.com", label: "Email" },
 ];
 
 const LINKS = [
@@ -89,16 +89,16 @@ export default function Footer() {
             {/* Direct Contacts */}
             <div className="mt-6 space-y-3 text-[13px] text-white/60">
               <div>
-                <span className="block font-bold text-white/80">Sathveek (Developer — All Services)</span>
-                <a href="tel:+919441782469" className="hover:text-[#2563EB] transition-colors duration-200">+91 9441782469</a>
+                <span className="block font-bold text-white/80">General Inquiries</span>
+                <a href="mailto:hello@netquorax.com" className="hover:text-[#2563EB] transition-colors duration-200">hello@netquorax.com</a>
               </div>
               <div>
-                <span className="block font-bold text-white/80">Moin (Digital Marketer — Sales & Revenues)</span>
-                <a href="tel:+918779365117" className="hover:text-[#2563EB] transition-colors duration-200">+91 8779365117</a>
+                <span className="block font-bold text-white/80">Client Support</span>
+                <a href="mailto:support@netquorax.com" className="hover:text-[#2563EB] transition-colors duration-200">support@netquorax.com</a>
               </div>
               <div>
-                <span className="block font-bold text-white/80">Email</span>
-                <a href="mailto:netquorax@gmail.com" className="hover:text-[#2563EB] transition-colors duration-200">netquorax@gmail.com</a>
+                <span className="block font-bold text-white/80">Strategy & Booking</span>
+                <Link href="/contact" className="hover:text-[#2563EB] transition-colors duration-200">Book a Scoping Call &rarr;</Link>
               </div>
             </div>
 
@@ -146,10 +146,12 @@ export default function Footer() {
           <p className="text-[13px] text-white/40">
             © {new Date().getFullYear()} NetquoraX. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-[13px] text-white/40">
-            <a href="#" className="hover:text-white/70 transition-colors">Privacy Policy</a>
+          <div className="flex flex-wrap items-center gap-3 text-[13px] text-white/40">
+            <Link href="/privacy" className="hover:text-white/70 transition-colors">Privacy Policy</Link>
             <span className="text-white/20">·</span>
-            <a href="#" className="hover:text-white/70 transition-colors">Terms of Service</a>
+            <Link href="/terms" className="hover:text-white/70 transition-colors">Terms of Service</Link>
+            <span className="text-white/20">·</span>
+            <Link href="/risk-disclosure" className="hover:text-white/70 transition-colors">Risk Disclosure</Link>
           </div>
         </div>
 

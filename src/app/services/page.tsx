@@ -107,6 +107,14 @@ const CATEGORIES = [
 ];
 
 export default function ServicesPage() {
+  React.useEffect(() => {
+    document.title = "Services & Capabilities | NetQuorax";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute("content", "Explore our high-performance technical engineering services including websites, automated workflows, and TradingView Pine Script execution bots.");
+    }
+  }, []);
+
   return (
     <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen">
       <Navbar />
