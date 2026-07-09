@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import MagneticWrap from "@/components/ui/MagneticWrap";
-import Image from "next/image";
+import HeroCarousel from "@/components/ui/HeroCarousel";
 
 // Shared easing curve
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -197,32 +197,16 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* ── RIGHT: VISUAL COLUMN (40% width equivalent) ── */}
         <div className="lg:col-span-5 flex justify-center items-center relative w-full mt-10 lg:mt-0 z-20">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: EASE, delay: 0.2 }}
-            className="relative w-full max-w-[420px] select-none"
+            className="relative w-full max-w-[440px] select-none"
           >
-            {/* Ambient Background Glow behind the illustration */}
-            <div className="absolute inset-0 bg-[#2563EB]/8 blur-[100px] rounded-full scale-90 -z-10" />
-
-            {/* Asynchronous Oscillation Floating Container */}
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 5.2, ease: "easeInOut", repeat: Infinity }}
-              className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/60 dark:border-slate-800"
-            >
-              <Image
-                src="/images/signal-engine-dashboard.png"
-                alt="NetquoraX Signal Engine — Live BTC/USD trading dashboard with AI buy/sell signals"
-                width={500}
-                height={340}
-                priority
-                className="w-full h-auto object-cover rounded-3xl"
-              />
-            </motion.div>
+            {/* Ambient glow */}
+            <div className="absolute inset-0 bg-[#2563EB]/8 blur-[80px] rounded-full scale-90 -z-10" />
+            <HeroCarousel />
           </motion.div>
         </div>
 
