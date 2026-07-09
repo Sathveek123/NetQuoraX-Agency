@@ -196,8 +196,7 @@ export default function Industries() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="relative min-h-[360px] rounded-[28px] p-8 md:p-12 overflow-hidden"
-            style={{ background: "#F8FAFC", border: "1px solid rgba(11,16,32,0.06)" }}
+            className="relative min-h-[360px] rounded-[28px] p-8 md:p-12 overflow-hidden bg-[#F8FAFC] dark:bg-[#111B30] border border-slate-200/60 dark:border-slate-800"
           >
             {/* Per-industry tint bg */}
             <div
