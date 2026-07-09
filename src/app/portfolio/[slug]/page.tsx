@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { use } from "react";
 import { motion } from "framer-motion";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
@@ -168,9 +168,11 @@ const CASE_STUDIES: Record<string, {
   }
 };
 
-export default function CaseStudyPage({ params }: { params: { slug: string } }) {
-  const project = PROJECTS.find((p) => p.slug === params.slug);
-  const caseStudy = CASE_STUDIES[params.slug];
+export default function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const unwrappedParams = use(params);
+  const slug = unwrappedParams.slug;
+  const project = PROJECTS.find((p) => p.slug === slug);
+  const caseStudy = CASE_STUDIES[slug];
 
   if (!project || !caseStudy) {
     return (
@@ -188,7 +190,7 @@ export default function CaseStudyPage({ params }: { params: { slug: string } }) 
   }
 
   // Find next project for navigation
-  const currentIndex = PROJECTS.findIndex((p) => p.slug === params.slug);
+  const currentIndex = PROJECTS.findIndex((p) => p.slug === slug);
   const nextProject = PROJECTS[(currentIndex + 1) % PROJECTS.length];
 
   return (
