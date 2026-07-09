@@ -342,6 +342,12 @@ h1, h2, h3, h4, .display {
 .dark .text-\[\#0B1020\]\/75 {
   color: rgba(248, 250, 252, 0.8) !important;
 }
+.dark .text-\[\#4b5563\] {
+  color: var(--muted) !important;
+}
+.dark .text-\[\#374151\] {
+  color: var(--muted) !important;
+}
 .dark .text-slate-900 {
   color: var(--ink) !important;
 }
@@ -362,11 +368,20 @@ h1, h2, h3, h4, .display {
 }
 
 /* Card & Border overrides */
+.dark .border-slate-100 {
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
 .dark .border-slate-200 {
   border-color: rgba(255, 255, 255, 0.08) !important;
 }
 .dark .border-slate-200\/60 {
   border-color: rgba(255, 255, 255, 0.08) !important;
+}
+.dark .border-slate-300 {
+  border-color: rgba(255, 255, 255, 0.2) !important;
+}
+.dark .hover\:border-slate-200:hover {
+  border-color: rgba(255, 255, 255, 0.15) !important;
 }
 .dark .border-\[rgba\(11\,16\,32\,0\.1\)\] {
   border-color: rgba(255, 255, 255, 0.08) !important;
