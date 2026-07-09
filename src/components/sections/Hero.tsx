@@ -123,7 +123,8 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.35, ease: "easeOut" }}
             className="text-[18px] leading-[1.6] text-[#4b5563] max-w-[480px] font-normal"
           >
-            We build the trading logic, backend automation, and AI pipelines that run quietly in the background so your team doesn't have to babysit them.
+          We build websites, apps, AI automation, trading systems and growth
+            campaigns that move real business numbers.
           </motion.p>
 
           {/* CTA Row */}
@@ -214,10 +215,10 @@ export default function Hero() {
               className="relative rounded-3xl overflow-hidden shadow-2xl border border-slate-200/60 dark:border-slate-800"
             >
               <Image
-                src="/images/hero-premium-dashboard.png"
-                alt="NetQuoraX Premium System Dashboard Mockup"
-                width={420}
-                height={420}
+                src="/images/signal-engine-dashboard.png"
+                alt="NetquoraX Signal Engine — Live BTC/USD trading dashboard with AI buy/sell signals"
+                width={500}
+                height={340}
                 priority
                 className="w-full h-auto object-cover rounded-3xl"
               />
