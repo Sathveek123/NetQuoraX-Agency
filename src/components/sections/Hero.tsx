@@ -50,10 +50,10 @@ export default function Hero() {
         }}
       />
 
-      <div className="max-w-[1280px] w-full mx-auto px-4 md:px-6 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+      <div className="max-w-[1280px] w-full mx-auto px-4 md:px-6 relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
         
         {/* ── LEFT: TEXT COLUMN (60% width equivalent) ── */}
-        <div className="lg:col-span-7 flex flex-col items-start pr-0 lg:pr-6 text-left">
+        <div className="lg:col-span-1 flex flex-col items-start pr-0 lg:pr-4 text-left">
           
           {/* Eyebrow Pill with Pulsing Live Dot */}
           <motion.div
@@ -78,7 +78,7 @@ export default function Hero() {
               variants={lineVariants}
               className="block"
             >
-              Automation &
+              We Help Businesses
             </motion.span>
             
             <motion.span
@@ -88,7 +88,7 @@ export default function Hero() {
               variants={lineVariants}
               className="block shimmer-text font-extrabold"
             >
-              AI Systems
+              Automate, Scale
             </motion.span>
             
             <motion.span
@@ -98,7 +98,7 @@ export default function Hero() {
               variants={lineVariants}
               className="block"
             >
-              for Teams Who Ship
+              &amp; Grow
             </motion.span>
           </h1>
 
@@ -123,8 +123,7 @@ export default function Hero() {
             transition={{ duration: 0.5, delay: 0.35, ease: "easeOut" }}
             className="text-[18px] leading-[1.6] text-[#4b5563] max-w-[480px] font-normal"
           >
-          We build websites, apps, AI automation, trading systems and growth
-            campaigns that move real business numbers.
+          We build the automation, AI, and trading systems that help startups and businesses grow faster — without the manual grind.
           </motion.p>
 
           {/* CTA Row */}
@@ -197,12 +196,12 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        <div className="lg:col-span-5 flex justify-center items-center relative w-full mt-10 lg:mt-0 z-20">
+        <div className="lg:col-span-1 flex justify-center items-center relative w-full mt-10 lg:mt-0 z-20">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: EASE, delay: 0.2 }}
-            className="relative w-full max-w-[440px] select-none"
+            className="relative w-full max-w-[640px] select-none"
           >
             {/* Ambient glow */}
             <div className="absolute inset-0 bg-[#2563EB]/8 blur-[80px] rounded-full scale-90 -z-10" />

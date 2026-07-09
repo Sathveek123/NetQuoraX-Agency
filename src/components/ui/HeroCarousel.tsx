@@ -59,7 +59,7 @@ function SlideFrame({ header, footer, children, sidebar }: {
       </div>
       {/* Footer */}
       <div className="px-3.5 py-2 border-t border-white/8">
-        <p className="text-[8.5px] leading-tight" style={{ color: MUTED }}>{footer}</p>
+        <p className="text-[8px] leading-tight pr-5 truncate" style={{ color: MUTED }}>{footer}</p>
       </div>
     </div>
   );
