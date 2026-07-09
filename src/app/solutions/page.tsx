@@ -12,7 +12,7 @@ const SOLUTIONS = [
     problem: "“We are getting clicks on our ads, but we are too slow to reply. By the time our team follows up, the lead has already gone cold.”",
     fixTitle: "Fast Response & Lead Capture Pipeline",
     fixDesc: "Connect your ad networks directly to a smart qualifier that answers questions instantly and books calls automatically.",
-    imgUrl: "https://images.unsplash.com/photo-1552581230-c01591d3c99a?auto=format&fit=crop&w=600&q=80",
+    imgUrl: "/images/team-collab.png",
     tags: [
       { name: "Conversational AI Agents", href: "/services" },
       { name: "WhatsApp API Integration", href: "/services" },
@@ -24,7 +24,7 @@ const SOLUTIONS = [
     problem: "“Our team spends half the day copy-pasting data between Google Sheets, our CRM, and invoicing software. We're wasting hours on admin work.”",
     fixTitle: "Unified System Sync",
     fixDesc: "Stitch your administrative tools together with a central database broker so every status update flows automatically.",
-    imgUrl: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=600&q=80",
+    imgUrl: "/images/ai-automation.png",
     tags: [
       { name: "Workflow Automation", href: "/services" },
       { name: "SaaS Platforms & Web Apps", href: "/services" }
@@ -35,7 +35,7 @@ const SOLUTIONS = [
     problem: "“Our current website is slow, outdated, and isn't generating qualified calls. It looks like a brochure from 2018.”",
     fixTitle: "High-Performance Web Funnel",
     fixDesc: "Build a custom, fast-loading Next.js site optimized for SEO and conversion layouts that sells before you pick up the phone.",
-    imgUrl: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=600&q=80",
+    imgUrl: "/images/dashboard-mockup.png",
     tags: [
       { name: "Custom Website Development", href: "/services" },
       { name: "Conversion Optimization (CRO)", href: "/services" }
@@ -46,7 +46,7 @@ const SOLUTIONS = [
     problem: "“I have strategies that work on paper or inside TradingView alerts, but executing them manually is too slow and prone to human errors.”",
     fixTitle: "Webhook Trading Strategy Broker",
     fixDesc: "Convert TradingView indicator alerts directly to API orders executed instantly at the broker exchange.",
-    imgUrl: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=600&q=80",
+    imgUrl: "/images/trading-desk.png",
     tags: [
       { name: "Pine Script Development", href: "/services" },
       { name: "Webhook Auto-Execution", href: "/services" }
@@ -57,7 +57,7 @@ const SOLUTIONS = [
     problem: "“We have a good product, but not enough potential clients know we exist. Our organic traffic is flat.”",
     fixTitle: "Qualified Sales Ad Engine",
     fixDesc: "Launch Meta & Google paid campaigns focused strictly on qualified booking conversions rather than vanity impressions.",
-    imgUrl: "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=600&q=80",
+    imgUrl: "/images/marketing-dashboard.png",
     tags: [
       { name: "Meta & Google Ad Setup", href: "/services" },
       { name: "Conversion Optimization (CRO)", href: "/services" }

@@ -13,7 +13,7 @@ const CATEGORIES = [
     title: "Websites & Digital Products",
     desc: "Premium, responsive web experiences designed to engage and convert.",
     icon: Code,
-    imgUrl: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80",
+    imgUrl: "/images/dashboard-mockup.png",
     services: [
       {
         title: "Custom Website Development",
@@ -40,7 +40,7 @@ const CATEGORIES = [
     title: "Intelligent Workflows & Agents",
     desc: "Automate administrative overhead, qualify leads instantly, and save hundreds of manual hours.",
     icon: Cpu,
-    imgUrl: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80",
+    imgUrl: "/images/ai-automation.png",
     services: [
       {
         title: "Workflow Automation",
@@ -67,7 +67,7 @@ const CATEGORIES = [
     title: "Automated Strategy Engineering",
     desc: "Custom indicator scripts, strategy backtesters, and trading bot executions built to your rules.",
     icon: LineChart,
-    imgUrl: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=600&q=80",
+    imgUrl: "/images/trading-desk.png",
     services: [
       {
         title: "Pine Script Development",
@@ -88,7 +88,7 @@ const CATEGORIES = [
     title: "Paid Ads & Conversion Funnels",
     desc: "Drive qualified traffic, optimize landing conversion pages, and scale ROI metrics.",
     icon: Sparkles,
-    imgUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80",
+    imgUrl: "/images/marketing-dashboard.png",
     services: [
       {
         title: "Meta & Google Ad Setup",

@@ -23,8 +23,8 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const SOCIAL = [
   { Icon: InstagramIcon, href: "https://www.instagram.com/netquorax?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
-  { Icon: Globe,         href: "https://linkedin.com", label: "LinkedIn"  },
-  { Icon: Mail,          href: "mailto:netquorax@gmail.com", label: "Email" },
+  { Icon: Globe, href: "https://linkedin.com", label: "LinkedIn" },
+  { Icon: Mail, href: "mailto:netquorax@gmail.com", label: "Email" },
 ];
 
 const LINKS = [
@@ -32,27 +32,27 @@ const LINKS = [
     heading: "Services",
     items: [
       { label: "Website Development", href: "/services" },
-      { label: "AI & Automation",     href: "/services" },
-      { label: "Trading Systems",     href: "/services" },
-      { label: "Digital Marketing",   href: "/services" },
+      { label: "AI & Automation", href: "/services" },
+      { label: "Trading Systems", href: "/services" },
+      { label: "Digital Marketing", href: "/services" },
     ],
   },
   {
     heading: "Solutions",
     items: [
-      { label: "Startups",   href: "/solutions" },
+      { label: "Startups", href: "/solutions" },
       { label: "Healthcare", href: "/solutions" },
-      { label: "Finance",    href: "/solutions" },
-      { label: "Ecommerce",  href: "/solutions" },
+      { label: "Finance", href: "/solutions" },
+      { label: "Ecommerce", href: "/solutions" },
     ],
   },
   {
     heading: "Company",
     items: [
-      { label: "Our Story",   href: "/about"     },
-      { label: "Portfolio",   href: "/portfolio" },
-      { label: "Pricing",     href: "/pricing"   },
-      { label: "Contact Us",  href: "/contact"   },
+      { label: "Our Story", href: "/about" },
+      { label: "Portfolio", href: "/portfolio" },
+      { label: "Pricing", href: "/pricing" },
+      { label: "Contact Us", href: "/contact" },
     ],
   },
 ];
