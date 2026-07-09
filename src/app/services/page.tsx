@@ -11,6 +11,7 @@ import {
   Brain, Megaphone, Search, Funnel, Mail, Layers, ArrowUpRight,
   CheckCircle, ArrowRight
 } from "lucide-react";
+import HeroCarousel from "@/components/ui/HeroCarousel";
 
 // ─── Types ───────────────────────────────────────────────────────────────
 interface Service {
@@ -356,32 +357,44 @@ export default function ServicesPage() {
             <svg width="100%" height="100%"><defs><pattern id="sg" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#0B1020" /></pattern></defs><rect width="100%" height="100%" fill="url(#sg)" /></svg>
           </div>
           <div className="max-w-[1280px] mx-auto px-4 md:px-6 relative z-10">
-            <div className="max-w-[640px]">
-              <div className="inline-flex items-center gap-2 bg-[#2563EB]/6 border border-[#2563EB]/20 rounded-full px-4 py-1.5 text-xs font-bold text-[#2563EB] mb-6 uppercase tracking-wider">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-pulse" />
-                Full-Stack Digital Partner
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center">
+              {/* Left Column - Content */}
+              <div className="flex flex-col items-start pr-0 lg:pr-4 text-left">
+                <div className="inline-flex items-center gap-2 bg-[#2563EB]/6 border border-[#2563EB]/20 rounded-full px-4 py-1.5 text-xs font-bold text-[#2563EB] mb-6 uppercase tracking-wider">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-pulse" />
+                  Full-Stack Digital Partner
+                </div>
+                <h1 className="font-display text-[38px] sm:text-[52px] font-extrabold leading-[1.07] tracking-tight text-[#0B1020] dark:text-white mb-5">
+                  Automate, Scale & Grow —<br />
+                  <span className="text-[#2563EB]">Everything Under One Roof</span>
+                </h1>
+                <p className="text-[17px] leading-relaxed text-[#4b5563] dark:text-slate-400 mb-8">
+                  We help startups and businesses leverage AI, automation, custom software, and digital marketing to increase efficiency, generate leads, and accelerate growth — from a single chatbot to a complete trading infrastructure.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 bg-[#2563EB] text-white font-semibold text-[15px] px-7 py-3.5 rounded-xl shadow-md shadow-blue-500/20 hover:shadow-blue-500/40 hover:brightness-110 transition-all"
+                  >
+                    Book a Strategy Call
+                    <ArrowRight size={16} />
+                  </Link>
+                  <Link
+                    href="/pricing"
+                    className="inline-flex items-center gap-2 border border-slate-300 dark:border-slate-700 text-[#0B1020] dark:text-white font-semibold text-[15px] px-7 py-3.5 rounded-xl hover:border-[#2563EB] hover:text-[#2563EB] transition-all"
+                  >
+                    See Pricing
+                  </Link>
+                </div>
               </div>
-              <h1 className="font-display text-[38px] sm:text-[52px] font-extrabold leading-[1.07] tracking-tight text-[#0B1020] dark:text-white mb-5">
-                Automate, Scale & Grow —<br />
-                <span className="text-[#2563EB]">Everything Under One Roof</span>
-              </h1>
-              <p className="text-[17px] leading-relaxed text-[#4b5563] dark:text-slate-400 mb-8">
-                We help startups and businesses leverage AI, automation, custom software, and digital marketing to increase efficiency, generate leads, and accelerate growth — from a single chatbot to a complete trading infrastructure.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 bg-[#2563EB] text-white font-semibold text-[15px] px-7 py-3.5 rounded-xl shadow-md shadow-blue-500/20 hover:shadow-blue-500/40 hover:brightness-110 transition-all"
-                >
-                  Book a Strategy Call
-                  <ArrowRight size={16} />
-                </Link>
-                <Link
-                  href="/pricing"
-                  className="inline-flex items-center gap-2 border border-slate-300 dark:border-slate-700 text-[#0B1020] dark:text-white font-semibold text-[15px] px-7 py-3.5 rounded-xl hover:border-[#2563EB] hover:text-[#2563EB] transition-all"
-                >
-                  See Pricing
-                </Link>
+
+              {/* Right Column - Visual Carousel */}
+              <div className="flex justify-center items-center relative w-full mt-10 lg:mt-0 z-20">
+                <div className="relative w-full max-w-[640px] select-none">
+                  {/* Ambient glow */}
+                  <div className="absolute inset-0 bg-[#2563EB]/8 blur-[80px] rounded-full scale-90 -z-10" />
+                  <HeroCarousel />
+                </div>
               </div>
             </div>
 
