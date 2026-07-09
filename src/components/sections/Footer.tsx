@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Globe, Mail } from "lucide-react";
+import { Mail } from "lucide-react";
 import Link from "next/link";
 
 const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -21,9 +21,25 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
+const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...props}
+  >
+    <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+    <rect x="2" y="9" width="4" height="12" />
+    <circle cx="4" cy="4" r="2" />
+  </svg>
+);
+
 const SOCIAL = [
   { Icon: InstagramIcon, href: "https://www.instagram.com/netquorax?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
-  { Icon: Globe, href: "https://linkedin.com/company/netquorax", label: "LinkedIn" },
+  { Icon: LinkedInIcon, href: "https://linkedin.com/company/netquorax", label: "LinkedIn" },
   { Icon: Mail, href: "mailto:hello@netquorax.com", label: "Email" },
 ];
 
@@ -38,21 +54,21 @@ const LINKS = [
     ],
   },
   {
-    heading: "Solutions",
+    heading: "Industries",
     items: [
-      { label: "Startups", href: "/solutions" },
-      { label: "Healthcare", href: "/solutions" },
-      { label: "Finance", href: "/solutions" },
-      { label: "Ecommerce", href: "/solutions" },
+      { label: "Startups", href: "/industries#startups" },
+      { label: "Healthcare", href: "/industries#healthcare" },
+      { label: "Finance", href: "/industries#finance" },
+      { label: "Ecommerce", href: "/industries#ecommerce" },
     ],
   },
   {
     heading: "Company",
     items: [
+      { label: "Solutions", href: "/solutions" },
       { label: "Our Story", href: "/about" },
       { label: "Portfolio", href: "/portfolio" },
       { label: "Pricing", href: "/pricing" },
-      { label: "Contact Us", href: "/contact" },
     ],
   },
 ];
