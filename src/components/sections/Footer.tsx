@@ -74,9 +74,34 @@ export default function Footer() {
           <div className="lg:col-span-2">
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2.5">
-              <span className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#2563EB] to-[#7C3AED] flex items-center justify-center flex-shrink-0">
-                <span className="text-white font-black text-[15px]">N</span>
-              </span>
+              <svg
+                viewBox="0 0 120 80"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="w-[38px] h-[26px]"
+                aria-hidden="true"
+              >
+                <defs>
+                  <linearGradient id="footerBlueGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stopColor="#2563EB" />
+                    <stop offset="100%" stopColor="#06B6D4" />
+                  </linearGradient>
+                </defs>
+                {/* Circuit lines left */}
+                <line x1="5" y1="20" x2="35" y2="20" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" />
+                <line x1="5" y1="32" x2="32" y2="32" stroke="#06B6D4" strokeWidth="1.5" strokeLinecap="round" />
+                <line x1="5" y1="48" x2="32" y2="48" stroke="#06B6D4" strokeWidth="1.5" strokeLinecap="round" />
+                <line x1="5" y1="60" x2="35" y2="60" stroke="#2563EB" strokeWidth="1.5" strokeLinecap="round" />
+                {/* Node dots */}
+                <circle cx="5" cy="20" r="2.5" fill="#2563EB" />
+                <circle cx="5" cy="32" r="2.5" fill="#06B6D4" />
+                <circle cx="5" cy="48" r="2.5" fill="#06B6D4" />
+                <circle cx="5" cy="60" r="2.5" fill="#2563EB" />
+                {/* Left chevron (blue) */}
+                <path d="M35 15 L55 40 L35 65 L47 65 L67 40 L47 15 Z" fill="url(#footerBlueGrad)" />
+                {/* Right chevron (white) */}
+                <path d="M85 15 L65 40 L85 65 L73 65 L53 40 L73 15 Z" fill="currentColor" opacity="0.9" />
+              </svg>
               <span className="font-display font-extrabold text-[20px] text-white tracking-tight">
                 Netquora<span className="text-[#2563EB]">X</span>
               </span>

@@ -23,11 +23,13 @@ import FinalCTA        from "@/components/sections/FinalCTA";
 import Footer          from "@/components/sections/Footer";
 
 export default function Home() {
+  const [mounted, setMounted] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const [heroVisible, setHeroVisible] = useState(false);
 
   // Skip splash on repeat visits within the same session
   useEffect(() => {
+    setMounted(true);
     const isVisited = sessionStorage.getItem("nqx_visited") === "true";
     if (isVisited) {
       setShowSplash(false);
@@ -37,6 +39,29 @@ export default function Home() {
 
   const handleSplashComplete = () => setHeroVisible(true);
   const handleSplashUnmount  = () => setShowSplash(false);
+
+  // Render a consistent skeleton during SSR to prevent hydration mismatch/crash
+  if (!mounted) {
+    return (
+      <>
+        <SplashScreen onComplete={handleSplashComplete} onUnmount={handleSplashUnmount} />
+        <TrustedBy />
+        <Services />
+        <WhyUs />
+        <Industries />
+        <AutomationFlow />
+        <TradingShowcase />
+        <Stats />
+        <Portfolio />
+        <Process />
+        <Testimonials />
+        <FAQ />
+        <BookingForm />
+        <FinalCTA />
+        <Footer />
+      </>
+    );
+  }
 
   return (
     <>

@@ -365,7 +365,7 @@ export default function ContactPage() {
                   Skip the form and book a 15-minute strategy call to discuss your project.
                 </p>
                 <a
-                  href="https://calendly.com"
+                  href="https://calendly.com/netquorax"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-[#0F172A] text-white font-semibold px-5 py-3 rounded-full hover:bg-[#0F172A]/90 transition-colors text-[14px]"
