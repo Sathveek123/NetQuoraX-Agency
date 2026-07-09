@@ -1,48 +1,21 @@
 "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { motion, useInView, animate } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
 interface StatItem {
   value: number;
   suffix: string;
   prefix?: string;
   label: string;
-  delay: number;
 }
 
 const STATS: StatItem[] = [
-  { value: 50,  suffix: "+", label: "Projects Delivered",   delay: 0    },
-  { value: 35,  suffix: "+", label: "Happy Clients",        delay: 0.1  },
-  { value: 8,   suffix: "+", label: "Countries Served",     delay: 0.2  },
-  { value: 3,   suffix: "+", label: "Years of Experience",  delay: 0.3  },
+  { value: 50,  suffix: "+", label: "Projects Delivered" },
+  { value: 35,  suffix: "+", label: "Happy Clients"        },
+  { value: 8,   suffix: "+", label: "Countries Served"     },
+  { value: 3,   suffix: "+", label: "Years of Experience"  },
 ];
-
-function CountUp({ value, suffix, prefix = "", delay, trigger }: StatItem & { trigger: boolean }) {
-  const [display, setDisplay] = useState(value);
-  const hasRun = useRef(false);
-
-  useEffect(() => {
-    if (!trigger || hasRun.current) return;
-    hasRun.current = true;
-    setDisplay(0);
-    const timer = setTimeout(() => {
-      const ctrl = animate(0, value, {
-        duration: 1.5,
-        ease: "easeOut",
-        onUpdate: (v) => setDisplay(Math.round(v)),
-      });
-      return () => ctrl.stop();
-    }, delay * 1000);
-    return () => clearTimeout(timer);
-  }, [trigger, value, delay]);
-
-  return (
-    <span className="font-tabular">
-      {prefix}{display}{suffix}
-    </span>
-  );
-}
 
 const itemVariants = {
   hidden:   { opacity: 0, y: 20 },
@@ -56,12 +29,12 @@ const containerVariants = {
 
 export default function Stats() {
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.5 });
+  const inView = useInView(ref, { once: true, amount: 0.3 });
 
   return (
     <section
       ref={ref}
-      className="py-14 md:py-24 bg-[#F8FAFC]"
+      className="py-14 md:py-24 bg-[#F8FAFC] dark:bg-[#080C16]"
       aria-label="Company statistics"
     >
       <div className="max-w-[1280px] mx-auto px-6">
@@ -87,7 +60,7 @@ export default function Stats() {
                   fontVariantNumeric: "tabular-nums",
                 }}
               >
-                <CountUp {...stat} trigger={inView} />
+                {stat.prefix || ""}{stat.value}{stat.suffix}
               </p>
               <p className="mt-3 text-[14px] text-[#0B1020]/60 leading-snug">
                 {stat.label}

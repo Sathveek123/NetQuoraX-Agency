@@ -201,7 +201,7 @@ export default function MobileMenu({ isOpen, onClose, links }: MobileMenuProps) 
                   Instagram
                 </a>
                 <a
-                  href="https://linkedin.com"
+                  href="https://linkedin.com/company/netquorax"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors outline-none focus-visible:ring-1 focus-visible:ring-primary rounded px-1 cursor-none"

@@ -58,14 +58,25 @@ export default function SplashScreen({ onComplete, onUnmount }: SplashScreenProp
     document.body.style.top = `-${scrollY}px`;
     document.body.style.width = "100%";
 
-    // Start counter linear progression immediately on mount
-    const animControls = animate(countVal, 100, {
-      duration: 3.2,
-      ease: "easeInOut",
-      onUpdate: (latest) => {
-        setPercent(Math.round(latest));
+    // Start counter linear progression immediately on mount using native interval
+    const startTime = Date.now();
+    const duration = 3200; // 3.2 seconds
+    
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Simple easeInOutQuad mapping
+      const eased = progress < 0.5 
+        ? 2 * progress * progress 
+        : 1 - Math.pow(-2 * progress + 2, 2) / 2;
+        
+      setPercent(Math.round(eased * 100));
+      
+      if (progress >= 1) {
+        clearInterval(interval);
       }
-    });
+    }, 16); // ~60fps updates
 
     // Auto trigger exit sequence after Phase 5 finishes (3.2s)
     const exitTimer = setTimeout(() => {
@@ -73,7 +84,7 @@ export default function SplashScreen({ onComplete, onUnmount }: SplashScreenProp
     }, 3200);
 
     return () => {
-      animControls.stop();
+      clearInterval(interval);
       clearTimeout(exitTimer);
       const y = document.body.style.top;
       document.body.style.position = "";

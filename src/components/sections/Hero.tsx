@@ -5,23 +5,8 @@ import { motion, animate } from "framer-motion";
 import MagneticWrap from "@/components/ui/MagneticWrap";
 
 // Numerical count-up helper
-function StatCounter({ value, suffix, delay }: { value: number; suffix: string; delay: number }) {
-  const [count, setCount] = useState(value);
-
-  useEffect(() => {
-    setCount(0);
-    const timer = setTimeout(() => {
-      const anim = animate(0, value, {
-        duration: 1.2,
-        ease: "easeOut" as const,
-        onUpdate: (latest) => setCount(Math.round(latest))
-      });
-      return () => anim.stop();
-    }, delay * 1000);
-    return () => clearTimeout(timer);
-  }, [value, delay]);
-
-  return <span>{count}{suffix}</span>;
+function StatCounter({ value, suffix }: { value: number; suffix: string; delay?: number }) {
+  return <span>{value}{suffix}</span>;
 }
 
 // Shared easing curve

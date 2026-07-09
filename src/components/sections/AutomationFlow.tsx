@@ -300,7 +300,7 @@ export default function AutomationFlow() {
           <div className="grid grid-cols-3 divide-x divide-white/10 text-center">
             {[
               { value: "70%", label: "Faster Response Time" },
-              { value: "0", label: "Manual Handoffs" },
+              { value: "Zero", label: "Manual Handoffs" },
               { value: "24/7", label: "Active Coverage" },
             ].map((stat, idx) => (
               <div key={idx} className="px-4">

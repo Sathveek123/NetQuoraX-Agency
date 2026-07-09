@@ -19,11 +19,14 @@ function StartupMockup() {
         <span className="block text-[28px] font-extrabold text-white tracking-tight">8.5x</span>
         <span className="block text-slate-400 text-xs mt-1">Faster MVP timeline velocity</span>
       </div>
-      <div className="flex gap-2">
-        <div className="flex-1 h-1.5 rounded-full bg-slate-800 overflow-hidden">
+      <div>
+        <div className="flex justify-between items-center text-[10px] font-bold text-slate-500 mb-1">
+          <span>Sprint progress</span>
+          <span>75%</span>
+        </div>
+        <div className="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
           <div className="h-full bg-primary w-[75%]" />
         </div>
-        <div className="text-[10px] font-bold text-slate-400">75%</div>
       </div>
     </div>
   );

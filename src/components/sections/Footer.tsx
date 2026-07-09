@@ -23,7 +23,7 @@ const InstagramIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const SOCIAL = [
   { Icon: InstagramIcon, href: "https://www.instagram.com/netquorax?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
-  { Icon: Globe, href: "https://linkedin.com", label: "LinkedIn" },
+  { Icon: Globe, href: "https://linkedin.com/company/netquorax", label: "LinkedIn" },
   { Icon: Mail, href: "mailto:hello@netquorax.com", label: "Email" },
 ];
 
