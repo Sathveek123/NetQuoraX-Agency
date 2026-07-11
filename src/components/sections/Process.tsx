@@ -139,12 +139,13 @@ export default function Process() {
               style={{ boxShadow: "0 8px 32px rgba(11,16,32,0.10)" }}
             >
               <img
-                src="/images/process-planning.png"
+                src="/images/process-planning.webp"
                 alt="Team planning session"
                 className="w-full h-full object-cover"
+                loading="lazy"
                 style={{ filter: "brightness(1.02) saturate(0.95)" }}
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-[#F8FAFC]/40 dark:from-[#080C16]/60 to-transparent" />
             </motion.div>
           </RepelCard>
         </div>

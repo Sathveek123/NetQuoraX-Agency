@@ -99,14 +99,6 @@ export default function Navbar() {
 
   return (
     <>
-      {/* Accessibility Skip-To-Content Link */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[999] focus:bg-white focus:text-primary focus:px-4 focus:py-2 focus:rounded-md focus:shadow-md focus:outline-none focus:ring-2 focus:ring-primary font-semibold text-sm transition-all cursor-none"
-      >
-        Skip to content
-      </a>
-
       {/* Main Navbar container */}
       <motion.nav
         id="navbar"

@@ -28,14 +28,14 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-[100svh] flex items-center pt-[120px] pb-20 overflow-hidden bg-[#F8FAFC]"
+      className="relative min-h-[100svh] flex items-center pt-[120px] pb-20 overflow-hidden bg-light"
     >
       {/* SVG DOT GRID BACKGROUND */}
       <div className="absolute inset-0 pointer-events-none select-none z-0 opacity-[0.04]">
         <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="dotGrid" width="24" height="24" patternUnits="userSpaceOnUse">
-              <circle cx="2" cy="2" r="1.2" fill="#0B1020" />
+              <circle cx="2" cy="2" r="1.2" fill="var(--ink)" />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#dotGrid)" />
@@ -70,7 +70,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Staggered H1 Reveal */}
-          <h1 className="font-display text-[42px] sm:text-[56px] lg:text-[68px] leading-[1.05] font-extrabold tracking-tight text-[#0B1020] mb-6 select-text">
+          <h1 className="font-display text-[42px] sm:text-[56px] lg:text-[68px] leading-[1.05] font-extrabold tracking-tight text-ink mb-6 select-text">
             <motion.span
               custom={0}
               initial="hidden"
@@ -121,7 +121,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.35, ease: "easeOut" }}
-            className="text-[18px] leading-[1.6] text-[#4b5563] max-w-[480px] font-normal"
+            className="text-[18px] leading-[1.6] text-muted max-w-[480px] font-normal"
           >
           We build the automation, AI, and trading systems that help startups and businesses grow faster — without the manual grind.
           </motion.p>
@@ -164,7 +164,7 @@ export default function Hero() {
               <MagneticWrap radius={60} maxDistance={5}>
                 <a
                   href="#contact"
-                  className="inline-flex items-center border border-[#1e293b] text-[#1e293b] text-[15px] font-semibold px-8 py-4 rounded-xl hover:bg-[#2563EB]/5 hover:border-[#2563EB] hover:text-[#2563EB] transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] cursor-pointer"
+                  className="inline-flex items-center border border-ink text-ink text-[15px] font-semibold px-8 py-4 rounded-xl hover:bg-[#2563EB]/5 hover:border-[#2563EB] hover:text-[#2563EB] transition-all duration-200 outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] cursor-pointer"
                 >
                   Book Free Consultation
                 </a>
@@ -177,21 +177,21 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.4, delay: 0.65, ease: "easeOut" }}
-            className="mt-12 w-full flex items-center gap-4 sm:gap-6 border-t border-[#0B1020]/10 pt-6"
+            className="mt-12 w-full flex items-center gap-4 sm:gap-6 border-t border-border-ink pt-6"
           >
             <div className="flex flex-col">
-              <span className="text-xl sm:text-2xl font-extrabold text-[#0B1020]">50+</span>
-              <span className="text-[11px] text-[#0B1020]/50 font-bold uppercase tracking-wider mt-1">Projects</span>
+              <span className="text-xl sm:text-2xl font-extrabold text-ink">50+</span>
+              <span className="text-[11px] text-ink/50 font-bold uppercase tracking-wider mt-1">Projects</span>
             </div>
-            <div className="h-6 w-[1px] bg-[#0B1020]/10" />
+            <div className="h-6 w-[1px] bg-border-ink" />
             <div className="flex flex-col">
-              <span className="text-xl sm:text-2xl font-extrabold text-[#0B1020]">12+</span>
-              <span className="text-[11px] text-[#0B1020]/50 font-bold uppercase tracking-wider mt-1">Industries</span>
+              <span className="text-xl sm:text-2xl font-extrabold text-ink">12+</span>
+              <span className="text-[11px] text-ink/50 font-bold uppercase tracking-wider mt-1">Industries</span>
             </div>
-            <div className="h-6 w-[1px] bg-[#0B1020]/10" />
+            <div className="h-6 w-[1px] bg-border-ink" />
             <div className="flex flex-col">
-              <span className="text-xl sm:text-2xl font-extrabold text-[#0B1020]">98%</span>
-              <span className="text-[11px] text-[#0B1020]/50 font-bold uppercase tracking-wider mt-1">On-Time</span>
+              <span className="text-xl sm:text-2xl font-extrabold text-ink">98%</span>
+              <span className="text-[11px] text-ink/50 font-bold uppercase tracking-wider mt-1">On-Time</span>
             </div>
           </motion.div>
         </div>

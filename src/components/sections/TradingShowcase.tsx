@@ -66,12 +66,13 @@ export default function TradingShowcase() {
                 style={{ boxShadow: "0 8px 32px rgba(11,16,32,0.12)" }}
               >
                 <img
-                  src="/images/trading-desk.png"
+                  src="/images/trading-desk.webp"
                   alt="Professional trading setup with multiple monitors"
                   className="w-full h-full object-cover"
+                  loading="lazy"
                   style={{ filter: "brightness(0.95) contrast(1.05)" }}
                 />
-                <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#F8FAFC] to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#F8FAFC] dark:from-[#080C16] to-transparent" />
               </motion.div>
             </RepelCard>
 

@@ -34,7 +34,7 @@ export default function Stats() {
   return (
     <section
       ref={ref}
-      className="py-14 md:py-24 bg-[#F8FAFC] dark:bg-[#080C16]"
+      className="py-14 md:py-24 bg-light"
       aria-label="Company statistics"
     >
       <div className="max-w-[1280px] mx-auto px-6">
@@ -62,7 +62,7 @@ export default function Stats() {
               >
                 {stat.prefix || ""}{stat.value}{stat.suffix}
               </p>
-              <p className="mt-3 text-[14px] text-[#0B1020]/60 leading-snug">
+              <p className="mt-3 text-[14px] text-ink/60 leading-snug">
                 {stat.label}
               </p>
             </motion.div>

@@ -25,6 +25,28 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "NetquoraX — Automate. Innovate. Scale.",
   description: "NetquoraX builds AI systems, websites, apps, automation and trading solutions that generate measurable business growth.",
+  metadataBase: new URL("https://netquorax.com"),
+  openGraph: {
+    type: "website",
+    siteName: "NetquoraX",
+    title: "NetquoraX — Automate. Innovate. Scale.",
+    description: "We build the AI, automation, and trading systems that help startups and businesses grow faster — without the manual grind.",
+    url: "https://netquorax.com",
+    images: [
+      {
+        url: "/images/hero-premium-dashboard.webp",
+        width: 1200,
+        height: 630,
+        alt: "NetquoraX — AI Automation & Business Growth Agency",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "NetquoraX — Automate. Innovate. Scale.",
+    description: "We build AI, automation, and trading systems that help startups and businesses grow faster.",
+    images: ["/images/hero-premium-dashboard.webp"],
+  },
 };
 
 export default function RootLayout({

@@ -76,6 +76,74 @@ export const PROJECTS: Project[] = [
 
 const FILTERS = ["All", "Websites", "Apps", "AI & Automation", "Trading Systems", "Marketing"];
 
+function ProjectVisualMockup({ slug }: { slug: string }) {
+  if (slug === "signal-engine") {
+    return (
+      <svg className="absolute inset-0 w-full h-full opacity-[0.15] pointer-events-none" viewBox="0 0 100 60" fill="none">
+        <path d="M 5,50 L 20,40 L 40,45 L 60,20 L 80,35 L 95,10" stroke="white" strokeWidth="1.5" />
+        <line x1="20" y1="30" x2="20" y2="50" stroke="white" strokeWidth="0.5" />
+        <line x1="60" y1="10" x2="60" y2="35" stroke="white" strokeWidth="0.5" />
+        <line x1="80" y1="25" x2="80" y2="45" stroke="white" strokeWidth="0.5" />
+      </svg>
+    );
+  }
+  if (slug === "luxora-funnel") {
+    return (
+      <svg className="absolute inset-0 w-full h-full opacity-[0.15] pointer-events-none" viewBox="0 0 100 60" fill="none">
+        <polygon points="10,5 90,5 75,20 25,20" stroke="white" strokeWidth="1" />
+        <polygon points="25,22 75,22 65,38 35,38" stroke="white" strokeWidth="1" />
+        <polygon points="35,40 65,40 55,55 45,55" stroke="white" strokeWidth="1" />
+      </svg>
+    );
+  }
+  if (slug === "healpath-portal") {
+    return (
+      <svg className="absolute inset-0 w-full h-full opacity-[0.15] pointer-events-none" viewBox="0 0 100 60" fill="none">
+        <rect x="15" y="10" width="70" height="40" rx="3" stroke="white" strokeWidth="1" />
+        <line x1="15" y1="20" x2="85" y2="20" stroke="white" strokeWidth="1" />
+        <circle cx="30" cy="30" r="2" fill="white" />
+        <circle cx="50" cy="30" r="2" fill="white" />
+        <circle cx="70" cy="30" r="2" fill="white" />
+        <circle cx="30" cy="42" r="2" fill="white" />
+        <circle cx="50" cy="42" r="2" fill="white" />
+      </svg>
+    );
+  }
+  if (slug === "meridian-sync") {
+    return (
+      <svg className="absolute inset-0 w-full h-full opacity-[0.15] pointer-events-none" viewBox="0 0 100 60" fill="none">
+        <circle cx="20" cy="30" r="6" stroke="white" strokeWidth="1" />
+        <circle cx="50" cy="30" r="6" stroke="white" strokeWidth="1" />
+        <circle cx="80" cy="30" r="6" stroke="white" strokeWidth="1" />
+        <line x1="26" y1="30" x2="44" y2="30" stroke="white" strokeWidth="1" />
+        <line x1="56" y1="30" x2="74" y2="30" stroke="white" strokeWidth="1" />
+      </svg>
+    );
+  }
+  if (slug === "holloway-creative") {
+    return (
+      <svg className="absolute inset-0 w-full h-full opacity-[0.15] pointer-events-none" viewBox="0 0 100 60" fill="none">
+        <rect x="10" y="8" width="80" height="44" rx="2" stroke="white" strokeWidth="1" />
+        <line x1="10" y1="18" x2="90" y2="18" stroke="white" strokeWidth="1" />
+        <line x1="30" y1="18" x2="30" y2="52" stroke="white" strokeWidth="0.5" />
+        <rect x="40" y="24" width="40" height="8" rx="1" stroke="white" strokeWidth="0.5" />
+        <rect x="40" y="38" width="40" height="8" rx="1" stroke="white" strokeWidth="0.5" />
+      </svg>
+    );
+  }
+  if (slug === "nifty-bot") {
+    return (
+      <svg className="absolute inset-0 w-full h-full opacity-[0.15] pointer-events-none" viewBox="0 0 100 60" fill="none">
+        <path d="M 5,20 L 25,35 L 45,15 L 65,40 L 85,25 L 95,50" stroke="white" strokeWidth="1" />
+        <rect x="21" y="30" width="8" height="10" stroke="white" strokeWidth="1" fill="none" />
+        <rect x="41" y="10" width="8" height="10" stroke="white" strokeWidth="1" fill="none" />
+        <rect x="61" y="35" width="8" height="10" stroke="white" strokeWidth="1" fill="none" />
+      </svg>
+    );
+  }
+  return null;
+}
+
 export default function PortfolioPage() {
   const [selectedFilter, setSelectedFilter] = useState("All");
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
@@ -85,7 +153,7 @@ export default function PortfolioPage() {
     : PROJECTS.filter((p) => p.category === selectedFilter);
 
   return (
-    <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen">
+    <div className="bg-light text-ink min-h-screen">
       <Navbar />
 
       <main className="max-w-[1280px] mx-auto px-6">
@@ -98,7 +166,7 @@ export default function PortfolioPage() {
           </div>
 
           <div className="max-w-4xl">
-            <h1 className="font-display text-[40px] md:text-[56px] font-extrabold tracking-tight text-[#0F172A] leading-[1.1]">
+            <h1 className="font-display text-[40px] md:text-[56px] font-extrabold tracking-tight text-ink leading-[1.1]">
               Work That Speaks in Numbers
             </h1>
             <p className="mt-6 text-[18px] md:text-[20px] text-slate-600 max-w-2xl leading-relaxed">
@@ -158,13 +226,15 @@ export default function PortfolioPage() {
                         setActiveSlug(p.slug);
                       }
                     }}
-                    className="group block relative rounded-[24px] overflow-hidden bg-white border border-slate-200/60 shadow-sm hover:shadow-md hover:border-slate-300/80 transition-all select-none cursor-none"
+                    className="group block relative rounded-[24px] overflow-hidden bg-card-bg border border-border-ink shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-border-ink/80 transition-all duration-300 select-none cursor-none"
                   >
                     {/* Visual Area */}
                     <div
-                      className="relative h-[240px] flex items-center justify-center p-8 text-white relative overflow-hidden"
+                      className="relative h-[240px] flex items-center justify-center p-8 text-white overflow-hidden"
                       style={{ background: p.bgGrad }}
                     >
+                      {/* Stylized background overlay mockup graphic */}
+                      <ProjectVisualMockup slug={p.slug} />
                       {/* Metric Display Overlay on Hover/Tap */}
                       <div className={`absolute inset-0 bg-black/60 transition-opacity duration-300 flex flex-col justify-center items-center text-center p-6 z-20 ${
                         activeSlug === p.slug ? "opacity-100" : "opacity-0 group-hover:opacity-100"
@@ -194,7 +264,7 @@ export default function PortfolioPage() {
                         <span className="text-[11px] font-bold uppercase tracking-wider text-primary">
                           {p.category}
                         </span>
-                        <h3 className="text-[20px] font-extrabold text-[#0F172A] mt-1.5 leading-snug group-hover:text-primary transition-colors">
+                        <h3 className="text-[20px] font-extrabold text-ink mt-1.5 leading-snug group-hover:text-primary transition-colors">
                           {p.name}
                         </h3>
                         <p className="text-[14px] text-slate-500 mt-2 leading-relaxed">
@@ -202,7 +272,7 @@ export default function PortfolioPage() {
                         </p>
                       </div>
 
-                      <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between text-slate-400 group-hover:text-primary transition-colors">
+                      <div className="mt-4 pt-4 border-t border-border-ink flex items-center justify-between text-slate-400 group-hover:text-primary transition-colors">
                         <span className="text-[13px] font-bold">View Case Study</span>
                         <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
                       </div>
@@ -216,7 +286,7 @@ export default function PortfolioPage() {
 
         {/* BOTTOM CTA */}
         <section className="py-16 text-center max-w-xl mx-auto mb-12">
-          <h3 className="font-display text-[24px] md:text-[30px] font-extrabold text-[#0F172A]">
+          <h3 className="font-display text-[24px] md:text-[30px] font-extrabold text-ink">
             Want results like these?
           </h3>
           <p className="text-[15px] text-slate-500 mt-3 leading-relaxed">

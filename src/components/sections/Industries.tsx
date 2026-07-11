@@ -117,7 +117,7 @@ export default function Industries() {
   return (
     <section
       id="industries"
-      className="py-16 lg:py-[120px] bg-white"
+      className="py-16 lg:py-[120px] bg-card-bg"
       aria-labelledby="industries-heading"
     >
       <div className="max-w-[1280px] mx-auto px-6">
@@ -135,11 +135,11 @@ export default function Industries() {
             Industries
           </motion.p>
           <motion.h2 variants={headerItem} id="industries-heading"
-            className="mt-3 font-display text-[32px] lg:text-[48px] font-extrabold tracking-tight text-[#0B1020] leading-[1.1]">
+            className="mt-3 font-display text-[32px] lg:text-[48px] font-extrabold tracking-tight text-ink leading-[1.1]">
             Built for Your Business, Not Generic Software
           </motion.h2>
           <motion.p variants={headerItem}
-            className="mt-4 text-[16px] text-[#0B1020]/60 max-w-[480px] leading-relaxed">
+            className="mt-4 text-[16px] text-ink/60 max-w-[480px] leading-relaxed">
             Industry-specific thinking baked in from day one, not retrofitted after.
           </motion.p>
         </motion.div>
@@ -168,8 +168,8 @@ export default function Industries() {
                   "relative px-4 py-2 rounded-full text-[13px] transition-colors duration-200",
                   "outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] cursor-pointer",
                   isActive
-                    ? "font-semibold text-[#0B1020] z-10"
-                    : "font-medium text-[#0B1020]/50 hover:text-[#0B1020]/80",
+                    ? "font-semibold text-ink z-10"
+                    : "font-medium text-ink/50 hover:text-ink/80",
                 ].join(" ")}
               >
                 {isActive && (
@@ -196,7 +196,7 @@ export default function Industries() {
             initial="initial"
             animate="animate"
             exit="exit"
-            className="relative min-h-[360px] rounded-[28px] p-8 md:p-12 overflow-hidden bg-[#F8FAFC] dark:bg-[#111B30] border border-slate-200/60 dark:border-slate-800"
+            className="relative min-h-[360px] rounded-[28px] p-8 md:p-12 overflow-hidden bg-light border border-border-ink"
           >
             {/* Per-industry tint bg */}
             <div
@@ -211,10 +211,10 @@ export default function Industries() {
             <div className="relative z-10 grid md:grid-cols-2 gap-10 items-center">
               {/* Text */}
               <div>
-                <h3 className="font-display text-[22px] md:text-[28px] font-extrabold tracking-tight text-[#0B1020] leading-[1.2]">
+                <h3 className="font-display text-[22px] md:text-[28px] font-extrabold tracking-tight text-ink leading-[1.2]">
                   {industry.h3}
                 </h3>
-                <p className="mt-4 text-[16px] text-[#0B1020]/65 leading-[1.6] max-w-[420px]">
+                <p className="mt-4 text-[16px] text-ink/65 leading-[1.6] max-w-[420px]">
                   {industry.p}
                 </p>
               </div>
@@ -229,7 +229,7 @@ export default function Industries() {
                       style={{ color: industry.accent }}
                       aria-hidden="true"
                     />
-                    <span className="text-[14px] text-[#0B1020]/75 leading-snug">{b}</span>
+                    <span className="text-[14px] text-ink/75 leading-snug">{b}</span>
                   </li>
                 ))}
               </ul>

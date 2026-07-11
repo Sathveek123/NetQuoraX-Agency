@@ -14,12 +14,12 @@ const PRICING_TIERS = [
     description: "For a defined website, app, or automation build with a clear scope and end date.",
     isRecommended: false,
     features: [
-      "Fixed quote after discovery call",
-      "Defined timeline with milestones",
-      "2-3 rounds of revisions included",
+      "Websites starting from ₹45,000",
+      "E-commerce platforms scaling from ₹85,000+",
+      "Defined timeline with clear milestones",
+      "2-3 rounds of user design revisions",
       "Post-launch support window (30 days)",
-      "Source code delivery",
-      "Documentation & handoff"
+      "Full source code delivery & setup handoff"
     ],
     ctaText: "Get a Quote"
   },
@@ -30,41 +30,41 @@ const PRICING_TIERS = [
     isRecommended: true,
     features: [
       "Dedicated monthly hours (40h baseline)",
-      "Priority response time (24h)",
-      "Monthly strategy check-in call",
-      "Flexible scope adjustment",
-      "Proactive system monitoring",
-      "Discounted add-on services"
+      "Priority responder SLA response (24h)",
+      "Monthly strategy alignment & roadmap check-in",
+      "Flexible scope revisions based on sprint goals",
+      "Proactive uptime monitoring & API fixes",
+      "Discounted add-on services pricing tiers"
     ],
     ctaText: "Book a Call"
   },
   {
     name: "Trading Systems",
-    price: "Custom scope quote",
-    description: "Pine Script development, bot builds, and strategy backtesting — priced per complexity.",
+    price: "Starting from ₹60,000",
+    description: "Pine Script custom indicators, execution bots, and strategy backtesting — priced per strategy rule complexity.",
     isRecommended: false,
     features: [
-      "Strategy consultation session",
-      "Development + backtesting",
-      "Delivery without exposing source logic",
-      "Risk parameter configuration",
-      "Alert webhook setup",
-      "Performance documentation"
+      "Pine Script v5 strategies from ₹60,000",
+      "Automated webhook executors with broker APIs",
+      "Robust historical backtesting & yield reports",
+      "Risk protection features (stop loss & fallbacks)",
+      "Encrypted Pine execution without source leak",
+      "Complete system user documentation"
     ],
     ctaText: "Discuss Strategy"
   },
   {
     name: "Enterprise / Multi-System",
-    price: "Let's talk",
+    price: "Custom quote scale",
     description: "For businesses needing multiple integrated systems — website + automation + trading + marketing working together.",
     isRecommended: false,
     features: [
-      "Dedicated project lead",
-      "Custom SLA agreements",
-      "Integrated roadmap across all systems",
-      "Team training sessions",
-      "Priority infrastructure",
-      "Quarterly business reviews"
+      "Dedicated agency technical project lead",
+      "Guaranteed custom SLA & uptime maintenance",
+      "Cross-system sync database integrations",
+      "Live staff training & operational runbooks",
+      "Dedicated cloud database server structures",
+      "Quarterly operational efficiency reviews"
     ],
     ctaText: "Contact Sales"
   }
@@ -103,7 +103,7 @@ export default function PricingPage() {
   }, []);
 
   return (
-    <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen">
+    <div className="bg-light text-ink min-h-screen">
       <Navbar />
 
       <main className="max-w-[1280px] mx-auto px-6">
@@ -125,7 +125,7 @@ export default function PricingPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-display text-[40px] md:text-[56px] font-extrabold tracking-tight text-[#0F172A] leading-[1.1]"
+              className="font-display text-[40px] md:text-[56px] font-extrabold tracking-tight text-ink leading-[1.1]"
             >
               Straightforward Pricing, No Guessing Games
             </motion.h1>
@@ -151,8 +151,8 @@ export default function PricingPage() {
                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                 className={`relative rounded-3xl p-8 border transition-all ${
                   tier.isRecommended
-                    ? "bg-white border-primary/30 shadow-lg shadow-primary/10 scale-[1.02]"
-                    : "bg-white border-slate-200/60 shadow-sm hover:shadow-md hover:border-slate-300/80"
+                    ? "bg-card-bg border-primary/30 shadow-lg shadow-primary/10 scale-[1.02]"
+                    : "bg-card-bg border-border-ink shadow-sm hover:shadow-md hover:border-border-ink/80"
                 }`}
               >
                 {/* Recommended Badge */}
@@ -163,11 +163,11 @@ export default function PricingPage() {
                 )}
 
                 <div className="pt-2">
-                  <h3 className="font-display text-[24px] md:text-[28px] font-extrabold text-[#0F172A]">
+                  <h3 className="font-display text-[24px] md:text-[28px] font-extrabold text-ink">
                     {tier.name}
                   </h3>
                   <div className="mt-3">
-                    <span className="text-[32px] font-extrabold text-[#0F172A]">
+                    <span className="text-[32px] font-extrabold text-ink">
                       {tier.price}
                     </span>
                   </div>
@@ -202,20 +202,125 @@ export default function PricingPage() {
           </div>
         </section>
 
+        {/* COMPARISON TABLE */}
+        <section className="py-16 border-t border-border-ink">
+          <div className="mb-10">
+            <h2 className="font-display text-[26px] md:text-[32px] font-bold text-ink">
+              Feature Comparison
+            </h2>
+            <p className="text-[14px] text-slate-500 mt-2">
+              Compare our plans side-by-side to choose the right model.
+            </p>
+          </div>
+
+          <div className="overflow-x-auto border border-border-ink rounded-2xl bg-card-bg shadow-sm">
+            <table className="w-full text-left border-collapse min-w-[700px]">
+              <thead>
+                <tr className="bg-light border-b border-border-ink text-[12px] font-bold text-muted uppercase tracking-wider">
+                  <th className="p-4 md:p-5">Feature</th>
+                  <th className="p-4 md:p-5">Project-Based</th>
+                  <th className="p-4 md:p-5 bg-blue-500/5 text-primary">Retainer</th>
+                  <th className="p-4 md:p-5">Trading Systems</th>
+                  <th className="p-4 md:p-5">Enterprise</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-border-ink text-[13px] text-muted">
+                <tr>
+                  <td className="p-4 md:p-5 font-semibold text-ink">Engagement Scope</td>
+                  <td className="p-4 md:p-5">Single milestone build</td>
+                  <td className="p-4 md:p-5 bg-blue-500/5">Ongoing month-to-month</td>
+                  <td className="p-4 md:p-5">Algorithm / script strategy</td>
+                  <td className="p-4 md:p-5 font-medium">Unified multi-system sync</td>
+                </tr>
+                <tr>
+                  <td className="p-4 md:p-5 font-semibold text-ink">Delivery Velocity</td>
+                  <td className="p-4 md:p-5">4-6 weeks baseline</td>
+                  <td className="p-4 md:p-5 bg-blue-500/5">Dedicated weekly velocity</td>
+                  <td className="p-4 md:p-5">2-4 weeks typical</td>
+                  <td className="p-4 md:p-5">Custom phased roadmap</td>
+                </tr>
+                <tr>
+                  <td className="p-4 md:p-5 font-semibold text-ink">Post-Launch Support</td>
+                  <td className="p-4 md:p-5">30 days included</td>
+                  <td className="p-4 md:p-5 bg-blue-500/5">Always active maintenance</td>
+                  <td className="p-4 md:p-5">14 days included</td>
+                  <td className="p-4 md:p-5">Custom SLA agreements</td>
+                </tr>
+                <tr>
+                  <td className="p-4 md:p-5 font-semibold text-ink">Code Ownership</td>
+                  <td className="p-4 md:p-5 text-emerald-600 font-medium">100% Client ownership</td>
+                  <td className="p-4 md:p-5 bg-blue-500/5 text-emerald-600 font-medium">100% Client ownership</td>
+                  <td className="p-4 md:p-5">Client (excl. logic)</td>
+                  <td className="p-4 md:p-5 text-emerald-600 font-medium">100% Client ownership</td>
+                </tr>
+                <tr>
+                  <td className="p-4 md:p-5 font-semibold text-ink">Revisions Rounds</td>
+                  <td className="p-4 md:p-5">2-3 Rounds included</td>
+                  <td className="p-4 md:p-5 bg-blue-500/5 text-ink">Flexible / unlimited</td>
+                  <td className="p-4 md:p-5">2 Rounds included</td>
+                  <td className="p-4 md:p-5">Custom revision agreement</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* PRICING ADD-ONS */}
+        <section className="py-16 border-t border-border-ink">
+          <div className="mb-10">
+            <h2 className="font-display text-[26px] md:text-[32px] font-bold text-ink">
+              Pricing Add-ons
+            </h2>
+            <p className="text-[14px] text-slate-500 mt-2">
+              Accelerate or secure your build with these additional options.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-card-bg rounded-2xl p-6 border border-border-ink shadow-sm">
+              <div className="flex justify-between items-start gap-4">
+                <div>
+                  <h3 className="font-bold text-[16px] text-ink mb-1">
+                    ⚡ Express Sprint Velocity
+                  </h3>
+                  <p className="text-[13px] text-slate-500 leading-relaxed">
+                    Cut standard project timeline lengths by up to 50% by allocating dual developers to run simultaneous sprints.
+                  </p>
+                </div>
+                <span className="text-primary font-bold text-[14px] whitespace-nowrap bg-blue-500/10 px-2.5 py-1 rounded-full">+₹20,000</span>
+              </div>
+            </div>
+
+            <div className="bg-card-bg rounded-2xl p-6 border border-border-ink shadow-sm">
+              <div className="flex justify-between items-start gap-4">
+                <div>
+                  <h3 className="font-bold text-[16px] text-ink mb-1">
+                    🔒 API & Webhook Monitoring
+                  </h3>
+                  <p className="text-[13px] text-slate-500 leading-relaxed">
+                    Continuous logging checks, webhook retry alerts, database token refreshes, and immediate API maintenance.
+                  </p>
+                </div>
+                <span className="text-primary font-bold text-[14px] whitespace-nowrap bg-blue-500/10 px-2.5 py-1 rounded-full">+₹15,000/mo</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* FAQ SECTION */}
-        <section className="py-16 border-t border-slate-200/60">
+        <section className="py-16 border-t border-border-ink">
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 mb-8">
               <HelpCircle size={20} className="text-primary" />
-              <h2 className="font-display text-[26px] md:text-[32px] font-bold text-[#0F172A]">
+              <h2 className="font-display text-[26px] md:text-[32px] font-bold text-ink">
                 Pricing FAQ
               </h2>
             </div>
 
             <div className="space-y-6">
               {FAQ_ITEMS.map((item, idx) => (
-                <div key={idx} className="bg-white rounded-2xl p-6 border border-slate-200/60">
-                  <h3 className="font-bold text-[16px] text-[#0F172A] mb-2">
+                <div key={idx} className="bg-card-bg rounded-2xl p-6 border border-border-ink">
+                  <h3 className="font-bold text-[16px] text-ink mb-2">
                     {item.question}
                   </h3>
                   <p className="text-[14px] text-slate-500 leading-relaxed">
@@ -229,7 +334,7 @@ export default function PricingPage() {
 
         {/* BOTTOM CTA */}
         <section className="py-16 text-center max-w-xl mx-auto mb-12">
-          <h3 className="font-display text-[24px] md:text-[30px] font-extrabold text-[#0F172A]">
+          <h3 className="font-display text-[24px] md:text-[30px] font-extrabold text-ink">
             Still not sure what fits?
           </h3>
           <p className="text-[15px] text-slate-500 mt-3 leading-relaxed">

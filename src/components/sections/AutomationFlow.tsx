@@ -63,9 +63,10 @@ export default function AutomationFlow() {
       {/* Server room background — very dark/faded */}
       <div className="absolute inset-0 pointer-events-none select-none">
         <img
-          src="/images/server-room.png"
+          src="/images/server-room.webp"
           alt=""
           aria-hidden="true"
+          loading="lazy"
           className="w-full h-full object-cover"
           style={{ opacity: 0.07, filter: "grayscale(0.4) brightness(0.6)" }}
         />

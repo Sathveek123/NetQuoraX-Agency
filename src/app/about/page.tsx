@@ -56,7 +56,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen">
+    <div className="bg-light text-ink min-h-screen">
       <Navbar />
 
       <main className="max-w-[1280px] mx-auto px-6">
@@ -78,7 +78,7 @@ export default function AboutPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-display text-[40px] md:text-[56px] font-extrabold tracking-tight text-[#0F172A] leading-[1.1]"
+              className="font-display text-[40px] md:text-[56px] font-extrabold tracking-tight text-ink leading-[1.1]"
             >
               Born From Real Struggles, Built For Real Solutions
             </motion.h1>
@@ -100,7 +100,7 @@ export default function AboutPage() {
               <span className="text-xs font-bold uppercase tracking-[0.18em] text-primary mb-4 block">
                 The Journey
               </span>
-              <h2 className="font-display text-[32px] md:text-[48px] font-extrabold text-[#0F172A] tracking-tight leading-tight">
+              <h2 className="font-display text-[32px] md:text-[48px] font-extrabold text-ink tracking-tight leading-tight">
                 Our Genesis & Evolution
               </h2>
               <p className="mt-4 text-[16px] text-slate-500 max-w-xl mx-auto leading-relaxed">
@@ -109,7 +109,7 @@ export default function AboutPage() {
             </div>
 
             {/* Tree Timeline Container */}
-            <div className="relative border-l-2 border-slate-200/80 dark:border-slate-800/80 ml-4 md:mx-auto md:w-[2px] space-y-16">
+            <div className="relative border-l-2 border-border-ink ml-4 md:mx-auto md:w-[2px] space-y-16">
               {/* Milestone 1 */}
               <div className="relative pl-8 md:pl-0 md:w-[420px] md:ml-[-440px] md:text-right">
                 {/* Node Dot */}
@@ -120,21 +120,21 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white dark:bg-[#111B30] rounded-2xl p-6 border border-slate-200/60 dark:border-slate-800 shadow-sm"
+                  className="bg-card-bg rounded-2xl p-6 border border-border-ink shadow-sm"
                 >
                   <span className="text-[11px] font-bold text-rose-500 uppercase tracking-widest block mb-2">
                     Phase 01 / The Catalyst (2023)
                   </span>
-                  <h3 className="text-[18px] font-bold text-[#0F172A] dark:text-white leading-snug">
+                  <h3 className="text-[18px] font-bold text-ink leading-snug">
                     Trapped in Fragile Frameworks & Scams
                   </h3>
                   <p className="mt-3 text-[14px] text-slate-600 dark:text-slate-300 leading-relaxed">
-                    We were building our own D2C ecommerce and indicator setups. We hired traditional marketing agencies who burned thousands of dollars in ad budgets generating empty bot clicks, while conversion charts stayed completely flat. We bought commercial Pine Script indicators that completely crashed in live markets because they were built as copy-paste marketing hacks instead of robust math strategies.
+                    We were building our own ecommerce stores and trading set-ups. Traditional marketing agencies we hired burned thousands of dollars in ad budgets generating empty bot clicks, while sales sheets stayed completely flat. Separately, Sathveek bought commercial Pine Script indicators that repainted historical charts, costing over ₹1.5L in capital in a single week when live order webhooks failed directly at the broker endpoint.
                   </p>
-                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-2 md:justify-end">
-                    <span className="text-[11px] font-semibold text-rose-500 bg-rose-500/5 px-2 py-0.5 rounded">Scammed Tools</span>
+                  <div className="mt-4 pt-3 border-t border-border-ink flex flex-wrap gap-2 md:justify-end">
+                    <span className="text-[11px] font-semibold text-rose-500 bg-rose-500/5 px-2 py-0.5 rounded">Scammed Indicators</span>
                     <span className="text-[11px] font-semibold text-rose-500 bg-rose-500/5 px-2 py-0.5 rounded">Lost Capital</span>
-                    <span className="text-[11px] font-semibold text-rose-500 bg-rose-500/5 px-2 py-0.5 rounded">Broken APIs</span>
+                    <span className="text-[11px] font-semibold text-rose-500 bg-rose-500/5 px-2 py-0.5 rounded">Ad-Spend Waste</span>
                   </div>
                 </motion.div>
               </div>
@@ -149,21 +149,21 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white dark:bg-[#111B30] rounded-2xl p-6 border border-slate-200/60 dark:border-slate-800 shadow-sm"
+                  className="bg-card-bg rounded-2xl p-6 border border-border-ink shadow-sm"
                 >
                   <span className="text-[11px] font-bold text-primary uppercase tracking-widest block mb-2">
                     Phase 02 / The Grind (Early 2024)
                   </span>
-                  <h3 className="text-[18px] font-bold text-[#0F172A] dark:text-white leading-snug">
+                  <h3 className="text-[18px] font-bold text-ink leading-snug">
                     Engineering From Scratch
                   </h3>
                   <p className="mt-3 text-[14px] text-slate-600 dark:text-slate-300 leading-relaxed">
-                    Out of survival, we threw out templates and decided to learn engineering ourselves. Sathveek dedicated months to mastering Next.js backend services, writing robust node webhook execution servers, and routing orders securely across multiple Indian broker APIs (Zerodha Kite, Upstox) with automatic fallback handlers. Moin took over pixel engineering, developing offline tracking databases using Meta Conversions API logs to combat iOS privacy barriers and optimize paid funnels.
+                    Out of survival, we threw out templates and decided to learn engineering ourselves. Sathveek dedicated months to mastering Next.js backend services, writing robust queue handlers, and routing orders securely across multiple Indian broker APIs (Zerodha Kite, Upstox) with automatic fallback switches. Moin took over pixel engineering, developing offline tracking databases using Meta Conversions API logs to combat iOS privacy barriers and optimize paid funnels.
                   </p>
-                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-2">
-                    <span className="text-[11px] font-semibold text-primary bg-primary/5 px-2 py-0.5 rounded">Next.js App Router</span>
-                    <span className="text-[11px] font-semibold text-primary bg-primary/5 px-2 py-0.5 rounded">Meta Conversions API</span>
-                    <span className="text-[11px] font-semibold text-primary bg-primary/5 px-2 py-0.5 rounded">Broker Integrations</span>
+                  <div className="mt-4 pt-3 border-t border-border-ink flex flex-wrap gap-2">
+                    <span className="text-[11px] font-semibold text-primary bg-primary/5 px-2 py-0.5 rounded">Queue Handlers</span>
+                    <span className="text-[11px] font-semibold text-primary bg-primary/5 px-2 py-0.5 rounded">Meta CAPI Sync</span>
+                    <span className="text-[11px] font-semibold text-primary bg-primary/5 px-2 py-0.5 rounded">API Rate-Limits</span>
                   </div>
                 </motion.div>
               </div>
@@ -178,18 +178,18 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white dark:bg-[#111B30] rounded-2xl p-6 border border-slate-200/60 dark:border-slate-800 shadow-sm"
+                  className="bg-card-bg rounded-2xl p-6 border border-border-ink shadow-sm"
                 >
                   <span className="text-[11px] font-bold text-secondary uppercase tracking-widest block mb-2">
                     Phase 03 / The Synergy (Late 2024)
                   </span>
-                  <h3 className="text-[18px] font-bold text-[#0F172A] dark:text-white leading-snug">
+                  <h3 className="text-[18px] font-bold text-ink leading-snug">
                     Bespoke Systems That Perform
                   </h3>
                   <p className="mt-3 text-[14px] text-slate-600 dark:text-slate-300 leading-relaxed">
                     We started launching systems for clients. We built clinic patient booking portals syncing live calendars with Twilio SMS followups that dropped no-show appointments by 22% in the first month. We developed serverless Pine Script execution pipelines running live trades with an average execution latency of 12ms. We bridged CRM databases and invoicing webhooks to save dispatchers 180+ manual spreadsheet hours every week.
                   </p>
-                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-2 md:justify-end">
+                  <div className="mt-4 pt-3 border-t border-border-ink flex flex-wrap gap-2 md:justify-end">
                     <span className="text-[11px] font-semibold text-secondary bg-secondary/5 px-2 py-0.5 rounded">Twilio SMS</span>
                     <span className="text-[11px] font-semibold text-secondary bg-secondary/5 px-2 py-0.5 rounded">12ms Latency</span>
                     <span className="text-[11px] font-semibold text-secondary bg-secondary/5 px-2 py-0.5 rounded">n8n Sync Pipelines</span>
@@ -207,18 +207,18 @@ export default function AboutPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5 }}
-                  className="bg-white dark:bg-[#111B30] rounded-2xl p-6 border border-slate-200/60 dark:border-slate-800 shadow-sm"
+                  className="bg-card-bg rounded-2xl p-6 border border-border-ink shadow-sm"
                 >
                   <span className="text-[11px] font-bold text-accent uppercase tracking-widest block mb-2">
                     Phase 04 / The Standard (Present)
                   </span>
-                  <h3 className="text-[18px] font-bold text-[#0F172A] dark:text-white leading-snug">
+                  <h3 className="text-[18px] font-bold text-ink leading-snug">
                     NetquoraX - Unifying Sales & Code
                   </h3>
                   <p className="mt-3 text-[14px] text-slate-600 dark:text-slate-300 leading-relaxed">
                     Today, we collaborate directly with early-stage startup owners, quant traders, and operators to design clean, high-performance infrastructure. We replace fragmented workflows with unified products, combining Next.js, customized databases, marketing analytics tracking, and API strategy automation. No agencies, no excuses, just pure execution.
                   </p>
-                  <div className="mt-4 pt-3 border-t border-slate-100 dark:border-slate-800/80 flex flex-wrap gap-2">
+                  <div className="mt-4 pt-3 border-t border-border-ink flex flex-wrap gap-2">
                     <span className="text-[11px] font-semibold text-accent bg-accent/5 px-2 py-0.5 rounded">Startup Scoping</span>
                     <span className="text-[11px] font-semibold text-accent bg-accent/5 px-2 py-0.5 rounded">Outcome Alignment</span>
                     <span className="text-[11px] font-semibold text-accent bg-accent/5 px-2 py-0.5 rounded">Infinite Scalability</span>
@@ -231,13 +231,13 @@ export default function AboutPage() {
         </section>
 
         {/* PRINCIPLES SECTION */}
-        <section className="py-16 border-t border-slate-200/60">
+        <section className="py-16 border-t border-border-ink">
           <div className="max-w-4xl">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-display text-[28px] md:text-[36px] font-extrabold text-[#0F172A] mb-12"
+              className="font-display text-[28px] md:text-[36px] font-extrabold text-ink mb-12"
             >
               How We Work
             </motion.h2>
@@ -249,12 +249,12 @@ export default function AboutPage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  className="bg-white rounded-2xl p-6 border border-slate-200/60 shadow-sm"
+                  className="bg-card-bg rounded-2xl p-6 border border-border-ink shadow-sm"
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-4">
                     <principle.icon size={24} />
                   </div>
-                  <h3 className="font-display text-[20px] font-bold text-[#0F172A] mb-2">
+                  <h3 className="font-display text-[20px] font-bold text-ink mb-2">
                     {principle.title}
                   </h3>
                   <p className="text-[14px] text-slate-500 leading-relaxed">
@@ -267,13 +267,13 @@ export default function AboutPage() {
         </section>
 
         {/* TEAM SECTION (Sathveek & Moin) */}
-        <section className="py-16 border-t border-slate-200/60">
+        <section className="py-16 border-t border-border-ink">
           <div className="max-w-4xl">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="font-display text-[28px] md:text-[36px] font-extrabold text-[#0F172A] mb-12"
+              className="font-display text-[28px] md:text-[36px] font-extrabold text-ink mb-12"
             >
               Meet the Founders
             </motion.h2>
@@ -284,7 +284,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-3xl p-8 border border-slate-200/60 shadow-sm flex flex-col justify-between"
+                className="bg-card-bg rounded-3xl p-8 border border-border-ink shadow-sm flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-4">
@@ -292,7 +292,7 @@ export default function AboutPage() {
                       S
                     </div>
                     <div>
-                      <h3 className="font-display text-[22px] font-bold text-[#0F172A]">
+                      <h3 className="font-display text-[22px] font-bold text-ink">
                         Sathveek
                       </h3>
                       <p className="text-[12px] font-bold uppercase tracking-wider text-primary">
@@ -300,18 +300,21 @@ export default function AboutPage() {
                       </p>
                     </div>
                   </div>
-                  <p className="mt-6 text-[14px] text-slate-600 leading-relaxed">
+                  <blockquote className="mt-5 pl-3.5 border-l-2 border-primary text-[13px] italic text-muted leading-relaxed bg-light/50 py-1.5 pr-2 rounded-r-md">
+                    "We don't build features just to hit spec. We build to eliminate bottlenecks so your product actually ships."
+                  </blockquote>
+                  <p className="mt-5 text-[14px] text-slate-600 leading-relaxed">
                     Systems architect and full-stack engineer. Sathveek designs the technical backbone of our agency, specializing in Next.js applications, automated API integrations, custom databases, and TradingView Pine Script algorithms. He spent years building automated tools to overcome bad software bottlenecks.
                   </p>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-slate-100 space-y-3">
                   <a
-                    href="mailto:hello@netquorax.com"
+                    href="mailto:netquorax@gmail.com"
                     className="flex items-center gap-2.5 text-[13px] text-slate-500 hover:text-primary transition-colors"
                   >
                     <Mail size={14} />
-                    hello@netquorax.com
+                    netquorax@gmail.com
                   </a>
                 </div>
               </motion.div>
@@ -321,7 +324,7 @@ export default function AboutPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="bg-white rounded-3xl p-8 border border-slate-200/60 shadow-sm flex flex-col justify-between"
+                className="bg-card-bg rounded-3xl p-8 border border-border-ink shadow-sm flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-4">
@@ -329,26 +332,29 @@ export default function AboutPage() {
                       M
                     </div>
                     <div>
-                      <h3 className="font-display text-[22px] font-bold text-[#0F172A]">
+                      <h3 className="font-display text-[22px] font-bold text-ink">
                         Moin
                       </h3>
-                      <p className="text-[12px] font-bold uppercase tracking-wider text-primary">
+                      <p className="text-[12px] font-bold uppercase tracking-wider text-[#7C3AED]">
                         Digital Marketer & Sales
                       </p>
                     </div>
                   </div>
-                  <p className="mt-6 text-[14px] text-slate-600 leading-relaxed">
+                  <blockquote className="mt-5 pl-3.5 border-l-2 border-[#7C3AED] text-[13px] italic text-muted leading-relaxed bg-light/50 py-1.5 pr-2 rounded-r-md">
+                    "Ads without conversion paths are just lighting cash on fire. We align traffic directly to robust, secured funnels."
+                  </blockquote>
+                  <p className="mt-5 text-[14px] text-slate-600 leading-relaxed">
                     Lead marketing designer and growth analyst. Moin is responsible for paid campaign targeting, copy hooks, and checkout conversion optimization. He guides client funnels to maximize lead generation, tracking every single dollar of revenue and sales pipeline to prevent waste.
                   </p>
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-slate-100 space-y-3">
                   <a
-                    href="mailto:hello@netquorax.com"
+                    href="mailto:netquorax@gmail.com"
                     className="flex items-center gap-2.5 text-[13px] text-slate-500 hover:text-primary transition-colors"
                   >
                     <Mail size={14} />
-                    hello@netquorax.com
+                    netquorax@gmail.com
                   </a>
                 </div>
               </motion.div>
@@ -358,7 +364,7 @@ export default function AboutPage() {
 
         {/* BOTTOM CTA */}
         <section className="py-16 text-center max-w-xl mx-auto mb-12">
-          <h3 className="font-display text-[24px] md:text-[30px] font-extrabold text-[#0F172A]">
+          <h3 className="font-display text-[24px] md:text-[30px] font-extrabold text-ink">
             Want to build with us?
           </h3>
           <p className="text-[15px] text-slate-500 mt-3 leading-relaxed">

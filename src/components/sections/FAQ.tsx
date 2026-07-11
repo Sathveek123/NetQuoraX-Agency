@@ -54,7 +54,7 @@ export default function FAQ() {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <section id="faq" className="py-16 lg:py-[120px] bg-white">
+    <section id="faq" className="py-16 lg:py-[120px] bg-card-bg">
       <div className="max-w-[800px] mx-auto px-6">
 
         {/* Header */}
@@ -73,13 +73,13 @@ export default function FAQ() {
           </motion.p>
           <motion.h2
             variants={itemVariants}
-            className="mt-3 font-display text-[32px] lg:text-[48px] font-extrabold tracking-tight text-[#0B1020] leading-[1.1]"
+            className="mt-3 font-display text-[32px] lg:text-[48px] font-extrabold tracking-tight text-ink leading-[1.1]"
           >
             Questions, Answered
           </motion.h2>
           <motion.p
             variants={itemVariants}
-            className="mt-4 text-[16px] text-[#0B1020]/60 max-w-[480px] leading-relaxed"
+            className="mt-4 text-[16px] text-ink/60 max-w-[480px] leading-relaxed"
           >
             Straight answers to the things people always ask before starting.
           </motion.p>
@@ -98,20 +98,20 @@ export default function FAQ() {
               <motion.div
                 key={idx}
                 variants={itemVariants}
-                className="border-b border-[rgba(11,16,32,0.08)]"
+                className="border-b border-border-ink"
               >
                 <button
                   onClick={() => setActive(isOpen ? null : idx)}
                   aria-expanded={isOpen}
                   className="w-full flex items-center justify-between py-6 text-left gap-4 outline-none focus-visible:ring-2 focus-visible:ring-[#2563EB] rounded-sm cursor-pointer"
                 >
-                  <span className="text-[17px] font-semibold text-[#0B1020] pr-4 leading-snug">
+                  <span className="text-[17px] font-semibold text-ink pr-4 leading-snug">
                     {item.q}
                   </span>
                   <motion.span
                     animate={{ rotate: isOpen ? 180 : 0 }}
                     transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] as const }}
-                    className="flex-shrink-0 text-[#0B1020]/50"
+                    className="flex-shrink-0 text-ink/50"
                   >
                     <ChevronDown size={20} />
                   </motion.span>
@@ -127,7 +127,7 @@ export default function FAQ() {
                       transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] as const }}
                       style={{ overflow: "hidden" }}
                     >
-                      <p className="text-[15px] text-[#0B1020]/65 leading-[1.6] pb-6 pt-1">
+                      <p className="text-[15px] text-ink/65 leading-[1.6] pb-6 pt-1">
                         {item.a}
                       </p>
                     </motion.div>

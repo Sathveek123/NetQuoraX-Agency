@@ -342,6 +342,86 @@ function CategorySection({ cat }: { cat: Category }) {
   );
 }
 
+// ─── Services Hero Visual ──────────────────────────────────────────────────
+function ServicesHeroVisual() {
+  return (
+    <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 p-5 bg-[#0d1220] aspect-[16/11] w-full text-white font-mono flex flex-col justify-between">
+      {/* Header */}
+      <div className="flex items-center justify-between border-b border-white/8 pb-3">
+        <span className="text-[11px] font-semibold text-slate-300">NetquoraX — Integration Hub</span>
+        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[9px] font-bold uppercase bg-blue-500/15 border border-blue-500/30 text-blue-400">
+          <span className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse" />
+          Hub Online
+        </span>
+      </div>
+
+      {/* Body Graph */}
+      <div className="relative flex-1 flex items-center justify-center">
+        <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Connector lines to corners */}
+          <line x1="100" y1="65" x2="35" y2="25" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" />
+          <line x1="100" y1="65" x2="165" y2="25" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" />
+          <line x1="100" y1="65" x2="35" y2="105" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" />
+          <line x1="100" y1="65" x2="165" y2="105" stroke="rgba(255,255,255,0.08)" strokeWidth="1.5" />
+
+          {/* Glowing path pulses */}
+          <path d="M 100,65 L 35,25" stroke="#2563EB" strokeWidth="1.5" strokeDasharray="10 60" strokeDashoffset="0" className="animate-[dash_3s_linear_infinite]" />
+          <path d="M 100,65 L 165,25" stroke="#06B6D4" strokeWidth="1.5" strokeDasharray="10 60" strokeDashoffset="0" className="animate-[dash_3.5s_linear_infinite]" />
+          <path d="M 100,65 L 35,105" stroke="#7C3AED" strokeWidth="1.5" strokeDasharray="10 60" strokeDashoffset="0" className="animate-[dash_4s_linear_infinite]" />
+          <path d="M 100,65 L 165,105" stroke="#22C55E" strokeWidth="1.5" strokeDasharray="10 60" strokeDashoffset="0" className="animate-[dash_2.5s_linear_infinite]" />
+
+          {/* Central Hub Node */}
+          <circle cx="100" cy="65" r="14" fill="rgba(37,99,235,0.15)" stroke="#2563EB" strokeWidth="1.5" />
+          <circle cx="100" cy="65" r="8" fill="#2563EB" className="animate-pulse" />
+
+          {/* Outer Nodes */}
+          <g>
+            <circle cx="35" cy="25" r="7" fill="#0d1220" stroke="#2563EB" strokeWidth="1.5" />
+            <text x="35" y="38" textAnchor="middle" fill="#94a3b8" fontSize="6.5" fontWeight="bold">BUILD</text>
+          </g>
+          <g>
+            <circle cx="165" cy="25" r="7" fill="#0d1220" stroke="#06B6D4" strokeWidth="1.5" />
+            <text x="165" y="38" textAnchor="middle" fill="#94a3b8" fontSize="6.5" fontWeight="bold">GROW</text>
+          </g>
+          <g>
+            <circle cx="35" cy="105" r="7" fill="#0d1220" stroke="#7C3AED" strokeWidth="1.5" />
+            <text x="35" y="118" textAnchor="middle" fill="#94a3b8" fontSize="6.5" fontWeight="bold">AUTOMATE</text>
+          </g>
+          <g>
+            <circle cx="165" cy="105" r="7" fill="#0d1220" stroke="#22C55E" strokeWidth="1.5" />
+            <text x="165" y="118" textAnchor="middle" fill="#94a3b8" fontSize="6.5" fontWeight="bold">PROTECT</text>
+          </g>
+        </svg>
+
+        {/* Floating status details */}
+        <div className="absolute top-2 left-2 p-1.5 rounded bg-white/5 border border-white/8 text-[7px] leading-tight flex flex-col gap-0.5">
+          <span className="text-white/60">SYS COMPLIANCE: <span className="text-green-400">PASSED</span></span>
+          <span className="text-white/60">LATENCY SPEED: <span className="text-blue-400">&lt;12ms</span></span>
+        </div>
+
+        <div className="absolute bottom-2 right-2 p-1.5 rounded bg-white/5 border border-white/8 text-[7px] leading-tight flex flex-col gap-0.5">
+          <span className="text-white/60">SERVICES SYNCED: <span className="text-green-400">5/5</span></span>
+          <span className="text-white/60">DEPLOYED MVP: <span className="text-blue-400">100%</span></span>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="border-t border-white/8 pt-2.5 flex items-center justify-between text-[8px] text-slate-400">
+        <span>Active Operations Panel</span>
+        <span>Secure TLS 1.3</span>
+      </div>
+
+      <style jsx>{`
+        @keyframes dash {
+          to {
+            stroke-dashoffset: -70;
+          }
+        }
+      `}</style>
+    </div>
+  );
+}
+
 // ─── Page ─────────────────────────────────────────────────────────────────
 export default function ServicesPage() {
   return (
@@ -356,32 +436,42 @@ export default function ServicesPage() {
             <svg width="100%" height="100%"><defs><pattern id="sg" width="24" height="24" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.2" fill="#0B1020" /></pattern></defs><rect width="100%" height="100%" fill="url(#sg)" /></svg>
           </div>
           <div className="max-w-[1280px] mx-auto px-4 md:px-6 relative z-10">
-            <div className="max-w-[720px] text-left">
-              <div className="inline-flex items-center gap-2 bg-[#2563EB]/6 border border-[#2563EB]/20 rounded-full px-4 py-1.5 text-xs font-bold text-[#2563EB] mb-6 uppercase tracking-wider">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-pulse" />
-                ● Our Full Service Menu
+            <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+              {/* Left Column */}
+              <div className="text-left">
+                <div className="inline-flex items-center gap-2 bg-[#2563EB]/6 border border-[#2563EB]/20 rounded-full px-4 py-1.5 text-xs font-bold text-[#2563EB] mb-6 uppercase tracking-wider">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2563EB] animate-pulse" />
+                  ● Our Full Service Menu
+                </div>
+                <h1 className="font-display text-[38px] sm:text-[52px] font-extrabold leading-[1.07] tracking-tight text-[#0B1020] dark:text-white mb-5">
+                  Every Service, Explained —<br />
+                  <span className="text-[#2563EB]">Pick What Moves Your Business</span>
+                </h1>
+                <p className="text-[17px] leading-relaxed text-[#4b5563] dark:text-slate-400 mb-8 max-w-xl">
+                  Five categories, 20+ services — browse what fits, or book a call and we'll scope it together.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-2 bg-[#2563EB] text-white font-semibold text-[15px] px-7 py-3.5 rounded-xl shadow-md shadow-blue-500/20 hover:shadow-blue-500/40 hover:brightness-110 transition-all"
+                  >
+                    Book a Strategy Call
+                    <ArrowRight size={16} />
+                  </Link>
+                  <Link
+                    href="/pricing"
+                    className="inline-flex items-center gap-2 border border-slate-300 dark:border-slate-700 text-[#0B1020] dark:text-white font-semibold text-[15px] px-7 py-3.5 rounded-xl hover:border-[#2563EB] hover:text-[#2563EB] transition-all"
+                  >
+                    See Pricing
+                  </Link>
+                </div>
               </div>
-              <h1 className="font-display text-[38px] sm:text-[52px] font-extrabold leading-[1.07] tracking-tight text-[#0B1020] dark:text-white mb-5">
-                Every Service, Explained —<br />
-                <span className="text-[#2563EB]">Pick What Moves Your Business</span>
-              </h1>
-              <p className="text-[17px] leading-relaxed text-[#4b5563] dark:text-slate-400 mb-8 max-w-xl">
-                Five categories, 20+ services — browse what fits, or book a call and we'll scope it together.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center gap-2 bg-[#2563EB] text-white font-semibold text-[15px] px-7 py-3.5 rounded-xl shadow-md shadow-blue-500/20 hover:shadow-blue-500/40 hover:brightness-110 transition-all"
-                >
-                  Book a Strategy Call
-                  <ArrowRight size={16} />
-                </Link>
-                <Link
-                  href="/pricing"
-                  className="inline-flex items-center gap-2 border border-slate-300 dark:border-slate-700 text-[#0B1020] dark:text-white font-semibold text-[15px] px-7 py-3.5 rounded-xl hover:border-[#2563EB] hover:text-[#2563EB] transition-all"
-                >
-                  See Pricing
-                </Link>
+
+              {/* Right Column - Static SVG Visual Node Diagram */}
+              <div className="relative w-full max-w-[500px] mx-auto select-none mt-8 lg:mt-0">
+                {/* Ambient glow */}
+                <div className="absolute inset-0 bg-[#2563EB]/8 blur-[80px] rounded-full scale-90 -z-10" />
+                <ServicesHeroVisual />
               </div>
             </div>
 

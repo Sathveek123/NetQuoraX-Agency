@@ -7,21 +7,39 @@ import Footer from "@/components/sections/Footer";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
-// Mockup render components for each industry (rendered inline in CSS/HTML for maximum crispness)
 function StartupMockup() {
   return (
-    <div className="w-[280px] h-[200px] rounded-2xl bg-slate-900 border border-slate-800 p-4 flex flex-col justify-between shadow-lg">
+    <div className="w-[320px] h-[220px] rounded-2xl bg-[#0b1020] border border-white/10 p-5 flex flex-col justify-between shadow-2xl text-white font-mono">
       <div className="flex justify-between items-center text-[10px] uppercase font-bold text-slate-400">
         <span>Velocity Panel</span>
-        <span className="text-emerald-500 animate-pulse">ACTIVE SPRINT</span>
+        <span className="inline-flex items-center gap-1 text-emerald-400">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          Sprint Active
+        </span>
       </div>
-      <div>
-        <span className="block text-[28px] font-extrabold text-white tracking-tight">8.5x</span>
-        <span className="block text-slate-400 text-xs mt-1">Faster MVP timeline velocity</span>
+      <div className="my-2">
+        <span className="block text-[32px] font-extrabold text-white tracking-tight">8.5x</span>
+        <span className="block text-slate-400 text-[11px] mt-0.5">Faster MVP timeline velocity</span>
       </div>
+      
+      {/* Sprint Burndown chart */}
+      <div className="relative h-12 w-full my-1 bg-white/5 border border-white/5 rounded p-1">
+        <svg className="w-full h-full" viewBox="0 0 100 30" preserveAspectRatio="none">
+          {/* Target Burndown Line (Dashed) */}
+          <line x1="0" y1="5" x2="100" y2="28" stroke="rgba(255,255,255,0.15)" strokeWidth="1" strokeDasharray="3 3" />
+          {/* Actual Burndown Line (Glowing Blue) */}
+          <path d="M 0,5 L 20,6 L 40,8 L 60,11 L 80,18 L 100,28" stroke="#2563EB" strokeWidth="1.5" fill="none" />
+          <path d="M 0,5 L 20,6 L 40,8 L 60,11 L 80,18 L 100,28 L 100,30 L 0,30 Z" fill="rgba(37,99,235,0.08)" />
+          {/* Glowing pulse on last active sprint point */}
+          <circle cx="80" cy="18" r="2" fill="#2563EB" />
+          <circle cx="80" cy="18" r="4" fill="none" stroke="#2563EB" strokeWidth="0.5" className="animate-ping" />
+        </svg>
+        <span className="absolute top-1 right-2 text-[7px] text-slate-400">Target vs Actual</span>
+      </div>
+
       <div>
         <div className="flex justify-between items-center text-[10px] font-bold text-slate-400 mb-1">
-          <span>Sprint Progress</span>
+          <span>75% — Faster time-to-first-user</span>
           <span className="text-white">75%</span>
         </div>
         <div className="w-full h-1.5 rounded-full bg-slate-800 overflow-hidden">
@@ -34,20 +52,42 @@ function StartupMockup() {
 
 function HealthcareMockup() {
   return (
-    <div className="w-[280px] h-[200px] rounded-2xl bg-white border border-slate-200 p-4 flex flex-col justify-between shadow-md">
+    <div className="w-[320px] h-[220px] rounded-2xl bg-[#0b1020] border border-white/10 p-5 flex flex-col justify-between shadow-2xl text-white font-mono">
       <div className="flex justify-between items-center text-[10px] uppercase font-bold text-slate-400">
-        <span>Scheduler widget</span>
-        <span className="text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">AUTO REMINDER</span>
+        <span>Scheduler Hub</span>
+        <span className="inline-flex items-center gap-1 text-[#0D9488]">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#0D9488] animate-pulse" />
+          Active Reminders
+        </span>
       </div>
-      <div className="border border-slate-100 rounded-xl p-3 bg-slate-50">
-        <div className="flex items-center justify-between text-xs font-bold text-slate-700">
-          <span>Dr. Sarah Jenkins</span>
-          <span className="text-[10px] text-slate-400 font-medium">10:30 AM</span>
+
+      {/* Stacked appointments */}
+      <div className="space-y-2 my-2">
+        <div className="border border-white/5 rounded-xl p-2.5 bg-white/5">
+          <div className="flex items-center justify-between text-[11px] font-bold text-slate-200">
+            <span>Dr. Sarah Jenkins</span>
+            <span className="text-[10px] text-slate-400">10:30 AM</span>
+          </div>
+          <div className="flex justify-between items-center mt-1">
+            <span className="text-[9px] text-[#0D9488] font-bold uppercase tracking-wider bg-[#0D9488]/10 px-1.5 py-0.5 rounded">✓ Confirmed</span>
+            <span className="text-[8px] text-slate-400">SMS Reminded</span>
+          </div>
         </div>
-        <span className="block text-[11px] text-slate-500 mt-1">Dental cleaning • Confirmed</span>
+
+        <div className="border border-white/5 rounded-xl p-2.5 bg-white/5 opacity-80">
+          <div className="flex items-center justify-between text-[11px] font-bold text-slate-200">
+            <span>Dr. Amit Patel</span>
+            <span className="text-[10px] text-slate-400">2:15 PM</span>
+          </div>
+          <div className="flex justify-between items-center mt-1">
+            <span className="text-[9px] text-amber-400 font-bold uppercase tracking-wider bg-amber-400/10 px-1.5 py-0.5 rounded">⌛ Pending SMS Response</span>
+            <span className="text-[8px] text-slate-400">Retrying...</span>
+          </div>
+        </div>
       </div>
-      <div className="text-[10px] text-slate-400 text-center font-bold">
-        ⚡ No-shows reduced by 22%
+
+      <div className="text-[10px] text-[#0D9488] text-center font-bold pt-2 border-t border-white/5">
+        ⚡ No-shows reduced by 22% overall
       </div>
     </div>
   );
@@ -55,46 +95,70 @@ function HealthcareMockup() {
 
 function EducationMockup() {
   return (
-    <div className="w-[280px] h-[200px] rounded-2xl bg-slate-900 border border-slate-800 p-4 flex flex-col justify-between shadow-lg">
-      <div className="text-[10px] uppercase font-bold text-slate-500">Student Progress Path</div>
-      <div className="space-y-2.5 my-2">
+    <div className="w-[320px] h-[220px] rounded-2xl bg-[#0b1020] border border-white/10 p-5 flex flex-col justify-between shadow-2xl text-white font-mono">
+      <div className="flex justify-between items-center text-[10px] uppercase font-bold text-slate-400">
+        <span>Student Progress Path</span>
+        <span className="text-secondary font-bold text-[9px] uppercase">LMS Auto-sync</span>
+      </div>
+      <div className="space-y-3 my-2">
         {[
-          { label: "Introduction to AI Core", progress: 100 },
-          { label: "Predictive Analytics Setup", progress: 60 },
-          { label: "Final Pipeline Deployment", progress: 0 }
+          { label: "Introduction to AI Core", progress: 100, color: "#7C3AED" },
+          { label: "Predictive Analytics Setup", progress: 60, color: "#7C3AED" },
+          { label: "Final Pipeline Deployment", progress: 15, color: "#a78bfa" }
         ].map((item, idx) => (
           <div key={idx} className="text-xs">
-            <div className="flex justify-between text-white font-medium text-[11px] mb-1">
+            <div className="flex justify-between text-slate-300 font-medium text-[10px] mb-1">
               <span>{item.label}</span>
               <span className="text-slate-400">{item.progress}%</span>
             </div>
-            <div className="h-1 bg-slate-800 rounded-full overflow-hidden">
-              <div className="h-full bg-secondary" style={{ width: `${item.progress}%` }} />
+            <div className="h-1.5 bg-slate-800 rounded-full overflow-hidden">
+              <div className="h-full bg-secondary transition-all duration-1000" style={{ width: `${item.progress}%`, backgroundColor: item.color }} />
             </div>
           </div>
         ))}
       </div>
-      <div className="text-[10px] text-slate-400 font-bold text-center">Auto-grades & badges synced</div>
+      <div className="text-[9px] text-slate-400 font-bold text-center border-t border-white/5 pt-2">
+        ✓ Certificates generated & grades matched
+      </div>
     </div>
   );
 }
 
 function FinanceMockup() {
   return (
-    <div className="w-[280px] h-[200px] rounded-2xl bg-[#090D1A] border border-[#1E293B] p-4 flex flex-col justify-between text-white shadow-xl">
+    <div className="w-[320px] h-[220px] rounded-2xl bg-[#070b19] border border-white/10 p-5 flex flex-col justify-between text-white shadow-2xl font-mono">
       <div className="flex justify-between items-center text-[10px] font-bold text-slate-500 uppercase">
-        <span>Backtest Board</span>
-        <span className="text-emerald-500">+14.2% yield</span>
+        <span>Backtest Engine</span>
+        <span className="text-emerald-400 font-bold bg-emerald-500/10 px-1.5 py-0.5 rounded">+14.2% yield</span>
       </div>
-      <div className="h-16 flex items-end gap-2">
-        {[30, 50, 75, 45, 90, 60, 85].map((h, idx) => (
-          <div key={idx} className="flex-1 bg-slate-800 rounded-t-sm relative" style={{ height: `${h}%` }}>
-            <div className="absolute inset-x-0 bottom-0 bg-[#06B6D4] h-[60%] rounded-t-sm" />
-          </div>
-        ))}
+
+      {/* Sparkline candlestick area chart */}
+      <div className="h-20 w-full relative flex items-center justify-center my-2">
+        <svg className="w-full h-full" viewBox="0 0 160 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+          {/* Grid lines */}
+          <line x1="0" y1="15" x2="160" y2="15" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+          <line x1="0" y1="35" x2="160" y2="35" stroke="rgba(255,255,255,0.04)" strokeWidth="1" />
+          
+          {/* Glowing Sparkline path */}
+          <path d="M0,45 L20,38 L40,48 L60,25 L80,32 L100,10 L120,28 L140,5 L160,18" stroke="#10B981" strokeWidth="2" fill="none" />
+          <path d="M0,45 L20,38 L40,48 L60,25 L80,32 L100,10 L120,28 L140,5 L160,18 L160,60 L0,60 Z" fill="url(#sparkGrad)" />
+
+          {/* Candle mock details */}
+          <line x1="60" y1="18" x2="60" y2="32" stroke="#10B981" strokeWidth="0.75" />
+          <line x1="100" y1="5" x2="100" y2="18" stroke="#10B981" strokeWidth="0.75" />
+          <line x1="140" y1="2" x2="140" y2="12" stroke="#10B981" strokeWidth="0.75" />
+
+          <defs>
+            <linearGradient id="sparkGrad" x1="0" y1="0" x2="0" y2="60" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#10B981" stopOpacity="0.15" />
+              <stop offset="100%" stopColor="#10B981" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+        </svg>
       </div>
-      <div className="text-[11px] text-slate-400 font-bold text-center pt-2 border-t border-slate-800">
-        Execution speed: &lt;12ms latency
+
+      <div className="text-[10px] text-slate-400 font-bold text-center pt-2 border-t border-white/5">
+        Execution latency: &lt;12ms • Pine Script v5
       </div>
     </div>
   );
@@ -102,24 +166,44 @@ function FinanceMockup() {
 
 function RealEstateMockup() {
   return (
-    <div className="w-[280px] h-[200px] rounded-2xl bg-white border border-slate-200 p-4 flex flex-col justify-between shadow-md">
-      <div className="text-[10px] uppercase font-bold text-slate-400">Leads Lead Sheet</div>
-      <div className="space-y-2">
-        {[
-          { name: "John Archer", property: "3 BHK, Bandra", budget: "₹3.5 Cr" },
-          { name: "Meera Sen", property: "1 BHK, Worli", budget: "₹1.8 Cr" }
-        ].map((item, idx) => (
-          <div key={idx} className="border border-slate-100 rounded-lg p-2 flex justify-between items-center text-xs">
-            <div>
-              <span className="block font-bold text-slate-700">{item.name}</span>
-              <span className="block text-[10px] text-slate-400">{item.property}</span>
-            </div>
-            <span className="font-bold text-primary">{item.budget}</span>
-          </div>
-        ))}
+    <div className="w-[320px] h-[220px] rounded-2xl bg-[#0b1020] border border-white/10 p-5 flex flex-col justify-between shadow-2xl text-white font-mono">
+      <div className="flex justify-between items-center text-[10px] uppercase font-bold text-slate-400">
+        <span>Lead Sync Sheet</span>
+        <span className="text-[#4F46E5] font-bold bg-[#4F46E5]/15 px-2 py-0.5 rounded">WHATSAPP ACTIVE</span>
       </div>
-      <div className="text-[10px] text-center text-emerald-600 font-bold bg-emerald-50 py-1 rounded">
-        ✓ Lead response time: 2 mins
+
+      <div className="space-y-2.5 my-2 overflow-y-auto">
+        <div className="border border-white/5 rounded-xl p-2 bg-white/5 flex justify-between items-center text-xs">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center text-[10px] font-bold text-primary">JA</div>
+            <div>
+              <span className="block font-bold text-slate-200">John Archer</span>
+              <span className="block text-[9px] text-slate-400">3 BHK, Bandra</span>
+            </div>
+          </div>
+          <div className="text-right">
+            <span className="block font-bold text-primary text-[10px]">₹3.5 Cr</span>
+            <span className="inline-block text-[8px] bg-emerald-500/10 text-emerald-400 px-1 py-0.2 rounded font-bold uppercase">Hot Lead</span>
+          </div>
+        </div>
+
+        <div className="border border-white/5 rounded-xl p-2 bg-white/5 flex justify-between items-center text-xs">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center text-[10px] font-bold text-secondary">MS</div>
+            <div>
+              <span className="block font-bold text-slate-200">Meera Sen</span>
+              <span className="block text-[9px] text-slate-400">1 BHK, Worli</span>
+            </div>
+          </div>
+          <div className="text-right">
+            <span className="block font-bold text-primary text-[10px]">₹1.8 Cr</span>
+            <span className="inline-block text-[8px] bg-blue-500/10 text-blue-400 px-1 py-0.2 rounded font-bold uppercase">Followup</span>
+          </div>
+        </div>
+      </div>
+
+      <div className="text-[10px] text-center text-emerald-400 font-bold bg-emerald-500/10 py-1 rounded">
+        ✓ Lead WhatsApp followup: 2 mins response
       </div>
     </div>
   );
@@ -127,24 +211,24 @@ function RealEstateMockup() {
 
 function EcommerceMockup() {
   return (
-    <div className="w-[280px] h-[200px] rounded-2xl bg-slate-900 border border-slate-800 p-4 flex flex-col justify-between text-white shadow-lg">
-      <div className="flex justify-between items-center text-[10px] uppercase font-bold text-slate-500">
-        <span>Cart Checkout</span>
-        <span className="text-[#F43F5E] font-bold">SECURE SSL</span>
+    <div className="w-[320px] h-[220px] rounded-2xl bg-[#0b1020] border border-white/10 p-5 flex flex-col justify-between text-white shadow-2xl font-mono">
+      <div className="flex justify-between items-center text-[10px] uppercase font-bold text-slate-400">
+        <span>Cart Checkout UI</span>
+        <span className="text-[#F43F5E] font-bold bg-[#F43F5E]/15 px-2 py-0.5 rounded">SECURE SSL</span>
       </div>
-      <div className="space-y-1.5 text-xs">
+      <div className="space-y-1.5 text-xs my-2">
         <div className="flex justify-between text-slate-300">
           <span>Subtotal (2 items)</span><span>₹2,490</span>
         </div>
         <div className="flex justify-between text-slate-300">
-          <span>Shipping (Local)</span><span>FREE</span>
+          <span>Shipping (Express)</span><span className="text-emerald-400">FREE</span>
         </div>
-        <div className="flex justify-between font-bold text-white pt-1.5 border-t border-slate-800 mt-1">
-          <span>Total Paid</span><span>₹2,490</span>
+        <div className="flex justify-between font-bold text-white pt-1.5 border-t border-white/10 mt-1.5 text-[13px]">
+          <span>Total Paid</span><span className="text-emerald-400">₹2,490</span>
         </div>
       </div>
-      <div className="bg-emerald-950/40 text-emerald-400 text-[10px] font-bold py-1 px-2 rounded text-center">
-        Stripe checkout reconciled automatically
+      <div className="bg-emerald-500/10 text-emerald-400 text-[9px] font-bold py-1.5 px-2.5 rounded text-center border border-emerald-500/20">
+        ✓ Invoices & Stripe logs reconciled automatically
       </div>
     </div>
   );
@@ -152,17 +236,29 @@ function EcommerceMockup() {
 
 function HospitalityMockup() {
   return (
-    <div className="w-[280px] h-[200px] rounded-2xl bg-white border border-slate-200 p-4 flex flex-col justify-between shadow-md">
-      <div className="text-[10px] uppercase font-bold text-slate-400">Guest Planner</div>
-      <div className="border border-slate-100 rounded-xl p-3 bg-slate-50">
-        <div className="flex items-center justify-between text-xs font-bold text-slate-700">
-          <span>Room 304 (Suite)</span>
-          <span className="text-amber-600 font-bold bg-amber-50 px-1.5 py-0.5 rounded text-[9px]">DUE IN</span>
-        </div>
-        <span className="block text-[11px] text-slate-500 mt-1">Check-in: Today, 2:00 PM</span>
+    <div className="w-[320px] h-[220px] rounded-2xl bg-[#0b1020] border border-white/10 p-5 flex flex-col justify-between shadow-2xl text-white font-mono">
+      <div className="flex justify-between items-center text-[10px] uppercase font-bold text-slate-400">
+        <span>Guest Planner</span>
+        <span className="text-amber-400 font-bold bg-amber-400/10 px-1.5 py-0.5 rounded text-[9px]">DUE IN</span>
       </div>
-      <div className="text-[10px] text-slate-400 font-bold text-center">
-        Keyless checkout code sent to guest
+      <div className="border border-white/5 rounded-xl p-3 bg-white/5 my-2">
+        <div className="flex items-center justify-between text-xs font-bold text-slate-200">
+          <span>Room 304 (Suite)</span>
+          <span className="text-emerald-400 font-medium">Checked-in</span>
+        </div>
+        <span className="block text-[10px] text-slate-400 mt-1">Direct-booking verified</span>
+      </div>
+      
+      {/* Smart lock passcode status visual */}
+      <div className="flex items-center gap-2 bg-[#090D1A] rounded-lg p-2 border border-white/5 justify-between">
+        <div className="flex items-center gap-1.5">
+          <svg className="w-3.5 h-3.5 text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+          </svg>
+          <span className="text-[10px] text-slate-300">Smart Keycode:</span>
+        </div>
+        <span className="text-[11px] font-bold text-amber-400 tracking-widest animate-pulse">4902</span>
       </div>
     </div>
   );
@@ -170,26 +266,39 @@ function HospitalityMockup() {
 
 function LogisticsMockup() {
   return (
-    <div className="w-[280px] h-[200px] rounded-2xl bg-slate-900 border border-slate-800 p-4 flex flex-col justify-between text-white shadow-lg">
-      <div className="text-[10px] uppercase font-bold text-slate-500">Route pipeline tracker</div>
-      <div className="flex justify-between items-center text-xs my-2">
-        {[
-          { label: "Dispatch", ok: true },
-          { label: "Transit", ok: true },
-          { label: "Delivery", ok: false }
-        ].map((node, idx) => (
-          <div key={idx} className="flex flex-col items-center gap-1.5">
-            <div className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-[10px] ${
-              node.ok ? "bg-primary text-white" : "bg-slate-800 text-slate-500"
-            }`}>
-              {idx + 1}
+    <div className="w-[320px] h-[220px] rounded-2xl bg-[#0b1020] border border-white/10 p-5 flex flex-col justify-between text-white shadow-2xl font-mono">
+      <div className="text-[10px] uppercase font-bold text-slate-400">Route Pipeline Tracker</div>
+      
+      {/* Pipeline progress route */}
+      <div className="relative py-4 my-2">
+        {/* Connection line */}
+        <div className="absolute top-[28px] left-[35px] right-[35px] h-[2px] bg-slate-800" />
+        <div className="absolute top-[28px] left-[35px] w-[50%] h-[2px] bg-[#EA580C] animate-[pulse_2s_infinite]" />
+
+        <div className="flex justify-between items-center text-xs relative z-10">
+          {[
+            { label: "Dispatch", ok: true },
+            { label: "Transit", ok: true, active: true },
+            { label: "Delivery", ok: false }
+          ].map((node, idx) => (
+            <div key={idx} className="flex flex-col items-center gap-1.5">
+              <div className={`w-7 h-7 rounded-full flex items-center justify-center font-bold text-[10px] transition-all ${
+                node.active 
+                  ? "bg-[#EA580C] text-white ring-4 ring-[#EA580C]/25" 
+                  : node.ok 
+                    ? "bg-slate-700 text-white" 
+                    : "bg-slate-900 text-slate-500 border border-white/5"
+              }`}>
+                {idx + 1}
+              </div>
+              <span className="text-[9px] font-bold text-slate-400">{node.label}</span>
             </div>
-            <span className="text-[9px] font-bold text-slate-400">{node.label}</span>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      <div className="text-[10px] text-slate-400 text-center font-bold">
-        ✓ Real-time ETA update synced
+
+      <div className="text-[10px] text-slate-400 text-center font-bold pt-2 border-t border-white/5">
+        ✓ Driver ETA Auto-synced to Shopify / CRM
       </div>
     </div>
   );
@@ -263,6 +372,14 @@ const INDUSTRIES = [
 ];
 
 export default function IndustriesPage() {
+  React.useEffect(() => {
+    document.title = "Targeted Industry Solutions & Software | NetQuorax";
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute("content", "Discover how we build custom workflow automation, low-latency execution engines, and Web apps tailored to your specific industry constraints.");
+    }
+  }, []);
+
   return (
     <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen">
       <Navbar />

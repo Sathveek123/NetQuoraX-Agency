@@ -13,9 +13,10 @@ function IllustrationOnePartner() {
     <RepelCard strength={18} stiffness={160} damping={18} className="w-full h-full">
       <div className="relative w-full h-full rounded-2xl overflow-hidden shadow-xl">
         <img
-          src="/images/team-collab.png"
+          src="/images/team-collab.webp"
           alt="Team collaborating"
           className="w-full h-full object-cover"
+          loading="lazy"
           style={{ filter: "brightness(1.02) saturate(1.05)" }}
         />
         <div
@@ -236,10 +237,10 @@ function DiffRow({ row, index }: { row: DiffRow; index: number }) {
       >
         {row.num}
       </p>
-      <h3 className="font-display text-[22px] md:text-[28px] font-extrabold tracking-tight text-[#0B1020] leading-[1.2]">
+      <h3 className="font-display text-[22px] md:text-[28px] font-extrabold tracking-tight text-ink leading-[1.2]">
         {row.h3}
       </h3>
-      <p className="mt-4 text-[16px] text-[#0B1020]/65 leading-[1.6] max-w-[420px]">
+      <p className="mt-4 text-[16px] text-ink/65 leading-[1.6] max-w-[420px]">
         {row.desc}
       </p>
       {row.tags && (
@@ -319,7 +320,7 @@ export default function WhyUs() {
   return (
     <section
       id="why-us"
-      className="py-16 lg:py-[120px] bg-[#F8FAFC]"
+      className="py-16 lg:py-[120px] bg-light"
       aria-labelledby="whyus-heading"
     >
       <div className="max-w-[1280px] mx-auto px-6">
@@ -337,11 +338,11 @@ export default function WhyUs() {
             Why NetquoraX
           </motion.p>
           <motion.h2 variants={headerItem} id="whyus-heading"
-            className="mt-3 font-display text-[32px] lg:text-[48px] font-extrabold tracking-tight text-[#0B1020] leading-[1.1]">
+            className="mt-3 font-display text-[32px] lg:text-[48px] font-extrabold tracking-tight text-ink leading-[1.1]">
             Built Different, On Purpose
           </motion.h2>
           <motion.p variants={headerItem}
-            className="mt-4 text-[16px] text-[#0B1020]/60 max-w-[480px] leading-relaxed">
+            className="mt-4 text-[16px] text-ink/60 max-w-[480px] leading-relaxed">
             Most agencies hand you a deliverable and disappear. We build the system and stay.
           </motion.p>
         </motion.div>

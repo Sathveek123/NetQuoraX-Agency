@@ -142,15 +142,15 @@ export default function BookingForm() {
 
             {/* Quick contact */}
             <motion.div variants={headerItem} className="mt-10 space-y-4">
-              <a href="mailto:hello@netquorax.com"
+              <a href="mailto:netquorax@gmail.com"
                 className="flex items-center gap-3 text-[14px] text-[#0B1020]/60 hover:text-[#2563EB] transition-colors group">
                 <Mail size={16} aria-hidden="true" className="group-hover:text-[#2563EB]" />
-                hello@netquorax.com (General)
+                netquorax@gmail.com (General)
               </a>
-              <a href="mailto:support@netquorax.com"
+              <a href="mailto:netquorax@gmail.com"
                 className="flex items-center gap-3 text-[14px] text-[#0B1020]/60 hover:text-[#2563EB] transition-colors group">
                 <Mail size={16} aria-hidden="true" className="group-hover:text-[#2563EB]" />
-                support@netquorax.com (Support)
+                netquorax@gmail.com (Support)
               </a>
             </motion.div>
 
@@ -158,15 +158,16 @@ export default function BookingForm() {
             <motion.div variants={headerItem} className="mt-10 flex items-center gap-3">
               <div className="flex -space-x-2">
                 {[
-                  "/images/avatar-rahul.png",
-                  "/images/avatar-james-h.png",
-                  "/images/avatar-fatima.png",
+                  "/images/avatar-rahul.webp",
+                  "/images/avatar-james-h.webp",
+                  "/images/avatar-fatima.webp",
                 ].map((src, i) => (
                   <img
                     key={i}
                     src={src}
                     alt=""
                     aria-hidden="true"
+                    loading="lazy"
                     className="w-9 h-9 rounded-full object-cover border-2 border-white"
                   />
                 ))}

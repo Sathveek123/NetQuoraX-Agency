@@ -74,7 +74,7 @@ export default function PrivacyPage() {
               5. Your Rights & Access
             </h2>
             <p>
-              You may request access to, correction of, or deletion of your personal data collected by us at any time. To issue a data inquiry, please contact our privacy desk at <a href="mailto:privacy@netquorax.com" className="text-primary hover:underline font-semibold">privacy@netquorax.com</a>.
+              You may request access to, correction of, or deletion of your personal data collected by us at any time. To issue a data inquiry, please contact our privacy desk at <a href="mailto:netquorax@gmail.com" className="text-primary hover:underline font-semibold">netquorax@gmail.com</a>.
             </p>
           </section>
 

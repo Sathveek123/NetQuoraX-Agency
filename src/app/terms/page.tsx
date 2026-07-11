@@ -83,7 +83,7 @@ export default function TermsPage() {
               6. Contact Information
             </h2>
             <p>
-              If you have any questions or require legal clarification regarding these terms, please contact our legal representative at <a href="mailto:legal@netquorax.com" className="text-primary hover:underline font-semibold">legal@netquorax.com</a>.
+              If you have any questions or require legal clarification regarding these terms, please contact our legal representative at <a href="mailto:netquorax@gmail.com" className="text-primary hover:underline font-semibold">netquorax@gmail.com</a>.
             </p>
           </section>
         </div>

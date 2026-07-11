@@ -27,6 +27,7 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const validateField = (name: string, value: string) => {
     let error = "";
@@ -77,17 +78,32 @@ export default function ContactPage() {
     }
 
     setIsSubmitting(true);
+    setSubmitError(null);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-    setIsSubmitting(false);
-    setIsSubmitted(true);
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.error || "Something went wrong. Please try again.");
+      }
+
+      setIsSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (isSubmitted) {
     return (
-      <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen">
+      <div className="bg-light text-ink min-h-screen">
         <Navbar />
         <main className="max-w-[1280px] mx-auto px-6">
           <section className="pt-[140px] pb-16 lg:pb-24 border-b border-slate-200/60">
@@ -111,7 +127,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-display text-[36px] md:text-[48px] font-extrabold text-[#0F172A]"
+              className="font-display text-[36px] md:text-[48px] font-extrabold text-ink"
             >
               Message Sent!
             </motion.h1>
@@ -150,7 +166,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="bg-[#F8FAFC] text-[#0F172A] min-h-screen">
+    <div className="bg-light text-ink min-h-screen">
       <Navbar />
 
       <main className="max-w-[1280px] mx-auto px-6">
@@ -172,7 +188,7 @@ export default function ContactPage() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="font-display text-[40px] md:text-[56px] font-extrabold tracking-tight text-[#0F172A] leading-[1.1]"
+              className="font-display text-[40px] md:text-[56px] font-extrabold tracking-tight text-ink leading-[1.1]"
             >
               Let's Talk About What You're Building
             </motion.h1>
@@ -199,7 +215,7 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                  <label htmlFor="name" className="block text-sm font-semibold text-ink mb-2">
                     Name *
                   </label>
                   <input
@@ -223,7 +239,7 @@ export default function ContactPage() {
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                  <label htmlFor="email" className="block text-sm font-semibold text-ink mb-2">
                     Email *
                   </label>
                   <input
@@ -247,7 +263,7 @@ export default function ContactPage() {
 
                 {/* Company (Optional) */}
                 <div>
-                  <label htmlFor="company" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                  <label htmlFor="company" className="block text-sm font-semibold text-ink mb-2">
                     Company <span className="text-slate-400 font-normal">(optional)</span>
                   </label>
                   <input
@@ -263,7 +279,7 @@ export default function ContactPage() {
 
                 {/* Project Type */}
                 <div>
-                  <label htmlFor="projectType" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                  <label htmlFor="projectType" className="block text-sm font-semibold text-ink mb-2">
                     Project Type
                   </label>
                   <select
@@ -285,7 +301,7 @@ export default function ContactPage() {
 
                 {/* Budget Range */}
                 <div>
-                  <label htmlFor="budget" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                  <label htmlFor="budget" className="block text-sm font-semibold text-ink mb-2">
                     Budget Range <span className="text-slate-400 font-normal">(optional)</span>
                   </label>
                   <select
@@ -306,7 +322,7 @@ export default function ContactPage() {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-semibold text-[#0F172A] mb-2">
+                  <label htmlFor="message" className="block text-sm font-semibold text-ink mb-2">
                     Message *
                   </label>
                   <textarea
@@ -329,23 +345,39 @@ export default function ContactPage() {
                 </div>
 
                 {/* Submit Button */}
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-primary text-white font-semibold px-6 py-4 rounded-xl hover:bg-primary/95 shadow-lg shadow-primary/10 transition-colors text-[15px] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? (
-                    <>
-                      <Loader2 size={18} className="animate-spin" />
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <Send size={18} />
-                      Send Message
-                    </>
+                <div className="space-y-4">
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full bg-primary text-white font-semibold px-6 py-4 rounded-xl hover:bg-primary/95 shadow-lg shadow-primary/10 transition-colors text-[15px] flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <Loader2 size={18} className="animate-spin" />
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={18} />
+                        Send Message
+                      </>
+                    )}
+                  </button>
+
+                  {submitError && (
+                    <div className="text-sm text-red-500 text-center bg-red-50 border border-red-200 rounded-xl px-4 py-3">
+                      ⚠ {submitError}
+                    </div>
                   )}
-                </button>
+
+                  <div className="flex items-center justify-center gap-2 text-xs text-slate-500 font-mono">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    <span>Est. response time: &lt;24 hours (usually under 2h)</span>
+                  </div>
+                </div>
               </form>
             </motion.div>
 
@@ -357,8 +389,8 @@ export default function ContactPage() {
               className="space-y-8"
             >
               {/* Prefer to talk directly */}
-              <div className="bg-white rounded-3xl p-8 border border-slate-200/60 shadow-sm">
-                <h3 className="font-display text-[22px] font-bold text-[#0F172A] mb-2">
+              <div className="bg-card-bg rounded-3xl p-8 border border-border-ink shadow-sm">
+                <h3 className="font-display text-[22px] font-bold text-ink mb-2">
                   Prefer to talk directly?
                 </h3>
                 <p className="text-[14px] text-slate-500 mb-6">
@@ -368,7 +400,7 @@ export default function ContactPage() {
                   href="https://calendly.com/netquorax"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#0F172A] text-white font-semibold px-5 py-3 rounded-full hover:bg-[#0F172A]/90 transition-colors text-[14px]"
+                  className="inline-flex items-center gap-2 bg-ink text-light font-semibold px-5 py-3 rounded-full hover:opacity-90 transition-all text-[14px]"
                 >
                   <Calendar size={16} />
                   Book Strategy Call
@@ -376,24 +408,24 @@ export default function ContactPage() {
               </div>
 
               {/* Direct Contact Info */}
-              <div className="bg-white rounded-3xl p-8 border border-slate-200/60 shadow-sm">
-                <h3 className="font-display text-[22px] font-bold text-[#0F172A] mb-4">
+              <div className="bg-card-bg rounded-3xl p-8 border border-border-ink shadow-sm">
+                <h3 className="font-display text-[22px] font-bold text-ink mb-4">
                   Get in touch directly
                 </h3>
                 <div className="space-y-4">
                   <a
-                    href="mailto:hello@netquorax.com"
+                    href="mailto:netquorax@gmail.com"
                     className="flex items-center gap-3 text-[15px] text-slate-600 hover:text-primary transition-colors"
                   >
                     <Mail size={20} className="text-slate-400" />
-                    hello@netquorax.com (General inquiries)
+                    netquorax@gmail.com (General inquiries)
                   </a>
                   <a
-                    href="mailto:support@netquorax.com"
+                    href="mailto:netquorax@gmail.com"
                     className="flex items-center gap-3 text-[15px] text-slate-600 hover:text-primary transition-colors"
                   >
                     <Mail size={20} className="text-slate-400" />
-                    support@netquorax.com (Client support)
+                    netquorax@gmail.com (Client support)
                   </a>
                   <div className="flex flex-col gap-3 pt-2 text-[14px] text-slate-600 border-t border-slate-100">
                     <div>
@@ -419,13 +451,13 @@ export default function ContactPage() {
               </div>
 
               {/* Mini FAQ */}
-              <div className="bg-white rounded-3xl p-8 border border-slate-200/60 shadow-sm">
-                <h3 className="font-display text-[18px] font-bold text-[#0F172A] mb-4">
+              <div className="bg-card-bg rounded-3xl p-8 border border-border-ink shadow-sm">
+                <h3 className="font-display text-[18px] font-bold text-ink mb-4">
                   Getting Started
                 </h3>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="text-[14px] font-semibold text-[#0F172A] mb-1">
+                    <h4 className="text-[14px] font-semibold text-ink mb-1">
                       What happens after I submit?
                     </h4>
                     <p className="text-[13px] text-slate-500">
@@ -433,7 +465,7 @@ export default function ContactPage() {
                     </p>
                   </div>
                   <div>
-                    <h4 className="text-[14px] font-semibold text-[#0F172A] mb-1">
+                    <h4 className="text-[14px] font-semibold text-ink mb-1">
                       Is there a commitment?
                     </h4>
                     <p className="text-[13px] text-slate-500">

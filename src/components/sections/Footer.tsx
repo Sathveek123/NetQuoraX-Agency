@@ -40,7 +40,7 @@ const LinkedInIcon = (props: React.SVGProps<SVGSVGElement>) => (
 const SOCIAL = [
   { Icon: InstagramIcon, href: "https://www.instagram.com/netquorax?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
   { Icon: LinkedInIcon, href: "https://linkedin.com/company/netquorax", label: "LinkedIn" },
-  { Icon: Mail, href: "mailto:hello@netquorax.com", label: "Email" },
+  { Icon: Mail, href: "mailto:netquorax@gmail.com", label: "Email" },
 ];
 
 const LINKS = [
@@ -131,11 +131,11 @@ export default function Footer() {
             <div className="mt-6 space-y-3 text-[13px] text-white/60">
               <div>
                 <span className="block font-bold text-white/80">General Inquiries</span>
-                <a href="mailto:hello@netquorax.com" className="hover:text-[#2563EB] transition-colors duration-200">hello@netquorax.com</a>
+                <a href="mailto:netquorax@gmail.com" className="hover:text-[#2563EB] transition-colors duration-200">netquorax@gmail.com</a>
               </div>
               <div>
                 <span className="block font-bold text-white/80">Client Support</span>
-                <a href="mailto:support@netquorax.com" className="hover:text-[#2563EB] transition-colors duration-200">support@netquorax.com</a>
+                <a href="mailto:netquorax@gmail.com" className="hover:text-[#2563EB] transition-colors duration-200">netquorax@gmail.com</a>
               </div>
               <div>
                 <span className="block font-bold text-white/80">Strategy & Booking</span>
